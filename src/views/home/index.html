@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./src/assets/styles/home/style.css" rel="stylesheet">
+    <link href="./src/assets/styles/global.css" rel="stylesheet">
+    <title>SpotiClone</title>
+</head>
+<body>
+    <header></header>
+
+    <main>
+
+        <aside>
+            <section>
+                
+                <button class="btn-primary">
+                    <span></span>
+                </button>
+
+                <button class="btn-primary">
+                    <span></span>
+                </button>
+
+            </section>
+
+            <section>
+
+                <nav></nav>
+                <div class="filters"></div>
+                <container class="playlists-container"></container>
+            </section>
+
+        </aside>
+
+        <section class="main">
+            <nav></nav>
+
+            <div class="col-1">
+
+                <div class="title">
+                    <span></span>
+                </div>
+
+                <container class="playlists-container">
+                    <article class="playlist"></article>
+                </container>
+
+            </div>
+
+        </section>
+
+    </main>
+    <footer></footer>
+
+</body>
+
+</html>
+
+<script>
+    const songsUrl = "https://gist.githubusercontent.com/techniadrian/c39f844edbacee0439bfeb107227325b/raw/81eec7847b1b3dfa1c7031586405c93e9a9c1a2d/songs.json"
+    const genresUrl = "https://gist.githubusercontent.com/techniadrian/6ccdb1c837d431bb84c2dfedbec2e435/raw/60783ebfa89c6fd658aaf556b9f7162553ac0729/genres.json"
+
+    let songs = []
+    let genres = []
+
+    async function fetchData(list, url){
+        const response = await fetch(url)
+        const data = await response.json()
+
+        for (item in data){
+            list.push(data[item])
+        }
+    }
+
+    async function fetchAll(){
+        await fetchData(songs, songsUrl)
+        await fetchData(genres, genresUrl)
+
+        console.log(songs)
+        console.log(genres)
+    }
+
+    fetchAll()
+
+</script>
