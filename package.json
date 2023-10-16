@@ -15,5 +15,7 @@
   "bugs": {
     "url": "https://github.com/Alexyiej/pai-project/issues"
   },
-  "homepage": "https://github.com/Alexyiej/pai-project#readme"
+  "homepage": "https://github.com/Alexyiej/pai-project#readme",
+  "dependencies": {
+  }
 }
