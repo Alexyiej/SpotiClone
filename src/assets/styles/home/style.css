@@ -139,10 +139,7 @@ nav .filters .filter:hover{
 }
 
 
-.playlists-container {
-    overflow-y: auto; 
-    max-height: 70vh; 
-}
+
 nav .menu{
 	width: 95%;
 	height: 35px;
@@ -169,6 +166,11 @@ nav .menu span{
 
 .menu i{
 	opacity: .5;
+}
+
+.playlists-container {
+    overflow-y: auto; 
+    max-height: 70vh; 
 }
 
 .playlists-container .wrapper {
