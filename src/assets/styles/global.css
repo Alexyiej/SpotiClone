@@ -1,10 +1,10 @@
 :root{
     --text-primary: rgb(255, 255, 255);
     --background: rgb(5, 0, 2);
-    --bg-primary: rgb(18, 18, 18);
+    --bg-primary: rgba(18, 18, 18, 0.863);
     --bg-secondary: rgb(62, 5, 32);
-    --accent: rgb(238, 32, 132);
-    --bg-hover: rgb(5, 0, 2, .1);
+    --accent: rgb(40, 36, 36);
+    --bg-hover: rgba(212, 212, 212, 0.178);
     --bg-active: rgb(5, 0, 2, 1);
 }
 
@@ -15,7 +15,7 @@
     color: var(--text-primary);
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,4 +37,33 @@
     font-size: 1.1rem;
     opacity: .60;
 }
+/* Domyślne style dla scrollbarów */
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 1px;
+}
 
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ukryj scrollbar, który nie jest aktywny */
+* {
+    scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: background-color 0.3s ease; /* Dodaj płynne przejścia dla koloru tła */
+}
+
+/* Pokaż scrollbar po najechaniu na elementy */
+*:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+}
