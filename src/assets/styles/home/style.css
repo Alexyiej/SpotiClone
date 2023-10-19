@@ -197,7 +197,7 @@ nav .menu span{
 .playlists-container {
     overflow-y: auto; 
 	display: flex;
-	height: 50vh;
+	height: 59vh;
 	margin-top: 10px;
 }
 
@@ -307,7 +307,40 @@ footer{
 footer .col{
 	width: 25%;
 	background-color: red;
+	display: flex;
+	
 }
 footer > :nth-child(2){
 	width: 30%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+footer .col .col-icon-cont{
+	width: 50%;
+	height: 80%;
+	gap: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+footer .col .col-icon-cont .icons{
+	display: flex;
+	gap: 25px;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+.footer .col .col-icon-cont > :first-child > :last-child.flip-horizontal {
+    transform: scaleX(-1);
+}
+footer .col .col-icon-cont .icons i{
+	font-size: 1.35rem;
+	opacity: .8;
+}
+
+.play-pause i{
+	font-size: 1.5rem;
 }
