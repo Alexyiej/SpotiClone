@@ -1,10 +1,10 @@
 body {
-	font-family: Arial, sans-serif;
 	background-color: var(--background);
 	color: white;
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
+	font-family: 'Poppins', sans-serif;
 }
 
 main{
@@ -201,7 +201,7 @@ nav .menu span{
 	margin-top: 10px;
 }
 
-.playlists-container > .wrapper {
+.playlists-container > .playlists-wrapper {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -318,9 +318,8 @@ footer > :nth-child(2){
 }
 
 footer .col .col-icon-cont{
-	width: 50%;
+	width: 100%;
 	height: 80%;
-	gap: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -340,7 +339,12 @@ footer .col .col-icon-cont .icons i{
 	font-size: 1.35rem;
 	opacity: .8;
 }
-
+.play-pause{
+	border-radius: 360px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .play-pause i{
 	font-size: 1.5rem;
 }
