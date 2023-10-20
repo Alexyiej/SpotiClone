@@ -5,16 +5,24 @@ body {
 	height: 100vh;
 	margin: 0;
 	font-family: 'Poppins', sans-serif;
+	user-select: none;
 }
 
 main{
 	width: 100%;
 	height: 100%;
 	display: flex;
+	flex-direction: column;
 }
 
+.main-section{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+}
 
-main  > aside{
+main > div > aside{
 	width: 22.5%;
 	min-width: 400px;
 	display: flex;
@@ -23,7 +31,7 @@ main  > aside{
 	gap: 10px;
 }
 
-main  > aside > :first-child{
+main  > div > aside > :first-child{
 	min-height: 12%;
 	width: 100%;
 	border-radius: 8px;
@@ -41,7 +49,7 @@ aside button span{
 }
 
 
-main  > aside > :last-child{
+main  > div > aside > :last-child{
 	height: 90%;
 	width: 100%;
 	border-radius: 12px;
@@ -50,14 +58,14 @@ main  > aside > :last-child{
 	flex-direction: column;
 
 }
-main > aside > :last-child > container{
+main > div > aside > :last-child > container{
 	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
 }
-main > aside > :last-child > container > nav{
+main > div > aside > :last-child > container > nav{
 	width: 100%;
 	min-height: 15%;
 	display: flex;
@@ -204,24 +212,25 @@ nav .menu span{
 .playlists-container > .playlists-wrapper {
     width: 100%;
     display: grid;
+	height: min-content;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-	height: 100%;
-    align-items: center;
+    align-items: flex-start;
+    position: relative;
 }
 
 
 .playlist{
 	width: 100%;
+	height: max-content;
 	border-radius: 6px;
 	gap: 7.5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
+	text-wrap: nowrap;
 }
 .playlist .wrapper{
-	width: 100px;
+	width: 90%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -235,8 +244,8 @@ nav .menu span{
 	cursor: pointer;
 }
 .playlist:active {
-	background-color: var(--bg-active);
-	transition: .8s;
+	background-color: rgba(0, 0, 0, .3);
+	transition: .4s;
 	cursor: pointer;
 }
 
@@ -284,21 +293,19 @@ nav .menu span{
 	position: relative;
 }
 
-main  > .main{
+main > div > .main{
 	width: 80%;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--bg-primary);
 	border-radius: 12px;
 	margin: 10px 10px 10px 10px;
+	position: relative;
 }
 
 footer{
 	height: 10%;
 	width: 100%;
-	z-index: 10;
-	position: absolute;
-	top: 90%;
 	display: flex;
 	justify-content: space-between;
 	background-color: var(--background);
@@ -306,7 +313,6 @@ footer{
 
 footer .col{
 	width: 25%;
-	background-color: red;
 	display: flex;
 	
 }
@@ -347,4 +353,71 @@ footer .col .col-icon-cont .icons i{
 }
 .play-pause i{
 	font-size: 1.5rem;
+}
+
+#modal{
+	width: 180px;
+	height: max-content;
+	background-color: var(--context-menu);
+	position: absolute;
+	z-index: 10;
+	flex-direction: column;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	-moz-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+}
+
+#modal button{
+	font-size: .85rem;
+	font-weight: 560;
+	opacity: .95;
+	transition: .1s;
+	padding: 15px;
+}
+
+#model button:hover{
+	background-color: var(--bg-hover);
+	transition: .2s;
+	cursor: pointer;
+}
+
+#playlist-modal{
+	width: 180px;
+	height: max-content;
+	background-color: var(--context-menu);
+	position: absolute;
+	z-index: 10;
+	flex-direction: column;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	-moz-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+}
+
+#playlist-modal button{
+	font-size: .85rem;
+	font-weight: 560;
+	opacity: .95;
+	transition: .1s;
+	padding: 15px;
+}
+
+#playlist-view {
+    position: absolute;
+	background: linear-gradient(180deg, rgba(114,20,194,1) 25%, rgba(75,13,73,0) 60%);
+    width: 100%;
+    height: 100%; 
+    z-index: 1;
+	border-radius: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#playlist-view > .wrapper{
+	width: 96%;
+	height: 100%;
+	display: flex;
+	background-color: red;
 }

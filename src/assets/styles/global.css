@@ -6,6 +6,7 @@
     --accent: rgb(40, 36, 36);
     --bg-hover: rgba(212, 212, 212, 0.178);
     --bg-active: rgb(5, 0, 2, 1);
+    --context-menu: #282828;
 }
 
 .btn-primary{
@@ -37,7 +38,6 @@
     font-size: 1.1rem;
     opacity: .60;
 }
-/* Domyślne style dla scrollbarów */
 ::-webkit-scrollbar {
     width: 0.5em;
     height: 1px;
@@ -52,19 +52,16 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Ukryj scrollbar, który nie jest aktywny */
 * {
     scrollbar-width: thin;
 }
 
-
 *::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    transition: background-color 0.3s ease; /* Dodaj płynne przejścia dla koloru tła */
+    transition: background-color 0.3s ease; 
 }
 
-/* Pokaż scrollbar po najechaniu na elementy */
 *:hover::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.4);
 }

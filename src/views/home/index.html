@@ -12,133 +12,171 @@
     <title>SpotiClone</title>
 </head>
 <body>
+    
     <header></header>
 
     <main>
-        <aside>
-            <section>
-                
-                <button class="btn-primary">
-                    <div class="icon-container">
-                        <i class="fa-solid fa-house"></i>
-                    </div>
-                    <span>Home</span>
-                </button>
-
-                <button class="btn-primary">
-                    <div class="icon-container">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <span>Search</span>
-                </button>
-
-            </section>
-
-            <section>
-                <container class="section-wrapper">
-                    <nav >
-                        <div class="nav-title">
-                            <div class="title">
-                                <div class="icon-container">
-                                    <i class="fa-solid fa-bars"></i>
-                                </div>  
-                                <span>Your Library</span>
-                            </div>
-    
-                            <div class="nav-icons">
-                                <div class="icon-container">
-                                    <i class="fa-solid fa-plus"></i>
-                                </div>  
-                                <div class="icon-container">
-                                    <i class="fa-solid fa-arrow-right" class="icon"></i>
-                                </div>  
-                            </div>
-                         
-                        </div>
-                        <div class="filters">
-                            <div class="filters-wrapper">
-                                <div class="filter">
-                                    <span>Playlists</span>
-                                </div>
-                                <div class="filter">
-                                    <span>Podcasts & shows</span>
-                                </div>
-                                <div class="filter">
-                                    <span>Albums</span>
-                                </div>
-                                <div class="filter">
-                                    <span>Artists</span>
-                                </div>
-                                <div class="filter">
-                                    <span>Downloaded</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="menu">
-                            <div>
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </div>
-                            <div>
-                                <span>Recents</span>
-                                <i class="fa-solid fa-border-all"></i>
-                            </div>
-                        </div>
-                    </nav>
-                    <div class="playlists-container">
-                        <div class="playlists-wrapper">
-                        </div>
-                    </div>
-
-                </container>
-                
-            </section>
-
-        </aside>
-
-        <section class="main">
-            <nav></nav>
-
-            <div class="col-1">
-
-                <div class="title">
-                    <span></span>
-                </div>
-
-                <container class="playlists-container">
+        <div class="main-section">
+            <aside>
+                <section>
                     
-                </container>
-
-            </div>
-
-        </section>
-    </main>
- 
-    <footer>
-        <div class="col"></div>
-        <div class="col">
-            <div class="col-icon-cont">
-                <div class="icons">
-                    <i class="fa-solid fa-shuffle"></i>
-                    <i class="fa-solid fa-forward-step fa-rotate-180"></i>
+                    <button class="btn-primary">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <span>Home</span>
+                    </button>
+    
+                    <button class="btn-primary">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <span>Search</span>
+                    </button>
+    
+                </section>
+    
+                <section>
+                    <container class="section-wrapper">
+                        <nav >
+                            <div class="nav-title">
+                                <div class="title">
+                                    <div class="icon-container">
+                                        <i class="fa-solid fa-bars"></i>
+                                    </div>  
+                                    <span>Your Library</span>
+                                </div>
+        
+                                <div class="nav-icons">
+                                    <div class="icon-container">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </div>  
+                                    <div class="icon-container">
+                                        <i class="fa-solid fa-arrow-right" class="icon"></i>
+                                    </div>  
+                                </div>
+                             
+                            </div>
+                            <div class="filters">
+                                <div class="filters-wrapper">
+                                    <div class="filter">
+                                        <span>Playlists</span>
+                                    </div>
+                                    <div class="filter">
+                                        <span>Podcasts & shows</span>
+                                    </div>
+                                    <div class="filter">
+                                        <span>Albums</span>
+                                    </div>
+                                    <div class="filter">
+                                        <span>Artists</span>
+                                    </div>
+                                    <div class="filter">
+                                        <span>Downloaded</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu">
+                                <div>
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <div>
+                                    <span>Recents</span>
+                                    <i class="fa-solid fa-border-all"></i>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class="playlists-container">
+                            <div class="playlists-wrapper">
+    
+                            </div>
+                        </div>
+    
+                    </container>
+                    
+                </section>
+    
+            </aside>
+    
+            <section class="main">
+                <nav></nav>
+    
+                <div class="col-1">
+    
+                    <div class="title">
+                        <span></span>
+                    </div>
+    
+                    <container class="playlists-container">
+                        
+                    </container>
+    
                 </div>
 
-                <div class="play-pause">
-                    <i class="fa-solid fa-play"></i>
-                </div>
-                
-                <div class="icons">
-                    <i class="fa-solid fa-forward-step"></i>
-                    <i class="fa-solid fa-repeat"></i>
-                </div>
-            </div>
-            <div class="time-bar">
-                <span>2.02</span>
-                <div class="bar"></div>
-                <span>4.45</span>
-            </div>
+                <article id="playlist-view">
+                    <container class="wrapper">
+                        <header>
+                            <div></div>
+                        </header>
+                        <section>
+                            <div class="playlist-info">
+                                <div class="icon-container">
+                                    <img src="/src/assets/images/playlists/playlist-icon-basic.png">
+                                </div>
+                                <div class="info">
+                                    <p></p>
+                                    <span>My Playlist #12</span>
+                                    <span>alex 11 songs 58 min 17 sec</span>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="show-more"></div>
+                        <container class="playlists-container">
+                            <div class="playlists-title"></div>
+                            <div class="wrapper"></div>
+                        </container>
+                    </container>
+                </article>
+
+            </section>
+
         </div>
-        <div class="col"></div>
-    </footer>
+
+        <footer>
+            <div class="col"></div>
+            <div class="col">
+                <div class="col-icon-cont">
+                    <div class="icons">
+                        <i class="fa-solid fa-shuffle"></i>
+                        <i class="fa-solid fa-forward-step fa-rotate-180"></i>
+                    </div>
+    
+                    <div class="play-pause">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    
+                    <div class="icons">
+                        <i class="fa-solid fa-forward-step"></i>
+                        <i class="fa-solid fa-repeat"></i>
+                    </div>
+                </div>
+                <div class="time-bar">
+                    <span>2.02</span>
+                    <div class="bar"></div>
+                    <span>4.45</span>
+                </div>
+            </div>
+            <div class="col"></div>
+        </footer>
+    </main>
+
+    <div id="modal" style="display: none;">
+        <button class="btn-primary" name="create-playlist-btn">Create playlist</button>
+        <button class="btn-primary" name="create-folder-btn">Create folder</button>
+    </div>
+    <div id="playlist-modal" style="display: none;">
+        <button class="btn-primary" name="delete-playlist-btn">Delete playlist</button>
+    </div>
 
 </body>
 
@@ -152,6 +190,8 @@
     let songs = []
     let genres = []
     let playlists = []
+    let playListIndex = 0; 
+    let clickCounter = 0; 
 
     async function fetchData(list, url){
         const response = await fetch(url)
@@ -168,43 +208,135 @@
 
     }
 
-    function createPlaylistsList(playlists){
-        for (i = 0; i < 10; i++){
-            playlists.push({
-                id: i,
-                name: "Playlist " + i,
-                description: "Playlist " + i,
-                user: "Alex",
-            })
-        }
+    function handleCreateClick(playlists) {
+        playlists.push({
+            id: playListIndex,
+            name: "My Playlist #" + playListIndex,
+            description: "Playlist " + playListIndex,
+            user: "Alex",
+            image_url: "/src/assets/images/playlists/playlist-icon-basic.png",
+            songs: []
+        });
+        createPlaylists(playlists[playListIndex], 0); 
+        playListIndex++;
+    }
+    
 
+    function createPlaylists(playlist, playlistId) {
+        const playlistsWrapper = document.querySelector(".playlists-wrapper");
+        const playlistElement = document.createElement("article");
+        playlistElement.className = "playlist";
+        playlistElement.innerHTML = `
+            <div class="wrapper">
+                <div class="playlist-icon">
+                    <img src="${playlist.image_url}" alt="Likedsongs">
+                </div>
+                <div class="playlist-title">
+                    <span>${playlist.name}</span>
+                </div>
+                <div class="playlist-description">
+                    <span>${playlist.description}</span>
+                    <span>${playlist.user}</span>
+                </div>
+            </div>
+        `;
+        handlePlaylistContextMenu(playlist, playlistId, playlistElement)
+        playlistsWrapper.appendChild(playlistElement);
     }
 
-    function createPlaylists(playlists){
-        const playlistsWrapper = document.querySelector(".playlists-wrapper")
+    function deletePlaylist(playlistData, playlistId) {
+        indexOfPlaylist = playlists.indexOf(playlistData);
+        console.log("index", indexOfPlaylist)
+        playlists.splice(indexOfPlaylist, 1);
+        console.log("playlists", playlists)
+    }
+
+
+    function handlePlaylistContextMenu(playlistData, playlistId, playlistElement) {
+        playlistModal = document.getElementById("playlist-modal");
+        deleteButton = document.getElementsByName("delete-playlist-btn")[0];
+    
+        playlistElement.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            createContextMenu(playlistElement, playlistModal);
+        });
         
-        playlists.forEach((playlist) => {
-            playlistsWrapper.innerHTML += `
-                <article class="playlist">
-                    <div class="wrapper">
-                        <div class="playlist-icon">
-                            <img src="/src/assets/images/icons/likedsongs.png" alt="Likedsongs">
-                        </div>
-                        <div class="playlist-title">
-                            <span>${playlist.name}</span>
-                        </div>
-                        <div class="playlist-description">
-                            <span>${playlist.description}</span>
-                            <span>${playlist.user}</span>
-                        </div>
-                    </div>
-                </article>
-            `
-        })
+        hideContextMenu(playlistModal, playlistElement)
+        deleteButton.addEventListener("click", function(){
+           deletePlaylist(playlistData, playlistId);
+        });
     }
 
-    fetchAll()
-    createPlaylistsList(playlists)
-    createPlaylists(playlists)
+    function handleContainerContextMenu(playlistModal, playlistElement) {
+        sectionWrapper = document.getElementsByClassName("section-wrapper")[0];
+        playlistButton = document.getElementsByName("create-playlist-btn")[0];
 
+
+        modal = document.getElementById("modal");
+        
+        createContextMenu(sectionWrapper, modal)
+
+        playlistButton.addEventListener("click", function () {
+            handleCreateClick(playlists, clickCounter);
+            modal.style.display = "none";
+            localStorage.setItem("playlists", JSON.stringify(playlists));
+
+            logLocalStorage()
+        });
+
+        modal.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+            hideContextMenu(playlistModal, playlistElement)
+            clickCounter++;
+        });
+
+        hideContextMenu(modal, sectionWrapper)
+    }
+
+
+
+    function createContextMenu(wrapper, menu){
+        wrapper.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+            menu.style.display = "flex";
+            menu.style.top = event.clientY + "px";
+            menu.style.left = event.clientX + "px";
+            clickCounter = 0; 
+        });
+    }
+    
+    function hideContextMenu(contextMenu, wrapper){
+        document.addEventListener("click", function (event) {
+            if (event.target !== contextMenu && event.target !== wrapper) {
+                contextMenu.style.display = "none";
+            }
+        });
+    }
+
+
+    function loadPlaylists() {
+        const loclalStoragPlaylists = JSON.parse(localStorage.getItem("playlists"));
+        console.log(loclalStoragPlaylists)
+        if (loclalStoragPlaylists) {
+            playlists = loclalStoragPlaylists;
+            for (playlist of playlists) {
+                createPlaylists(playlist);
+            }
+        } else {
+            console.log("No playlists found in local storage");
+        }
+    }
+    
+
+    function onLoad() {
+        const playlistsWrapper = document.querySelector(".playlists-wrapper");
+        const playlistModal = document.getElementById("playlist-modal");
+
+        fetchAll()
+        //loadPlaylists()
+        handleContainerContextMenu(playlistModal, playlistsWrapper)
+    } 
+
+   
 </script>
