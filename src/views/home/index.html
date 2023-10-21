@@ -172,10 +172,9 @@
 
     <div id="modal" style="display: none;">
         <button class="btn-primary" name="create-playlist-btn">Create playlist</button>
-        <button class="btn-primary" name="create-folder-btn">Create folder</button>
     </div>
     <div id="playlist-modal" style="display: none;">
-        <button class="btn-primary" name="delete-playlist-btn">Delete playlist</button>
+        <button class="btn-primary" name="delete-playlist-btn">Delete</button>
     </div>
 
 </body>
@@ -183,6 +182,9 @@
 </html>
 
 <script src="https://kit.fontawesome.com/c52b7a3e6e.js" crossorigin="anonymous"></script>
+<script src="/src/scripts//playlists.js"></script>
+<script src="/src/scripts//contextmenu.js"></script>
+
 <script>
     const songsUrl = "https://gist.githubusercontent.com/techniadrian/c39f844edbacee0439bfeb107227325b/raw/81eec7847b1b3dfa1c7031586405c93e9a9c1a2d/songs.json"
     const genresUrl = "https://gist.githubusercontent.com/techniadrian/6ccdb1c837d431bb84c2dfedbec2e435/raw/60783ebfa89c6fd658aaf556b9f7162553ac0729/genres.json"
@@ -208,120 +210,20 @@
 
     }
 
-    function handleCreateClick(playlists) {
-        playlists.push({
-            id: playListIndex,
-            name: "My Playlist #" + playListIndex,
-            description: "Playlist " + playListIndex,
-            user: "Alex",
-            image_url: "/src/assets/images/playlists/playlist-icon-basic.png",
-            songs: []
-        });
-        createPlaylists(playlists[playListIndex], 0); 
-        playListIndex++;
-    }
-    
-
-    function createPlaylists(playlist, playlistId) {
-        const playlistsWrapper = document.querySelector(".playlists-wrapper");
-        const playlistElement = document.createElement("article");
-        playlistElement.className = "playlist";
-        playlistElement.innerHTML = `
-            <div class="wrapper">
-                <div class="playlist-icon">
-                    <img src="${playlist.image_url}" alt="Likedsongs">
-                </div>
-                <div class="playlist-title">
-                    <span>${playlist.name}</span>
-                </div>
-                <div class="playlist-description">
-                    <span>${playlist.description}</span>
-                    <span>${playlist.user}</span>
-                </div>
-            </div>
-        `;
-        handlePlaylistContextMenu(playlist, playlistId, playlistElement)
-        playlistsWrapper.appendChild(playlistElement);
-    }
-
-    function deletePlaylist(playlistData, playlistId) {
-        indexOfPlaylist = playlists.indexOf(playlistData);
-        console.log("index", indexOfPlaylist)
-        playlists.splice(indexOfPlaylist, 1);
-        console.log("playlists", playlists)
-    }
-
-
-    function handlePlaylistContextMenu(playlistData, playlistId, playlistElement) {
-        playlistModal = document.getElementById("playlist-modal");
-        deleteButton = document.getElementsByName("delete-playlist-btn")[0];
-    
-        playlistElement.addEventListener("contextmenu", function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            createContextMenu(playlistElement, playlistModal);
-        });
-        
-        hideContextMenu(playlistModal, playlistElement)
-        deleteButton.addEventListener("click", function(){
-           deletePlaylist(playlistData, playlistId);
-        });
-    }
-
-    function handleContainerContextMenu(playlistModal, playlistElement) {
-        sectionWrapper = document.getElementsByClassName("section-wrapper")[0];
-        playlistButton = document.getElementsByName("create-playlist-btn")[0];
-
-
-        modal = document.getElementById("modal");
-        
-        createContextMenu(sectionWrapper, modal)
-
-        playlistButton.addEventListener("click", function () {
-            handleCreateClick(playlists, clickCounter);
-            modal.style.display = "none";
-            localStorage.setItem("playlists", JSON.stringify(playlists));
-
-            logLocalStorage()
-        });
-
-        modal.addEventListener("contextmenu", function (event) {
-            event.preventDefault();
-            hideContextMenu(playlistModal, playlistElement)
-            clickCounter++;
-        });
-
-        hideContextMenu(modal, sectionWrapper)
-    }
-
-
-
-    function createContextMenu(wrapper, menu){
-        wrapper.addEventListener("contextmenu", function (event) {
-            event.preventDefault();
-            menu.style.display = "flex";
-            menu.style.top = event.clientY + "px";
-            menu.style.left = event.clientX + "px";
-            clickCounter = 0; 
-        });
-    }
-    
-    function hideContextMenu(contextMenu, wrapper){
-        document.addEventListener("click", function (event) {
-            if (event.target !== contextMenu && event.target !== wrapper) {
-                contextMenu.style.display = "none";
-            }
-        });
-    }
-
-
     function loadPlaylists() {
-        const loclalStoragPlaylists = JSON.parse(localStorage.getItem("playlists"));
-        console.log(loclalStoragPlaylists)
-        if (loclalStoragPlaylists) {
-            playlists = loclalStoragPlaylists;
+        loclalStoragePlaylists = JSON.parse(localStorage.getItem("playlists"));
+        localStoragePlaylistsIndex = localStorage.getItem("playlists-index");
+
+        if (localStoragePlaylistsIndex) {
+            playListIndex = localStoragePlaylistsIndex;
+        } else {
+            playListIndex = 0;
+        }
+
+        if (loclalStoragePlaylists) {
+            playlists = loclalStoragePlaylists;
             for (playlist of playlists) {
-                createPlaylists(playlist);
+                createPlaylists(playlist, localStoragePlaylistsIndex);
             }
         } else {
             console.log("No playlists found in local storage");
