@@ -1,0 +1,452 @@
+[
+    {
+        "id": "1",
+        "artists": ["Luna Skies", "DJ Solarflare"],
+        "title": "Moonlit Dance",
+        "coverUrl": "https://i.pinimg.com/originals/ea/1f/64/ea1f64668a0af149a3277db9e9e54824.jpg",
+        "genre": "House",
+        "bpm": 128,
+        "duration": 195
+    },
+    {
+        "id": "2",
+        "artists": ["The Velvet Owls"],
+        "title": "Whispered Secrets",
+        "coverUrl": "https://pub-static.fotor.com/assets/projects/pages/c7d9749a29fc44a5a54da2bba21165af/gradient-cool-new-bullet-e52b9cac8825471981dc12dd343176da.jpg",
+        "genre": "Rock",
+        "bpm": 115,
+        "duration": 223
+    },
+    {
+        "id": "3",
+        "artists": ["Luna Skies"],
+        "title": "Eclipse Heartbeat",
+        "coverUrl": "https://cdn.musebycl.io/2022-07/Bocanada.jpg",
+        "genre": "Pop",
+        "bpm": 104,
+        "duration": 178
+    },
+    {
+        "id": "4",
+        "artists": ["Silver Bridge", "Luna Skies"],
+        "title": "Horizons Beyond",
+        "coverUrl": "https://www.rihannanow.com/wp-content/uploads/2015/10/RIRI-Front-6.203-x-5.4375-CMYK-898x1024.jpg",
+        "genre": "R&B",
+        "bpm": 110,
+        "duration": 212
+    },
+        {
+        "id": "5",
+        "artists": ["DJ Solarflare"],
+        "title": "Solar Surfer",
+        "coverUrl": "https://coverartland.com/wp-content/uploads/2023/08/obscure-350x350.jpg",
+        "genre": "Techno",
+        "bpm": 132,
+        "duration": 198
+    },
+    {
+        "id": "6",
+        "artists": ["The Velvet Owls", "Silver Bridge"],
+        "title": "Midnight Conversations",
+        "coverUrl": "https://decybeledizajnu.com/wp-content/uploads/2022/07/blood-moon-b-iext105662067.jpg",
+        "genre": "Indie",
+        "bpm": 96,
+        "duration": 236
+    },
+    {
+        "id": "7",
+        "artists": ["Harmonic Waves"],
+        "title": "Ocean's Lullaby",
+        "coverUrl": "https://blog.spoongraphics.co.uk/wp-content/uploads/2017/album-art/22.jpg",
+        "genre": "House",
+        "bpm": 80,
+        "duration": 270
+    },
+    {
+        "id": "8",
+        "artists": ["The Velvet Owls"],
+        "title": "Deserted Alleyways",
+        "coverUrl": "https://cdns-images.dzcdn.net/images/cover/404d06fa565dbb06f88b016dabac8272/264x264.jpg",
+        "genre": "Indie",
+        "bpm": 122,
+        "duration": 185
+    },
+    {
+        "id": "9",
+        "artists": ["Luna Skies", "Harmonic Waves"],
+        "title": "Starry Canopy",
+        "coverUrl": "https://t2.genius.com/unsafe/504x504/https%3A%2F%2Fimages.genius.com%2F0f93a486bfe3409c1fe5f9bfe95f649f.1000x1000x1.jpg",
+        "genre": "Trap",
+        "bpm": 90,
+        "duration": 240
+    },
+    {
+        "id": "10",
+        "artists": ["DJ Solarflare", "Silver Bridge"],
+        "title": "Galactic Groove",
+        "coverUrl": "https://i.pinimg.com/1200x/d7/10/ee/d710ee657d88cf447ddd511a2a087827.jpg",
+        "genre": "House",
+        "bpm": 134,
+        "duration": 220
+    },
+    {
+        "id": "11",
+        "artists": ["Thunder Echoes"],
+        "title": "Rumbling Skies",
+        "coverUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_lImJQuDOmcyjgMucPsd9VEaUBZMgS9fqiw&usqp=CAU",
+        "genre": "Rock",
+        "bpm": 130,
+        "duration": 210
+    },
+    {
+        "id": "12",
+        "artists": ["Crescent Moons", "Harmonic Waves"],
+        "title": "Silent Whispers",
+        "coverUrl": "https://images.genius.com/c93ba6fa10f7b55db8266a01e96893f7.1000x1000x1.jpg",
+        "genre": "R&B",
+        "bpm": 105,
+        "duration": 245
+    },
+    {
+        "id": "13",
+        "artists": ["DJ Solarflare", "Thunder Echoes"],
+        "title": "Electric Surge",
+        "coverUrl": "https://images.genius.com/9ebe8a2c41db9f1fe95402f9acdf3773.1000x1000x1.png",
+        "genre": "Techno",
+        "bpm": 140,
+        "duration": 225
+    },
+    {
+        "id": "14",
+        "artists": ["Silver Bridge", "Crescent Moons"],
+        "title": "Reflective Waters",
+        "coverUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV7IEnT8TE7QKe_iEosObIvyJuNB9z6xuoPQ&usqp=CAU",
+        "genre": "Pop",
+        "bpm": 95,
+        "duration": 230
+    },
+    {
+        "id": "15",
+        "artists": ["Luna Skies", "Thunder Echoes"],
+        "title": "Dawning Hopes",
+        "coverUrl": "https://i1.sndcdn.com/artworks-CM0Tzm2OZLAZ4sCf-HdaOGw-t500x500.jpg",
+        "genre": "Drill",
+        "bpm": 120,
+        "duration": 240
+    },
+    {
+        "id": "16",
+        "artists": ["The Cosmic Voyager"],
+        "title": "Interstellar Dreams",
+        "coverUrl": "https://example.com/cover6.jpg",
+        "genre": "Electronic",
+        "bpm": 132,
+        "duration": 215
+    },
+    {
+        "id": "17",
+        "artists": ["Neon Nights"],
+        "title": "Cyber City Lights",
+        "coverUrl": "https://example.com/cover7.jpg",
+        "genre": "Synthwave",
+        "bpm": 120,
+        "duration": 210
+    },
+    {
+        "id": "18",
+        "artists": ["Luna Skies", "DJ Solarflare"],
+        "title": "Stardust Symphony",
+        "coverUrl": "https://example.com/cover8.jpg",
+        "genre": "Trance",
+        "bpm": 136,
+        "duration": 198
+    },
+    {
+        "id": "19",
+        "artists": ["Harmonic Waves"],
+        "title": "Aqua Serenity",
+        "coverUrl": "https://example.com/cover9.jpg",
+        "genre": "Chillout",
+        "bpm": 90,
+        "duration": 250
+    },
+    {
+        "id": "20",
+        "artists": ["Silver Bridge", "Crescent Moons"],
+        "title": "Lost in Reflection",
+        "coverUrl": "https://example.com/cover10.jpg",
+        "genre": "Indie",
+        "bpm": 112,
+        "duration": 205
+    },
+    {
+        "id": "21",
+        "artists": ["The Velvet Owls"],
+        "title": "Nostalgic Echoes",
+        "coverUrl": "https://example.com/cover11.jpg",
+        "genre": "Alternative",
+        "bpm": 100,
+        "duration": 215
+    },
+    {
+        "id": "22",
+        "artists": ["DJ Solarflare", "Crescent Moons"],
+        "title": "Galactic Reverie",
+        "coverUrl": "https://example.com/cover12.jpg",
+        "genre": "Ambient",
+        "bpm": 80,
+        "duration": 270
+    },
+    {
+        "id": "23",
+        "artists": ["Luna Skies", "Harmonic Waves"],
+        "title": "Celestial Dreamscape",
+        "coverUrl": "https://example.com/cover13.jpg",
+        "genre": "Downtempo",
+        "bpm": 95,
+        "duration": 225
+    },
+    {
+        "id": "24",
+        "artists": ["Silver Bridge", "DJ Solarflare"],
+        "title": "Infinite Horizons",
+        "coverUrl": "https://example.com/cover14.jpg",
+        "genre": "Electronic",
+        "bpm": 128,
+        "duration": 202
+    },
+    {
+        "id": "25",
+        "artists": ["Crescent Moons"],
+        "title": "Enchanted Whispers",
+        "coverUrl": "https://example.com/cover15.jpg",
+        "genre": "Folk",
+        "bpm": 98,
+        "duration": 220
+    },
+    {
+        "id": "26",
+        "artists": ["Harmonic Waves", "The Velvet Owls"],
+        "title": "Soothing Waves",
+        "coverUrl": "https://example.com/cover16.jpg",
+        "genre": "Chillwave",
+        "bpm": 85,
+        "duration": 245
+    },
+    {
+        "id": "27",
+        "artists": ["Neon Nights", "Luna Skies"],
+        "title": "Synthetic Serenity",
+        "coverUrl": "https://example.com/cover17.jpg",
+        "genre": "Synthpop",
+        "bpm": 110,
+        "duration": 208
+    },
+    {
+        "id": "28",
+        "artists": ["DJ Solarflare", "The Cosmic Voyager"],
+        "title": "Cosmic Expedition",
+        "coverUrl": "https://example.com/cover18.jpg",
+        "genre": "Space Ambient",
+        "bpm": 100,
+        "duration": 240
+    },
+    {
+        "id": "29",
+        "artists": ["The Velvet Owls", "Harmonic Waves"],
+        "title": "Midnight Reflections",
+        "coverUrl": "https://example.com/cover19.jpg",
+        "genre": "Indie",
+        "bpm": 118,
+        "duration": 215
+    },
+    {
+        "id": "30",
+        "artists": ["Luna Skies", "Silver Bridge"],
+        "title": "Nocturnal Harmony",
+        "coverUrl": "https://example.com/cover20.jpg",
+        "genre": "Electronic",
+        "bpm": 124,
+        "duration": 200
+    },
+    {
+        "id": "31",
+        "artists": ["DJ Solarflare", "The Velvet Owls"],
+        "title": "Ethereal Nights",
+        "coverUrl": "https://example.com/cover21.jpg",
+        "genre": "Ambient",
+        "bpm": 85,
+        "duration": 255
+    },
+    {
+        "id": "32",
+        "artists": ["Luna Skies", "Neon Nights"],
+        "title": "Neon Dreams",
+        "coverUrl": "https://example.com/cover22.jpg",
+        "genre": "Synthwave",
+        "bpm": 110,
+        "duration": 210
+    },
+    {
+        "id": "33",
+        "artists": ["Harmonic Waves", "Crescent Moons"],
+        "title": "Lunar Serenade",
+        "coverUrl": "https://example.com/cover23.jpg",
+        "genre": "Chillwave",
+        "bpm": 95,
+        "duration": 230
+    },
+    {
+        "id": "34",
+        "artists": ["The Cosmic Voyager", "DJ Solarflare"],
+        "title": "Galactic Odyssey",
+        "coverUrl": "https://example.com/cover24.jpg",
+        "genre": "Space Ambient",
+        "bpm": 98,
+        "duration": 220
+    },
+    {
+        "id": "35",
+        "artists": ["The Velvet Owls", "Thunder Echoes"],
+        "title": "Retro Reverie",
+        "coverUrl": "https://example.com/cover25.jpg",
+        "genre": "Synthpop",
+        "bpm": 120,
+        "duration": 205
+    },
+    {
+        "id": "36",
+        "artists": ["Luna Skies", "Harmonic Waves"],
+        "title": "Stellar Whispers",
+        "coverUrl": "https://example.com/cover26.jpg",
+        "genre": "Downtempo",
+        "bpm": 92,
+        "duration": 240
+    },
+    {
+        "id": "37",
+        "artists": ["DJ Solarflare", "Neon Nights"],
+        "title": "Cybernetic Dreams",
+        "coverUrl": "https://example.com/cover27.jpg",
+        "genre": "Synthwave",
+        "bpm": 108,
+        "duration": 210
+    },
+    {
+        "id": "38",
+        "artists": ["Crescent Moons", "The Cosmic Voyager"],
+        "title": "Celestial Wonders",
+        "coverUrl": "https://example.com/cover28.jpg",
+        "genre": "Electronic",
+        "bpm": 126,
+        "duration": 198
+    },
+    {
+        "id": "39",
+        "artists": ["Harmonic Waves", "Luna Skies"],
+        "title": "Astral Melodies",
+        "coverUrl": "https://example.com/cover29.jpg",
+        "genre": "Chillout",
+        "bpm": 88,
+        "duration": 250
+    },
+    {
+        "id": "40",
+        "artists": ["DJ Solarflare", "The Velvet Owls"],
+        "title": "Starlit Soiree",
+        "coverUrl": "https://example.com/cover30.jpg",
+        "genre": "Ambient",
+        "bpm": 82,
+        "duration": 265
+    },
+    {
+        "id": "41",
+        "artists": ["Luna Skies", "Silver Bridge"],
+        "title": "Lunar Reverie",
+        "coverUrl": "https://example.com/cover31.jpg",
+        "genre": "Electronic",
+        "bpm": 130,
+        "duration": 198
+    },
+    {
+        "id": "42",
+        "artists": ["The Velvet Owls", "Thunder Echoes"],
+        "title": "Enigmatic Echoes",
+        "coverUrl": "https://example.com/cover32.jpg",
+        "genre": "Synthpop",
+        "bpm": 116,
+        "duration": 215
+    },
+    {
+        "id": "43",
+        "artists": ["Harmonic Waves", "Crescent Moons"],
+        "title": "Spectral Serenity",
+        "coverUrl": "https://example.com/cover33.jpg",
+        "genre": "Chillwave",
+        "bpm": 90,
+        "duration": 225
+    },
+    {
+        "id": "44",
+        "artists": ["The Cosmic Voyager", "DJ Solarflare"],
+        "title": "Cosmic Drift",
+        "coverUrl": "https://example.com/cover34.jpg",
+        "genre": "Space Ambient",
+        "bpm": 96,
+        "duration": 230
+    },
+    {
+        "id": "45",
+        "artists": ["The Velvet Owls", "Thunder Echoes"],
+        "title": "Galactic Grooves",
+        "coverUrl": "https://example.com/cover35.jpg",
+        "genre": "Synthpop",
+        "bpm": 118,
+        "duration": 205
+    },
+    {
+        "id": "46",
+        "artists": ["Luna Skies", "Harmonic Waves"],
+        "title": "Stellar Symphony",
+        "coverUrl": "https://example.com/cover36.jpg",
+        "genre": "Downtempo",
+        "bpm": 94,
+        "duration": 240
+    },
+    {
+        "id": "47",
+        "artists": ["DJ Solarflare", "Neon Nights"],
+        "title": "Cyber Dreamscape",
+        "coverUrl": "https://example.com/cover37.jpg",
+        "genre": "Synthwave",
+        "bpm": 106,
+        "duration": 210
+    },
+    {
+        "id": "48",
+        "artists": ["Crescent Moons", "The Cosmic Voyager"],
+        "title": "Celestial Journey",
+        "coverUrl": "https://example.com/cover38.jpg",
+        "genre": "Electronic",
+        "bpm": 124,
+        "duration": 198
+    },
+    {
+        "id": "49",
+        "artists": ["Harmonic Waves", "Luna Skies"],
+        "title": "Astral Serenity",
+        "coverUrl": "https://example.com/cover39.jpg",
+        "genre": "Chillout",
+        "bpm": 86,
+        "duration": 250
+    },
+    {
+        "id": "50",
+        "artists": ["DJ Solarflare", "The Velvet Owls"],
+        "title": "Starry Soiree",
+        "coverUrl": "https://example.com/cover40.jpg",
+        "genre": "Ambient",
+        "bpm": 88,
+        "duration": 265
+    }
+]  
