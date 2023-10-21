@@ -205,7 +205,6 @@ nav .menu i{
 .playlists-container {
     overflow-y: auto; 
 	display: flex;
-	height: 59vh;
 	margin-top: 10px;
 }
 
@@ -301,6 +300,7 @@ main > div > .main{
 	border-radius: 12px;
 	margin: 10px 10px 10px 10px;
 	position: relative;
+	
 }
 
 footer{
@@ -405,9 +405,9 @@ footer .col .col-icon-cont .icons i{
 
 #playlist-view {
     position: absolute;
-	background: linear-gradient(180deg, rgba(114,20,194,1) 25%, rgba(75,13,73,0) 60%);
+	background: linear-gradient(180deg, rgba(125,38,199,0.7672045624890581) 25%, rgba(75,13,73,0) 60%);
     width: 100%;
-    height: 100%; 
+    height: calc(100% - 70px); 
     z-index: 1;
 	border-radius: 12px;
 	display: flex;
@@ -416,30 +416,33 @@ footer .col .col-icon-cont .icons i{
 }
 
 #playlist-view > .wrapper{
+	top: 70px;
 	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	border-radius: 12px;
+	border-radius: 8px;
 	position: relative;
 }
 
-#playlist-view > .wrapper > header{
-	background-color: #7214c2;
-	border-radius: 12px 12px 0 0;
-	height: 100px;
+.main > header{
+	background-color: transparent;
+	background-color: rgba(255, 255, 255, .08) ;
+	border-radius: 8px 8px 0 0;
+	height: 70px;
 	position: sticky;
+	z-index: 10;
 	top: 0;
 
 }
-#playlist-view > .wrapper > header > .menu{
+.main > header > .menu{
 	height: 100%;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
-#playlist-view > .wrapper > header > .menu .col{
+.main > header > .menu .col{
 	display: flex;
 	width: 100%;
 	gap: 15px;
@@ -447,7 +450,7 @@ footer .col .col-icon-cont .icons i{
 	font-size: 1.2rem;
 	padding-left: 15px;
 }
-#playlist-view > .wrapper > header > .menu > :last-child{
+.main > header > .menu > :last-child{
 	justify-content: flex-end;
 	width: min-content;
 	padding-left: 0;
@@ -481,4 +484,33 @@ footer .col .col-icon-cont .icons i{
 	opacity: .85;
 	font-size: 1.25rem;
 	font-weight: 560;
+}
+
+
+#playlist-view > .wrapper >section{
+	background-color: rgba(255, 255, 255, .08) ;
+	z-index: -10;
+	min-height: 25%;
+	display: flex;
+	padding: 10px;
+	-webkit-box-shadow: 0px 10px 15px -4px rgba(0, 0, 0, 0.08);
+	-moz-box-shadow: 0px 10px 15px -4px rgba(0, 0, 0, 0.08);
+	box-shadow: 0px 10px 15px -4px rgba(0, 0, 0, 0.08);
+}
+
+#playlist-view > .wrapper > section > .playlist-info{
+	display: flex;
+	padding-left: 10px;
+}
+
+#playlist-view > .wrapper > section > .playlist-info > .playlist-icon{
+	border-radius: 12px;
+	height: 235px;
+	width: 235px;
+}
+
+.playlist-icon > img{
+	width: 100%;
+	height: 100%;
+	border-radius: 16px;
 }

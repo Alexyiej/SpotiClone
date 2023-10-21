@@ -99,7 +99,30 @@
             </aside>
     
             <section class="main">
-                <nav></nav>
+                <header>
+                    <div class="menu">
+                        <div class="col">
+                            <div class="icon-cnt">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </div>
+                            <div class="icon-cnt">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
+                            <span style="display: none">Liked Songs</span>
+                        </div>
+                        <div class="col">
+                            <div class="icon-cnt">
+                                <i class="fa-regular fa-bell"></i>
+                            </div>
+                            <div class="icon-cnt">
+                                <i class="fa-regular fa-bell"></i>
+                            </div>
+                            <div class="icon-cnt">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </header>
     
                 <div class="col-1">
     
@@ -115,33 +138,10 @@
 
                 <article id="playlist-view">
                     <container class="wrapper">
-                        <header>
-                            <div class="menu">
-                                <div class="col">
-                                    <div class="icon-cnt">
-                                        <i class="fa-solid fa-angle-left"></i>
-                                    </div>
-                                    <div class="icon-cnt">
-                                        <i class="fa-solid fa-angle-right"></i>
-                                    </div>
-                                    <span>Liked Songs</span>
-                                </div>
-                                <div class="col">
-                                    <div class="icon-cnt">
-                                        <i class="fa-regular fa-bell"></i>
-                                    </div>
-                                    <div class="icon-cnt">
-                                        <i class="fa-regular fa-bell"></i>
-                                    </div>
-                                    <div class="icon-cnt">
-                                        <i class="fa-regular fa-user"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>
+                       
                         <section>
                             <div class="playlist-info">
-                                <div class="icon-container">
+                                <div class="playlist-icon">
                                     <img src="/src/assets/images/playlists/playlist-icon-basic.png">
                                 </div>
                                 <div class="info">
@@ -246,6 +246,10 @@
         }
     }
 
+
+    function selectImage(){
+
+    }
 
     function handlePlaylistView(playlist){
         const view = document.getElementById("playlist-view");
