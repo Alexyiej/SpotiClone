@@ -1,11 +1,4 @@
-function hideMenu(modal, playlistModal, isActive) {
-    console.log(isActive);
-    if (isActive === true) {
-        console.log(modal)
-        modal.style.display = "none";
-    }
-}
-
+// playlists / container 
 function handlePlaylistContextMenu(playlistData, playlistId, playlistElement) {
     
     playlistModal = document.getElementById("playlist-modal");
@@ -20,7 +13,7 @@ function handlePlaylistContextMenu(playlistData, playlistId, playlistElement) {
 }
 
 
-function handleContainerContextMenu(playlistModal, playlistElement) {
+function handleContainerContextMenu(playlistModal, playlistElement, songs) {
     sectionWrapper = document.getElementsByClassName("section-wrapper")[0];
     playlistButton = document.getElementsByName("create-playlist-btn")[0];
     modal = document.getElementById("modal");
@@ -28,7 +21,7 @@ function handleContainerContextMenu(playlistModal, playlistElement) {
     createContextMenu(sectionWrapper, modal)
 
     playlistButton.addEventListener("click", function () {
-        handleCreateClick(playlists);
+        handleCreateClick(playlists, songs);
         modal.style.display = "none";
         localStorage.setItem("playlists", JSON.stringify(playlists));
         console.log(playlists)
@@ -45,6 +38,8 @@ function handleContainerContextMenu(playlistModal, playlistElement) {
 }
 
 
+
+// create / hide 
 function createContextMenu(wrapper, contextmenu){
     wrapper.addEventListener("contextmenu", function (event) {
         event.preventDefault();
@@ -54,6 +49,7 @@ function createContextMenu(wrapper, contextmenu){
         clickCounter = 0; 
     });
 }
+
 
 function hideContextMenu(contextMenu, wrapper){
     document.addEventListener("click", function (event) {

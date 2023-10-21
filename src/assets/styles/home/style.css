@@ -188,17 +188,17 @@ nav .menu span{
 	font-weight: 520;
 	letter-spacing: .6px;
 }
-.menu > :first-child{
+nav .menu > :first-child{
 	padding-left: 15px;
 }
-.menu > :last-child{
+nav.menu > :last-child{
 	padding-right: 15px;
 	display: flex;
 	gap: 10px;
 	align-items: center;
 }
 
-.menu i{
+nav .menu i{
 	opacity: .5;
 }
 
@@ -416,7 +416,69 @@ footer .col .col-icon-cont .icons i{
 }
 
 #playlist-view > .wrapper{
-	width: 96%;
+	width: 100%;
 	height: 100%;
 	display: flex;
+	flex-direction: column;
+	border-radius: 12px;
+	position: relative;
+}
+
+#playlist-view > .wrapper > header{
+	background-color: #7214c2;
+	border-radius: 12px 12px 0 0;
+	height: 100px;
+	position: sticky;
+	top: 0;
+
+}
+#playlist-view > .wrapper > header > .menu{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#playlist-view > .wrapper > header > .menu .col{
+	display: flex;
+	width: 100%;
+	gap: 15px;
+	justify-content: flex-start;
+	font-size: 1.2rem;
+	padding-left: 15px;
+}
+#playlist-view > .wrapper > header > .menu > :last-child{
+	justify-content: flex-end;
+	width: min-content;
+	padding-left: 0;
+	padding-right: 15px;
+}
+
+.menu .col .icon-cnt{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 360px;
+	background-color: rgba(0, 0, 0, .65);
+
+}
+
+.menu .col .icon-cnt:hover{
+	background-color: rgba(0, 0, 0, .75);
+	transition: .2s;
+	cursor: pointer;
+
+}
+.menu .col .icon-cnt i{
+	font-size: 1.25rem;
+	opacity: .8;
+
+}
+.menu span{
+	align-self: center;
+	opacity: .85;
+	font-size: 1.25rem;
+	font-weight: 560;
 }

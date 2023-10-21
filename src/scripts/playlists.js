@@ -1,8 +1,7 @@
 function generateUniqueId(){
     return Math.random().toString(36).substr(2, 9);
 }
-
-function handleCreateClick(playlists) {
+function handleCreateClick(playlists, songs) {
     playlist = {
         id: generateUniqueId(),
         name: "My Playlist #" + playListIndex,
@@ -16,6 +15,9 @@ function handleCreateClick(playlists) {
     playlists.push(playlist);
     createPlaylists(playlist, playlist.id)
     playListIndex++;
+    
+    playlist.songs = songs
+    console.log(playlist)
     localStorage.setItem("playlists-index", playListIndex)
 
 }
@@ -34,9 +36,8 @@ function deletePlaylist(playlist, playlistId, playlistElement) {
 function createPlaylists(playlist, playlistId) {
     const playlistsWrapper = document.querySelector(".playlists-wrapper");
     const playlistElement = document.createElement("article");
-    const modal = document.getElementById("modal");
-    const sectionWrapper = document.getElementsByClassName("section-wrapper")[0];
-    const playlistModal = document.getElementById("playlist-modal");
+    const view = document.getElementById("playlist-view");
+
     playlistElement.className = "playlist";
     playlistElement.innerHTML = `
         <div class="wrapper">
@@ -53,22 +54,21 @@ function createPlaylists(playlist, playlistId) {
         </div>
     `;
 
-    let isActive = false;
-
     playlistElement.addEventListener("mousedown", function(event) {
         if(event.button === 2) {
             event.preventDefault();
             handlePlaylistContextMenu(playlist, playlistId, playlistElement);
-            isActive = true;
-            hideMenu(modal, playlistModal, isActive);
         }
         else if(event.button === 0){
             console.log("left click")
+            changePage(view, "view", playlist)
         }
     });
     
     playlistElement.dataset.id = playlist.id;
     playlistsWrapper.appendChild(playlistElement);
+
+
 
 }
 

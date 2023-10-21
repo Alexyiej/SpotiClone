@@ -20,7 +20,7 @@
             <aside>
                 <section>
                     
-                    <button class="btn-primary">
+                    <button class="btn-primary" id="home-btn">
                         <div class="icon-container">
                             <i class="fa-solid fa-house"></i>
                         </div>
@@ -116,7 +116,28 @@
                 <article id="playlist-view">
                     <container class="wrapper">
                         <header>
-                            <div></div>
+                            <div class="menu">
+                                <div class="col">
+                                    <div class="icon-cnt">
+                                        <i class="fa-solid fa-angle-left"></i>
+                                    </div>
+                                    <div class="icon-cnt">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                    <span>Liked Songs</span>
+                                </div>
+                                <div class="col">
+                                    <div class="icon-cnt">
+                                        <i class="fa-regular fa-bell"></i>
+                                    </div>
+                                    <div class="icon-cnt">
+                                        <i class="fa-regular fa-bell"></i>
+                                    </div>
+                                    <div class="icon-cnt">
+                                        <i class="fa-regular fa-user"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </header>
                         <section>
                             <div class="playlist-info">
@@ -125,14 +146,14 @@
                                 </div>
                                 <div class="info">
                                     <p></p>
-                                    <span>My Playlist #12</span>
+                                    <h1>${playlist.name}</h1>
                                     <span>alex 11 songs 58 min 17 sec</span>
                                 </div>
                             </div>
                         </section>
                         <div class="show-more"></div>
                         <container class="playlists-container">
-                            <div class="playlists-title"></div>
+                            <div class="playlists-title">${playlist.id}</div>
                             <div class="wrapper"></div>
                         </container>
                     </container>
@@ -195,6 +216,8 @@
     let playListIndex = 0; 
     let clickCounter = 0; 
 
+    let currentPage = "view"
+
     async function fetchData(list, url){
         const response = await fetch(url)
         const data = await response.json()
@@ -208,6 +231,52 @@
         await fetchData(songs, songsUrl)
         await fetchData(genres, genresUrl)
 
+    }
+
+
+    function changePage(view, currentPage, playlist){
+        view.innerHTML = "";
+        if (currentPage === "view") {
+            view.style.display = "flex";
+            console.log(currentPage, playlist.id)
+            handlePlaylistView(playlist)
+
+        } else if (currentPage === "home") {
+            view.style.display = "none";
+        }
+    }
+
+
+    function handlePlaylistView(playlist){
+        const view = document.getElementById("playlist-view");
+        const viewElement = document.createElement("container");
+        viewElement.className = "wrapper";
+        viewElement.innerHTML = `
+            <header>
+                <div></div>
+            </header>
+            <section>
+                <div class="playlist-info">
+                    <div class="icon-container">
+                        <img src="/src/assets/images/playlists/playlist-icon-basic.png">
+                    </div>
+                    <div class="info">
+                        <p></p>
+                        <span>${playlist.name}</span>
+                        <span>alex 11 songs 58 min 17 sec</span>
+                    </div>
+                </div>
+            </section>
+            <div class="show-more"></div>
+            <container class="playlists-container">
+                <div class="playlists-title">${playlist.id}</div>
+                <div class="wrapper"></div>
+            </container>
+        `
+        view.appendChild(viewElement)
+
+
+        console.log(playlist)
     }
 
     function loadPlaylists() {
@@ -234,10 +303,16 @@
     function onLoad() {
         const playlistsWrapper = document.querySelector(".playlists-wrapper");
         const playlistModal = document.getElementById("playlist-modal");
+        const view = document.getElementById("playlist-view");
+
+        const homeBtn = document.getElementById("home-btn");
+        homeBtn.addEventListener("click", () => {
+            changePage(view, "home")
+        })
 
         fetchAll()
-        //loadPlaylists()
-        handleContainerContextMenu(playlistModal, playlistsWrapper)
+        loadPlaylists()
+        handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
     } 
 
    
