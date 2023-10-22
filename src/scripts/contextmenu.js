@@ -1,6 +1,5 @@
 // playlists / container 
-function handlePlaylistContextMenu(playlistData, playlistId, playlistElement) {
-    
+function handlePlaylistContextMenu(playlist, playlistElement) {
     playlistModal = document.getElementById("playlist-modal");
     deleteButton = document.getElementsByName("delete-playlist-btn")[0];
     
@@ -8,10 +7,9 @@ function handlePlaylistContextMenu(playlistData, playlistId, playlistElement) {
     hideContextMenu(playlistModal, playlistElement)
 
     deleteButton.addEventListener("click", function(){
-        deletePlaylist(playlist, playlistId, playlistElement);
+        deletePlaylist(playlist); 
     });
 }
-
 
 function handleContainerContextMenu(playlistModal, playlistElement, songs) {
     sectionWrapper = document.getElementsByClassName("section-wrapper")[0];
@@ -23,6 +21,7 @@ function handleContainerContextMenu(playlistModal, playlistElement, songs) {
     playlistButton.addEventListener("click", function () {
         handleCreateClick(playlists, songs);
         modal.style.display = "none";
+        
         localStorage.setItem("playlists", JSON.stringify(playlists));
         console.log(playlists)
 
@@ -49,7 +48,6 @@ function createContextMenu(wrapper, contextmenu){
         clickCounter = 0; 
     });
 }
-
 
 function hideContextMenu(contextMenu, wrapper){
     document.addEventListener("click", function (event) {

@@ -1,11 +1,12 @@
 function generateUniqueId(){
     return Math.random().toString(36).substr(2, 9);
 }
+
 function handleCreateClick(playlists, songs) {
     playlist = {
         id: generateUniqueId(),
         name: "My Playlist #" + playListIndex,
-        description: "Playlist " + playListIndex,
+        description: "Playlist",
         user: "Alex",
         image_url: "/src/assets/images/playlists/playlist-icon-basic.png",
         songs: []
@@ -13,30 +14,41 @@ function handleCreateClick(playlists, songs) {
 
 
     playlists.push(playlist);
-    createPlaylists(playlist, playlist.id)
+    createPlaylists(playlist)
     playListIndex++;
     
     playlist.songs = songs
-    console.log(playlist)
     localStorage.setItem("playlists-index", playListIndex)
 
 }
 
-function deletePlaylist(playlist, playlistId, playlistElement) {
-    playlistElement.style.display = "none"
-    console.log(playlist)
-    playlists = playlists.filter(function (item) {
-        return item.id !== playlistElement.dataset.id;
-    });
+function deletePlaylist(playlistToRemove) {
+    playlists = playlists.filter(playlist => playlist.id !== playlistToRemove.id);
+    
+    const playlistsWrapper = document.querySelector(".playlists-wrapper");
+    playlistsWrapper.innerHTML = "";
+
     localStorage.setItem("playlists", JSON.stringify(playlists));
+    const index = localStorage.getItem("playlists-index");
+
+    if (playlists.length === 0) {
+        localStorage.setItem("playlists-index", 0);
+    }
+    else if (index > 0) {
+        localStorage.setItem("playlists-index", index - 1);
+    }
+    
+    loadPlaylists();
+    
 }
 
-
-
-function createPlaylists(playlist, playlistId) {
+function createPlaylists(playlist) {
+    
     const playlistsWrapper = document.querySelector(".playlists-wrapper");
     const playlistElement = document.createElement("article");
-    const view = document.getElementById("playlist-view");
+    const view = document.getElementById("main-content");
+
+    playlistElement.dataset.id = playlist.id;
 
     playlistElement.className = "playlist";
     playlistElement.innerHTML = `
@@ -57,18 +69,14 @@ function createPlaylists(playlist, playlistId) {
     playlistElement.addEventListener("mousedown", function(event) {
         if(event.button === 2) {
             event.preventDefault();
-            handlePlaylistContextMenu(playlist, playlistId, playlistElement);
+            handlePlaylistContextMenu(playlist, playlistElement);
         }
         else if(event.button === 0){
-            console.log("left click")
-            changePage(view, "view", playlist)
+            showPlaylistView(view, playlist)
         }
     });
     
-    playlistElement.dataset.id = playlist.id;
     playlistsWrapper.appendChild(playlistElement);
-
-
 
 }
 

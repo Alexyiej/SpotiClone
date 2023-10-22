@@ -35,7 +35,7 @@
                     </button>
     
                 </section>
-    
+
                 <section>
                     <container class="section-wrapper">
                         <nav >
@@ -99,7 +99,7 @@
             </aside>
     
             <section class="main">
-                <header>
+                <header class="header-playlist">
                     <div class="menu">
                         <div class="col">
                             <div class="icon-cnt">
@@ -123,42 +123,9 @@
                         </div>
                     </div>
                 </header>
-    
-                <div class="col-1">
-    
-                    <div class="title">
-                        <span></span>
-                    </div>
-    
-                    <container class="playlists-container">
-                        
-                    </container>
-    
-                </div>
+                <container id="main-content">
 
-                <article id="playlist-view">
-                    <container class="wrapper">
-                       
-                        <section>
-                            <div class="playlist-info">
-                                <div class="playlist-icon">
-                                    <img src="/src/assets/images/playlists/playlist-icon-basic.png">
-                                </div>
-                                <div class="info">
-                                    <p></p>
-                                    <h1>${playlist.name}</h1>
-                                    <span>alex 11 songs 58 min 17 sec</span>
-                                </div>
-                            </div>
-                        </section>
-                        <div class="show-more"></div>
-                        <container class="playlists-container">
-                            <div class="playlists-title">${playlist.id}</div>
-                            <div class="wrapper"></div>
-                        </container>
-                    </container>
-                </article>
-
+                </container>
             </section>
 
         </div>
@@ -203,9 +170,10 @@
 </html>
 
 <script src="https://kit.fontawesome.com/c52b7a3e6e.js" crossorigin="anonymous"></script>
+<script src="/src/scripts//views.js"></script>
+<script src="/src/scripts//localStorage.js"></script>
 <script src="/src/scripts//playlists.js"></script>
 <script src="/src/scripts//contextmenu.js"></script>
-
 <script>
     const songsUrl = "/src/assets/jsons/songs.json"
     const genresUrl = "https://gist.githubusercontent.com/techniadrian/6ccdb1c837d431bb84c2dfedbec2e435/raw/60783ebfa89c6fd658aaf556b9f7162553ac0729/genres.json"
@@ -216,16 +184,15 @@
     let playListIndex = 0; 
     let clickCounter = 0; 
 
-    let currentPage = "view"
-
     async function fetchData(list, url){
         try{
             const response = await fetch(url)
             const data = await response.json()
+
             for (item in data){
                 list.push(data[item])
             }
-            console.log(response, data)
+            
         } catch(error){
             console.log(error)
         }
@@ -238,89 +205,37 @@
 
     }
 
-
     function changePage(view, currentPage, playlist){
         view.innerHTML = "";
+        
         if (currentPage === "view") {
             view.style.display = "flex";
             console.log(currentPage, playlist.id)
-            handlePlaylistView(playlist)
+            handlePlaylistView(playlist)                                                                                        
+                                                                                                
+        } else if (currentPage === "home") {                                                                                        
+            view.style.display = "none";                                                                                        
+        }                                                                                       
+    }                                                                                       
+                                                                                        
+                                                                                        
+    function selectImage(){                                                                                     
+                                                                                            
+    }                                                                                       
+                                                                                        
+    function onLoad() {                                                                                     
+        const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
+        const playlistModal = document.getElementById("playlist-modal");                                                                                        
+        const view = document.getElementById("main-content");                                                                                       
+        const homeBtn = document.getElementById("home-btn");                                                                                        
+                                                                                            
+        homeBtn.addEventListener('click', function() {                                                                                      
+            showHomeView(view);                                                                                     
+        });                
 
-        } else if (currentPage === "home") {
-            view.style.display = "none";
-        }
-    }
-
-
-    function selectImage(){
-
-    }
-
-    function handlePlaylistView(playlist){
-        const view = document.getElementById("playlist-view");
-        const viewElement = document.createElement("container");
-        viewElement.className = "wrapper";
-        viewElement.innerHTML = `
-            <header>
-                <div></div>
-            </header>
-            <section>
-                <div class="playlist-info">
-                    <div class="icon-container">
-                        <img src="/src/assets/images/playlists/playlist-icon-basic.png">
-                    </div>
-                    <div class="info">
-                        <p></p>
-                        <span>${playlist.name}</span>
-                        <span>alex 11 songs 58 min 17 sec</span>
-                    </div>
-                </div>
-            </section>
-            <div class="show-more"></div>
-            <container class="playlists-container">
-                <div class="playlists-title">${playlist.id}</div>
-                <div class="wrapper"></div>
-            </container>
-        `
-        view.appendChild(viewElement)
-
-
-        console.log(playlist)
-    }
-
-    function loadPlaylists() {
-        loclalStoragePlaylists = JSON.parse(localStorage.getItem("playlists"));
-        localStoragePlaylistsIndex = localStorage.getItem("playlists-index");
-
-        if (localStoragePlaylistsIndex) {
-            playListIndex = localStoragePlaylistsIndex;
-        } else {
-            playListIndex = 0;
-        }
-
-        if (loclalStoragePlaylists) {
-            playlists = loclalStoragePlaylists;
-            for (playlist of playlists) {
-                createPlaylists(playlist, localStoragePlaylistsIndex);
-            }
-        } else {
-            console.log("No playlists found in local storage");
-        }
-    }
-    
-
-    function onLoad() {
-        const playlistsWrapper = document.querySelector(".playlists-wrapper");
-        const playlistModal = document.getElementById("playlist-modal");
-        const view = document.getElementById("playlist-view");
-
-        const homeBtn = document.getElementById("home-btn");
-        homeBtn.addEventListener("click", () => {
-            changePage(view, "home")
-        })
-
-        fetchAll()
-        //loadPlaylists()
+        fetchAll()                                                                                      
+        loadPlaylists()
+        const currentView = getLastView()
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
     } 
 

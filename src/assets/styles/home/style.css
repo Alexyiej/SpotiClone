@@ -126,12 +126,12 @@ nav .filters::after {
 
 nav .filters::before {
     left: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0)); /* Gradient cienia od pełnego koloru do przezroczystości */
+    background: linear-gradient(to right, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0));
 }
 
 nav .filters::after {
     right: 0;
-    background: linear-gradient(to left, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0)); /* Gradient cienia od pełnego koloru do przezroczystości */
+    background: linear-gradient(to left, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0));
 }
 
 
@@ -294,6 +294,7 @@ nav .menu i{
 
 main > div > .main{
 	width: 80%;
+	background: linear-gradient(180deg, rgba(125,38,199,0.7672045624890581) 25%, rgba(75,13,73,0) 60%);
 	display: flex;
 	flex-direction: column;
 	background-color: var(--bg-primary);
@@ -405,7 +406,6 @@ footer .col .col-icon-cont .icons i{
 
 #playlist-view {
     position: absolute;
-	background: linear-gradient(180deg, rgba(125,38,199,0.7672045624890581) 25%, rgba(75,13,73,0) 60%);
     width: 100%;
     height: calc(100% - 70px); 
     z-index: 1;
@@ -416,7 +416,6 @@ footer .col .col-icon-cont .icons i{
 }
 
 #playlist-view > .wrapper{
-	top: 70px;
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -426,8 +425,6 @@ footer .col .col-icon-cont .icons i{
 }
 
 .main > header{
-	background-color: transparent;
-	background-color: rgba(255, 255, 255, .08) ;
 	border-radius: 8px 8px 0 0;
 	height: 70px;
 	position: sticky;
@@ -435,6 +432,10 @@ footer .col .col-icon-cont .icons i{
 	top: 0;
 
 }
+.header-playlist{
+	background-color: rgba(255, 255, 255, .08) ;
+}
+
 .main > header > .menu{
 	height: 100%;
 	width: 100%;
