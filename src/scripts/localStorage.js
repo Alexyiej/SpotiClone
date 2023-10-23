@@ -28,7 +28,7 @@ function getLastView(){
 function loadPlaylists() {
     const loclalStoragePlaylists = JSON.parse(localStorage.getItem("playlists"));
     const localStoragePlaylistsIndex = localStorage.getItem("playlists-index");
-    console.log(loclalStoragePlaylists)
+    
     if (localStoragePlaylistsIndex) {
         playListIndex = localStoragePlaylistsIndex;
 

@@ -3,18 +3,34 @@
         <section>
             <div class="playlist-info">
                 <div class="playlist-icon">
-                    <img src="/src/assets/images/playlists/playlist-icon-basic.png">
+                    <img src="/src/assets/images/playlists/cover.png">
                 </div>
                 <div class="info">
-                    <p>Playlist</p>
-                    <h1>${playlist.name}</h1>
-                    <span>alex 11 songs 58 min 17 sec</span>
+                    <span>
+                        <p>Private Playlist</p>
+                        <h1>PFK</h1>
+                    </span>
+                    <span>alex ${playlistLenght} songs, <p>${playlistDuration}</p></span>
                 </div>
             </div>
         </section>
-        <div class="show-more"></div>
+        <div class="show-more">
+            <div>
+                <div>
+                    <i class="fa-solid fa-play"></i>
+                </div>
+                <span>...</span>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <button class="filters-btn">
+                    Custom Order
+                    <div class="filters-dropdown"></div>
+                </button>
+            </div>
+        </div>
         <container class="playlists-container">
-            <div class="playlists-title">${playlist.id}</div>
             <div class="wrapper"></div>
         </container>
     </container>

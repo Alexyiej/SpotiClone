@@ -3,7 +3,6 @@ function generateUniqueId(){
 }
 
 function handleCreateClick(playlists, songs) {
-    console.log()
     playlist = {
         id: generateUniqueId(),
         name: "My Playlist #" + playListIndex,

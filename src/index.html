@@ -12,9 +12,6 @@
     <title>SpotiClone</title>
 </head>
 <body>
-    
-    <header></header>
-
     <main>
         <div class="main-section">
             <aside>
@@ -99,7 +96,7 @@
             </aside>
     
             <section class="main">
-                <header class="header-playlist">
+                <header id="header-playlist">
                     <div class="menu">
                         <div class="col">
                             <div class="icon-cnt">
@@ -115,7 +112,7 @@
                                 <i class="fa-regular fa-bell"></i>
                             </div>
                             <div class="icon-cnt">
-                                <i class="fa-regular fa-bell"></i>
+                                <i class="fa-solid fa-users"></i>
                             </div>
                             <div class="icon-cnt">
                                 <i class="fa-regular fa-user"></i>
@@ -174,6 +171,7 @@
 <script src="/src/scripts//localStorage.js"></script>
 <script src="/src/scripts//playlists.js"></script>
 <script src="/src/scripts//contextmenu.js"></script>
+<script src="/src/scripts//bgColors.js"></script>
 <script>
     const songsUrl = "/src/assets/jsons/songs.json"
     const genresUrl = "https://gist.githubusercontent.com/techniadrian/6ccdb1c837d431bb84c2dfedbec2e435/raw/60783ebfa89c6fd658aaf556b9f7162553ac0729/genres.json"
@@ -210,26 +208,15 @@
         
         if (currentPage === "view") {
             view.style.display = "flex";
-            console.log(currentPage, playlist.id)
             handlePlaylistView(playlist)                                                                                        
                                                                                                 
         } else if (currentPage === "home") {                                                                                        
-            view.style.display = "none";                                                                                        
-        }                                                                                       
-    }                                                                                       
-                                                                                        
-                                                                                        
-    function selectImage(){                                                                                     
-                                                                                            
-    }                                                                                       
-    
-    function generateBgColor() {
-        var randomColor = 'rgba(' + Math.floor(Math.random() * 256) + ',' +
-                        Math.floor(Math.random() * 256) + ',' +
-                        Math.floor(Math.random() * 256) + ',' +
-                        '0.767)';
-        
-        document.documentElement.style.setProperty('--gradient-color', randomColor);
+            view.style.display = "none";                                                                        
+        }                                              
+    }
+
+    function selectImage(){
+
     }
 
     function onLoad() {                                                                                     
@@ -239,13 +226,13 @@
         const homeBtn = document.getElementById("home-btn");                                                                                        
                                                                                             
         homeBtn.addEventListener('click', function() {                                                                                      
-            showHomeView(view);                                                                                     
+            showHomeView(view, currentView);                                                                                     
         });                
         
-        generateBgColor();
         fetchAll()                                                                                      
         loadPlaylists()
-        const currentView = getLastView()
+        let currentView = getLastView()
+        generateBgColor();
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
     } 
 
