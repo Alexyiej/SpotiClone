@@ -3,12 +3,13 @@ function generateUniqueId(){
 }
 
 function handleCreateClick(playlists, songs) {
+    console.log()
     playlist = {
         id: generateUniqueId(),
         name: "My Playlist #" + playListIndex,
         description: "Playlist",
         user: "Alex",
-        image_url: "/src/assets/images/playlists/playlist-icon-basic.png",
+        image_url: "",
         songs: []
     }
 
@@ -16,8 +17,8 @@ function handleCreateClick(playlists, songs) {
     playlists.push(playlist);
     createPlaylists(playlist)
     playListIndex++;
-    
     playlist.songs = songs
+    console.log(playlist.songs[1].image_url)
     localStorage.setItem("playlists-index", playListIndex)
 
 }
@@ -54,7 +55,7 @@ function createPlaylists(playlist) {
     playlistElement.innerHTML = `
         <div class="wrapper">
             <div class="playlist-icon">
-                <img src="${playlist.image_url}" alt="Likedsongs">
+                <img src="/src/assets/images/playlists/playlist-icon-basic.png" alt="/src/assets/images/playlists/playlist-icon-basic.png">
             </div>
             <div class="playlist-title">
                 <span>${playlist.name}</span>

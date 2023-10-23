@@ -14,6 +14,10 @@ function showHomeView(mainContent) {
 }
 
 function showPlaylistView(mainContent, playlist) {
+    const playlistLenght = playlist.songs.length;
+    const playlistDuration = ((playlist.songs.reduce((acc, song) => acc + song.duration, 0)) / 60 ).toFixed(2);
+
+    console.log(playlistDuration)
     mainContent.innerHTML = `
         <article id="playlist-view">
             <container class="wrapper">
@@ -26,7 +30,7 @@ function showPlaylistView(mainContent, playlist) {
                         <div class="info">
                             <p>Playlist</p>
                             <h1>${playlist.name}</h1>
-                            <span>alex 11 songs 58 min 17 sec</span>
+                            <span>alex ${playlistLenght} songs ${playlistDuration} min 17 sec</span>
                         </div>
                     </div>
                 </section>
