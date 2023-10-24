@@ -26,12 +26,12 @@ function showPlaylistView(mainContent, playlist) {
             <section>
                 <div class="playlist-info">
                     <div class="playlist-icon">
-                        <img src="/src/assets/images/covers/pfk.png">
+                        <img src="${playlist.image_url}">
                     </div>
                     <div class="info">
                         <span>
                             <p>Private Playlist</p>
-                            <h1>PFK</h1>
+                            <h1>${playlist.name}</h1>
                         </span>
                         <span>alex ${playlistLenght} songs, <p>${playlistDuration}</p></span>
                     </div>

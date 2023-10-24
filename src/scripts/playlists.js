@@ -8,7 +8,7 @@ function handleCreateClick(playlists, songs) {
         name: "My Playlist #" + playListIndex,
         description: "Playlist",
         user: "Alex",
-        image_url: "",
+        image_url: "/src/assets/images/covers/basic-cover.png",
         songs: []
     }
 
@@ -54,7 +54,7 @@ function createPlaylists(playlist) {
     playlistElement.innerHTML = `
         <div class="wrapper">
             <div class="playlist-icon">
-                <img src="/src/assets/images/playlists/playlist-icon-basic.png" alt="/src/assets/images/playlists/playlist-icon-basic.png">
+                <img src="${playlist.image_url}" alt="/src/assets/images/covers/basic-cover.png">
             </div>
             <div class="playlist-title">
                 <span>${playlist.name}</span>
