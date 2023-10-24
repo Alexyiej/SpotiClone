@@ -12,7 +12,7 @@
     <title>SpotiClone</title>
 </head>
 <body>
-    <main>
+    <main >
         <div class="main-section">
             <aside>
                 <section>
@@ -163,10 +163,31 @@
         <button class="btn-primary" name="delete-playlist-btn">Delete</button>
     </div>
 
-    <div id="playlist-edit-box" style="display: flex;">
-        
+    <div id="playlist-edit-box" style="display: none;">
+        <form>
+            <div>
+                <span>Edit details</span>
+                <i class="fa-solid fa-x" id="close-icon"></i>
+            </div>
+            <div>
+                <div class="edit-box-icon">
+                    <div>
+                        <img src="/src/assets/images/covers/basic-cover.png" alt="">    
+                    </div>
+                </div>
+                <div class="labels">
+                    <label id="labelText" class="label-text">Name</label>
+                    <input type="text" id="playlistInput" placeholder="Add a name...">
+                </div>
+            </div>
+            <div>
+                <button type="button" id="save-btn">Save</button>
+            </div>
+        </form>
 
     </div>
+
+    <div id="page-tint" style="display: none"></div>
 </body>
 
 </html>
@@ -230,17 +251,19 @@
         const playlistModal = document.getElementById("playlist-modal");                                                                                        
         const view = document.getElementById("main-content");                                                                                       
         const homeBtn = document.getElementById("home-btn");                                                                                        
-                                                                                            
+                                                                   
         homeBtn.addEventListener('click', function() {                                                                                      
             showHomeView(view, currentView);                                                                                     
-        });                
-        
+        });               
+
         fetchAll()                                                                                      
-        loadPlaylists()
+        //loadPlaylists()
         let currentView = getLastView()
         generateBgColor();
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
-    } 
 
+ 
+       
+    } 
    
 </script>

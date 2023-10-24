@@ -25,13 +25,13 @@ function showPlaylistView(mainContent, playlist) {
         <container class="wrapper">
             <section>
                 <div class="playlist-info">
-                    <div class="playlist-icon">
-                        <img src="${playlist.image_url}">
+                    <div class="playlist-icon" id="edit-btnNd">
+                        <img src="${playlist.image_url}" >
                     </div>
                     <div class="info">
                         <span>
                             <p>Private Playlist</p>
-                            <h1>${playlist.name}</h1>
+                            <h1 id="edit-btn">${playlist.name}</h1>
                         </span>
                         <span>alex ${playlistLenght} songs, <p>${playlistDuration}</p></span>
                     </div>
@@ -62,8 +62,13 @@ function showPlaylistView(mainContent, playlist) {
     `;
 
     localStorage.setItem("current-view", JSON.stringify({ name: "playlist", view: playlist }));
-
     let currentView = "playlist"
     headerColor(currentView)
+
+    const btn = document.getElementById("edit-btn");
+    const modal = document.getElementById("playlist-edit-box");
+    const wrapper = document.getElementById("page-tint");
+    handleEvent(btn, modal, wrapper)
+
 }
 

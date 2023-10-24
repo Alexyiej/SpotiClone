@@ -28,7 +28,10 @@ function getLastView(){
 function loadPlaylists() {
     const loclalStoragePlaylists = JSON.parse(localStorage.getItem("playlists"));
     const localStoragePlaylistsIndex = localStorage.getItem("playlists-index");
-    
+
+    const playlistsWrapper = document.querySelector(".playlists-wrapper");
+    playlistsWrapper.innerHTML = "";
+
     if (localStoragePlaylistsIndex) {
         playListIndex = localStoragePlaylistsIndex;
 
@@ -42,7 +45,7 @@ function loadPlaylists() {
         for (playlist of playlists) {
             createPlaylists(playlist, localStoragePlaylistsIndex);
         }
-
+    
     } else {
         console.log("No playlists found in local storage");
     }
