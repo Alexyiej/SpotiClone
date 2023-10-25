@@ -7,7 +7,7 @@ function addSong(song){
         <div>
             <span class="desc-big song-index" >${song.id}</span>
             <div class="song-icon-ctn">
-                <img src="/src/assets/images/covers/pfk.png" alt="">
+                <img src="${song.coverUrl}" alt="">
             </div>
             <div class="song-name">
                 <span>${song.title}</span>
