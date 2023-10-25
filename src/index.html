@@ -11,6 +11,7 @@
     
     <title>SpotiClone</title>
 </head>
+
 <body>
     <main >
         <div class="main-section">
@@ -121,8 +122,12 @@
                     </div>
                 </header>
                 <container id="main-content">
-
                 </container>
+
+                <!-- te dwa divy to jest gradient i bialy background -->
+                <div id="main-page-gradient" style="display: flex;"></div>
+                <div id="main-page-bg" style="display: flex"></div>
+
             </section>
 
         </div>
@@ -198,6 +203,7 @@
 <script src="/src/scripts//playlists.js"></script>
 <script src="/src/scripts//contextmenu.js"></script>
 <script src="/src/scripts//bgColors.js"></script>
+<script src="/src/scripts//songs.js"></script>
 
 <script>
     const songsUrl = "/src/assets/jsons/songs.json"
@@ -246,6 +252,19 @@
 
     }
 
+    function handleScroll() {
+        const header = document.getElementById("header-playlist");
+        const desc = document.getElementById("sticky-desc");
+        const wrapper = document.querySelector(".main");
+        
+        console.log(window.scrollY) // 0 nawet jak zescrolluje  i przez to scrollPercentage to NaN i mi nie dziala dodawanie klasy
+        //console.log(document.documentElement.scrollHeight)  1000
+        //console.log(window.innerHeight) 1000 
+
+        wrapper.addEventListener("scroll", handleScroll);
+
+    }
+
     function onLoad() {                                                                                     
         const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
         const playlistModal = document.getElementById("playlist-modal");                                                                                        
@@ -262,7 +281,7 @@
         generateBgColor();
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
 
- 
+        handleScroll()
        
     } 
    

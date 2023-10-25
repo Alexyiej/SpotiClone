@@ -1,7 +1,7 @@
 :root{
     --text-primary: rgb(255, 255, 255);
     --background: rgb(5, 0, 2);
-    --bg-primary: rgba(18, 18, 18, 0.863);
+    --bg-primary: rgba(18, 18, 18, 1);
     --bg-secondary: rgb(62, 5, 32);
     --accent: rgb(40, 36, 36);
     --bg-hover: rgba(212, 212, 212, 0.178);

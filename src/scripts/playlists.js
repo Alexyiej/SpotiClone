@@ -17,7 +17,6 @@ function handleCreateClick(playlists, songs) {
     createPlaylists(playlist)
     playListIndex++;
     playlist.songs = songs
-    console.log(playlist.songs[1].image_url)
     localStorage.setItem("playlists-index", playListIndex)
 
 }
