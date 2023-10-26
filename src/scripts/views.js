@@ -67,3 +67,4 @@ function showPlaylistView(mainContent, playlist) {
     headerColor(currentView)
 }
 
+
