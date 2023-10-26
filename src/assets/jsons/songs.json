@@ -6,7 +6,8 @@
         "coverUrl": "https://i.pinimg.com/originals/ea/1f/64/ea1f64668a0af149a3277db9e9e54824.jpg",
         "genre": "House",
         "bpm": 128,
-        "duration": 195
+        "duration": 195,
+        "album": "Cosmic Visions"
     },
     {
         "id": "2",
@@ -15,7 +16,8 @@
         "coverUrl": "https://pub-static.fotor.com/assets/projects/pages/c7d9749a29fc44a5a54da2bba21165af/gradient-cool-new-bullet-e52b9cac8825471981dc12dd343176da.jpg",
         "genre": "Rock",
         "bpm": 115,
-        "duration": 223
+        "duration": 223,
+        "album": "Cosmic Visions"
     },
     {
         "id": "3",
@@ -24,7 +26,8 @@
         "coverUrl": "https://cdn.musebycl.io/2022-07/Bocanada.jpg",
         "genre": "Pop",
         "bpm": 104,
-        "duration": 178
+        "duration": 178,
+        "album": "Cosmic Visions"
     },
     {
         "id": "4",
@@ -33,7 +36,8 @@
         "coverUrl": "https://www.rihannanow.com/wp-content/uploads/2015/10/RIRI-Front-6.203-x-5.4375-CMYK-898x1024.jpg",
         "genre": "R&B",
         "bpm": 110,
-        "duration": 212
+        "duration": 212,
+        "album": "Cosmic Visions"
     },
         {
         "id": "5",
@@ -42,7 +46,8 @@
         "coverUrl": "https://coverartland.com/wp-content/uploads/2023/08/obscure-350x350.jpg",
         "genre": "Techno",
         "bpm": 132,
-        "duration": 198
+        "duration": 198,
+        "album": "Cosmic Visions"
     },
     {
         "id": "6",
@@ -51,7 +56,8 @@
         "coverUrl": "https://decybeledizajnu.com/wp-content/uploads/2022/07/blood-moon-b-iext105662067.jpg",
         "genre": "Indie",
         "bpm": 96,
-        "duration": 236
+        "duration": 236,
+        "album": "Cosmic Visions"
     },
     {
         "id": "7",
@@ -60,7 +66,8 @@
         "coverUrl": "https://blog.spoongraphics.co.uk/wp-content/uploads/2017/album-art/22.jpg",
         "genre": "House",
         "bpm": 80,
-        "duration": 270
+        "duration": 270,
+        "album": "Cosmic Visions"
     },
     {
         "id": "8",
@@ -69,7 +76,8 @@
         "coverUrl": "https://cdns-images.dzcdn.net/images/cover/404d06fa565dbb06f88b016dabac8272/264x264.jpg",
         "genre": "Indie",
         "bpm": 122,
-        "duration": 185
+        "duration": 185,
+        "album": "Cosmic Visions"
     },
     {
         "id": "9",
@@ -78,7 +86,8 @@
         "coverUrl": "https://t2.genius.com/unsafe/504x504/https%3A%2F%2Fimages.genius.com%2F0f93a486bfe3409c1fe5f9bfe95f649f.1000x1000x1.jpg",
         "genre": "Trap",
         "bpm": 90,
-        "duration": 240
+        "duration": 240,
+        "album": "Cosmic Visions"
     },
     {
         "id": "10",
@@ -87,7 +96,8 @@
         "coverUrl": "https://i.pinimg.com/1200x/d7/10/ee/d710ee657d88cf447ddd511a2a087827.jpg",
         "genre": "House",
         "bpm": 134,
-        "duration": 220
+        "duration": 220,
+        "album": "Cosmic Visions"
     },
     {
         "id": "11",
@@ -96,7 +106,8 @@
         "coverUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_lImJQuDOmcyjgMucPsd9VEaUBZMgS9fqiw&usqp=CAU",
         "genre": "Rock",
         "bpm": 130,
-        "duration": 210
+        "duration": 210,
+        "album": "Cosmic Visions"
     },
     {
         "id": "12",
@@ -105,7 +116,8 @@
         "coverUrl": "https://images.genius.com/c93ba6fa10f7b55db8266a01e96893f7.1000x1000x1.jpg",
         "genre": "R&B",
         "bpm": 105,
-        "duration": 245
+        "duration": 245,
+        "album": "Cosmic Visions"
     },
     {
         "id": "13",
@@ -114,7 +126,8 @@
         "coverUrl": "https://images.genius.com/9ebe8a2c41db9f1fe95402f9acdf3773.1000x1000x1.png",
         "genre": "Techno",
         "bpm": 140,
-        "duration": 225
+        "duration": 225,
+        "album": "Cosmic Visions"
     },
     {
         "id": "14",
@@ -123,7 +136,8 @@
         "coverUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV7IEnT8TE7QKe_iEosObIvyJuNB9z6xuoPQ&usqp=CAU",
         "genre": "Pop",
         "bpm": 95,
-        "duration": 230
+        "duration": 230,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "15",
@@ -132,7 +146,8 @@
         "coverUrl": "https://i1.sndcdn.com/artworks-CM0Tzm2OZLAZ4sCf-HdaOGw-t500x500.jpg",
         "genre": "Drill",
         "bpm": 120,
-        "duration": 240
+        "duration": 240,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "16",
@@ -141,7 +156,8 @@
         "coverUrl": "https://example.com/cover6.jpg",
         "genre": "Electronic",
         "bpm": 132,
-        "duration": 215
+        "duration": 215,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "17",
@@ -150,7 +166,8 @@
         "coverUrl": "https://example.com/cover7.jpg",
         "genre": "Synthwave",
         "bpm": 120,
-        "duration": 210
+        "duration": 210,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "18",
@@ -159,7 +176,8 @@
         "coverUrl": "https://example.com/cover8.jpg",
         "genre": "Trance",
         "bpm": 136,
-        "duration": 198
+        "duration": 198,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "19",
@@ -168,7 +186,8 @@
         "coverUrl": "https://example.com/cover9.jpg",
         "genre": "Chillout",
         "bpm": 90,
-        "duration": 250
+        "duration": 250,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "20",
@@ -177,7 +196,8 @@
         "coverUrl": "https://example.com/cover10.jpg",
         "genre": "Indie",
         "bpm": 112,
-        "duration": 205
+        "duration": 205,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "21",
@@ -186,7 +206,8 @@
         "coverUrl": "https://example.com/cover11.jpg",
         "genre": "Alternative",
         "bpm": 100,
-        "duration": 215
+        "duration": 215,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "22",
@@ -195,7 +216,8 @@
         "coverUrl": "https://example.com/cover12.jpg",
         "genre": "Ambient",
         "bpm": 80,
-        "duration": 270
+        "duration": 270,
+        "album": "Echoes of the Universe"
     },
     {
         "id": "23",
@@ -204,7 +226,8 @@
         "coverUrl": "https://example.com/cover13.jpg",
         "genre": "Downtempo",
         "bpm": 95,
-        "duration": 225
+        "duration": 225,
+        "album": "Melodies of the Night"
     },
     {
         "id": "24",
@@ -213,7 +236,8 @@
         "coverUrl": "https://example.com/cover14.jpg",
         "genre": "Electronic",
         "bpm": 128,
-        "duration": 202
+        "duration": 202,
+        "album": "Melodies of the Night"
     },
     {
         "id": "25",
@@ -222,7 +246,8 @@
         "coverUrl": "https://example.com/cover15.jpg",
         "genre": "Folk",
         "bpm": 98,
-        "duration": 220
+        "duration": 220,
+        "album": "Melodies of the Night"
     },
     {
         "id": "26",
@@ -231,7 +256,8 @@
         "coverUrl": "https://example.com/cover16.jpg",
         "genre": "Chillwave",
         "bpm": 85,
-        "duration": 245
+        "duration": 245,
+        "album": "Melodies of the Night"
     },
     {
         "id": "27",
@@ -240,7 +266,8 @@
         "coverUrl": "https://example.com/cover17.jpg",
         "genre": "Synthpop",
         "bpm": 110,
-        "duration": 208
+        "duration": 208,
+        "album": "Melodies of the Night"
     },
     {
         "id": "28",
@@ -249,7 +276,8 @@
         "coverUrl": "https://example.com/cover18.jpg",
         "genre": "Space Ambient",
         "bpm": 100,
-        "duration": 240
+        "duration": 240,
+        "album": "Melodies of the Night"
     },
     {
         "id": "29",
@@ -258,7 +286,8 @@
         "coverUrl": "https://example.com/cover19.jpg",
         "genre": "Indie",
         "bpm": 118,
-        "duration": 215
+        "duration": 215,
+        "album": "Beyond the Stars"
     },
     {
         "id": "30",
@@ -267,7 +296,8 @@
         "coverUrl": "https://example.com/cover20.jpg",
         "genre": "Electronic",
         "bpm": 124,
-        "duration": 200
+        "duration": 200,
+        "album": "Beyond the Stars"
     },
     {
         "id": "31",
@@ -276,7 +306,8 @@
         "coverUrl": "https://example.com/cover21.jpg",
         "genre": "Ambient",
         "bpm": 85,
-        "duration": 255
+        "duration": 255,
+        "album": "Beyond the Stars"
     },
     {
         "id": "32",
@@ -285,7 +316,8 @@
         "coverUrl": "https://example.com/cover22.jpg",
         "genre": "Synthwave",
         "bpm": 110,
-        "duration": 210
+        "duration": 210,
+        "album": "Beyond the Stars"
     },
     {
         "id": "33",
@@ -294,7 +326,8 @@
         "coverUrl": "https://example.com/cover23.jpg",
         "genre": "Chillwave",
         "bpm": 95,
-        "duration": 230
+        "duration": 230,
+        "album": "Beyond the Stars"
     },
     {
         "id": "34",
@@ -303,7 +336,8 @@
         "coverUrl": "https://example.com/cover24.jpg",
         "genre": "Space Ambient",
         "bpm": 98,
-        "duration": 220
+        "duration": 220,
+        "album": "Beyond the Stars"
     },
     {
         "id": "35",
@@ -312,7 +346,8 @@
         "coverUrl": "https://example.com/cover25.jpg",
         "genre": "Synthpop",
         "bpm": 120,
-        "duration": 205
+        "duration": 205,
+        "album": "Beyond the Stars"
     },
     {
         "id": "36",
@@ -321,7 +356,8 @@
         "coverUrl": "https://example.com/cover26.jpg",
         "genre": "Downtempo",
         "bpm": 92,
-        "duration": 240
+        "duration": 240,
+        "album": "Beyond the Stars"
     },
     {
         "id": "37",
@@ -330,7 +366,8 @@
         "coverUrl": "https://example.com/cover27.jpg",
         "genre": "Synthwave",
         "bpm": 108,
-        "duration": 210
+        "duration": 210,
+        "album": "Enchanted Realms"
     },
     {
         "id": "38",
@@ -339,7 +376,8 @@
         "coverUrl": "https://example.com/cover28.jpg",
         "genre": "Electronic",
         "bpm": 126,
-        "duration": 198
+        "duration": 198,
+        "album": "Enchanted Realms"
     },
     {
         "id": "39",
@@ -348,7 +386,8 @@
         "coverUrl": "https://example.com/cover29.jpg",
         "genre": "Chillout",
         "bpm": 88,
-        "duration": 250
+        "duration": 250,
+        "album": "Enchanted Realms"
     },
     {
         "id": "40",
@@ -357,7 +396,8 @@
         "coverUrl": "https://example.com/cover30.jpg",
         "genre": "Ambient",
         "bpm": 82,
-        "duration": 265
+        "duration": 265,
+        "album": "Enchanted Realms"
     },
     {
         "id": "41",
@@ -366,7 +406,8 @@
         "coverUrl": "https://example.com/cover31.jpg",
         "genre": "Electronic",
         "bpm": 130,
-        "duration": 198
+        "duration": 198,
+        "album": "Enchanted Realms"
     },
     {
         "id": "42",
@@ -375,7 +416,8 @@
         "coverUrl": "https://example.com/cover32.jpg",
         "genre": "Synthpop",
         "bpm": 116,
-        "duration": 215
+        "duration": 215,
+        "album": "Enchanted Realms"
     },
     {
         "id": "43",
@@ -384,7 +426,8 @@
         "coverUrl": "https://example.com/cover33.jpg",
         "genre": "Chillwave",
         "bpm": 90,
-        "duration": 225
+        "duration": 225,
+        "album": "Enchanted Realms"
     },
     {
         "id": "44",
@@ -393,7 +436,8 @@
         "coverUrl": "https://example.com/cover34.jpg",
         "genre": "Space Ambient",
         "bpm": 96,
-        "duration": 230
+        "duration": 230,
+        "album": "Enchanted Realms"
     },
     {
         "id": "45",
@@ -402,7 +446,8 @@
         "coverUrl": "https://example.com/cover35.jpg",
         "genre": "Synthpop",
         "bpm": 118,
-        "duration": 205
+        "duration": 205,
+        "album": "Enchanted Realms"
     },
     {
         "id": "46",
@@ -411,7 +456,8 @@
         "coverUrl": "https://example.com/cover36.jpg",
         "genre": "Downtempo",
         "bpm": 94,
-        "duration": 240
+        "duration": 240,
+        "album": "Enchanted Realms"
     },
     {
         "id": "47",
@@ -420,7 +466,8 @@
         "coverUrl": "https://example.com/cover37.jpg",
         "genre": "Synthwave",
         "bpm": 106,
-        "duration": 210
+        "duration": 210,
+        "album": "Infinite Spaces"
     },
     {
         "id": "48",
@@ -429,7 +476,8 @@
         "coverUrl": "https://example.com/cover38.jpg",
         "genre": "Electronic",
         "bpm": 124,
-        "duration": 198
+        "duration": 198,
+        "album": "Infinite Spaces"
     },
     {
         "id": "49",
@@ -438,7 +486,8 @@
         "coverUrl": "https://example.com/cover39.jpg",
         "genre": "Chillout",
         "bpm": 86,
-        "duration": 250
+        "duration": 250,
+        "album": "Infinite Spaces"
     },
     {
         "id": "50",
@@ -447,6 +496,7 @@
         "coverUrl": "https://example.com/cover40.jpg",
         "genre": "Ambient",
         "bpm": 88,
-        "duration": 265
+        "duration": 265,
+        "album": "Infinite Spaces"
     }
 ]  

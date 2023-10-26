@@ -17,16 +17,12 @@ function handleCreateClick(playlists, songs) {
     createPlaylists(playlist)
     playListIndex++;
     playlist.songs = songs
-    console.log(playlist.songs[1].image_url)
     localStorage.setItem("playlists-index", playListIndex)
 
 }
 
 function deletePlaylist(playlistToRemove) {
     playlists = playlists.filter(playlist => playlist.id !== playlistToRemove.id);
-    
-    const playlistsWrapper = document.querySelector(".playlists-wrapper");
-    playlistsWrapper.innerHTML = "";
 
     localStorage.setItem("playlists", JSON.stringify(playlists));
     const index = localStorage.getItem("playlists-index");
@@ -43,14 +39,12 @@ function deletePlaylist(playlistToRemove) {
 }
 
 function createPlaylists(playlist) {
-    
     const playlistsWrapper = document.querySelector(".playlists-wrapper");
     const playlistElement = document.createElement("article");
-    const view = document.getElementById("main-content");
 
     playlistElement.dataset.id = playlist.id;
-
     playlistElement.className = "playlist";
+
     playlistElement.innerHTML = `
         <div class="wrapper">
             <div class="playlist-icon">
@@ -66,17 +60,22 @@ function createPlaylists(playlist) {
         </div>
     `;
 
-    playlistElement.addEventListener("mousedown", function(event) {
-        if(event.button === 2) {
-            event.preventDefault();
-            handlePlaylistContextMenu(playlist, playlistElement);
-        }
-        else if(event.button === 0){
-            showPlaylistView(view, playlist)
-        }
-    });
-    
     playlistsWrapper.appendChild(playlistElement);
 
 }
 
+function handleEdit(id) {
+    const playlistToChange = playlists.find(playlist => playlist.id === id);
+    console.log(playlistToChange)
+}
+
+const playlistsWrapper = document.querySelector(".playlists-wrapper");
+const view = document.getElementById("main-content");
+
+playlistsWrapper.addEventListener("click", function(event) {
+    const playlistElement = event.target.closest(".playlist");
+    if (playlistElement) {
+        const playlist = playlists.find(playlist => playlist.id === playlistElement.dataset.id);
+        showPlaylistView(view, playlist)
+    }
+});
