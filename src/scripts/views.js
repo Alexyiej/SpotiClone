@@ -35,6 +35,7 @@ function showPlaylistView(mainContent, playlist) {
                     </span>
                     <span>alex ${playlistLenght} songs, <p>${playlistDuration}</p></span>
                 </div>
+                
             </div>
         </section>
         <div class="show-more">
