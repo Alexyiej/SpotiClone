@@ -208,6 +208,9 @@
     overflow-y: auto; 
 	display: flex;
 	margin-top: 10px;
+	flex-direction: column;
+	max-height: 60vh;
+	gap: 10px;
 }
 
 .playlists-container > .playlists-wrapper {

@@ -75,9 +75,10 @@ main > div > aside > :last-child > container > nav{
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	-webkit-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 1);
-	-moz-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 1);
-	box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 1);
+	-webkit-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.5);
+
 }
 
 nav .nav-title{
@@ -86,6 +87,7 @@ nav .nav-title{
 	width: 95%;
 	height: 50px;
 }
+
 
 .nav-title .title{
 	display: flex;
@@ -176,32 +178,30 @@ nav .filters .filter:hover{
 
 
 
-nav .menu{
+.section-wrapper .menu{
 	width: 95%;
 	height: 35px;
-	margin-top: 10px;
+	margin-top: 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
-
 }
-nav .menu span{
+.section-wrapper .menu span{
 	font-size: .85rem;
 	opacity: .60;
 	font-weight: 520;
 	letter-spacing: .6px;
 }
-nav .menu > :first-child{
+.section-wrapper .menu > :first-child{
 	padding-left: 15px;
 }
-nav.menu > :last-child{
-	padding-right: 15px;
+.section-wrapper .menu > :last-child{
 	display: flex;
 	gap: 10px;
 	align-items: center;
 }
 
-nav .menu i{
+.section-wrapper .menu i{
 	opacity: .5;
 }
 
