@@ -1,22 +1,37 @@
 // playlists / container 
-function handlePlaylistContextMenu(playlist, playlistElement) {
-    playlistModal = document.getElementById("playlist-modal");
-    deleteButton = document.getElementsByName("delete-playlist-btn")[0];
-    
-    createContextMenu(playlistElement, playlistModal);
-    hideContextMenu(playlistModal, playlistElement)
+function handlePlaylistContextMenu(playlistWrapper) {
+    const playlistModal = document.getElementById("playlist-modal");
+    const deleteButton = document.getElementsByName(`delete-playlist-btn`)[0];
 
-    deleteButton.addEventListener("click", function(){
-        deletePlaylist(playlist); 
+    playlistWrapper.addEventListener("contextmenu", function (event) {
+        event.preventDefault();
+        const playlistElement = event.target.closest(".playlist");
+        let playlist = playlists.find(playlist => playlist.id === playlistElement.dataset.id);
+
+        if (playlist.id !== "L2I37"){
+            createContextMenu(playlistElement, playlistModal, event);
+            hideContextMenu(playlistModal, playlistElement);
+            
+            deleteButton.dataset.id = playlist.id;
+        }
+
     });
+
+    deleteButton.addEventListener("click", function() {
+        deletePlaylist(this.dataset.id); 
+    });
+
 }
 
 function handleContainerContextMenu(playlistModal, playlistElement, songs) {
-    sectionWrapper = document.getElementsByClassName("section-wrapper")[0];
     playlistButton = document.getElementsByName("create-playlist-btn")[0];
     modal = document.getElementById("modal");
+    sectionWrapper = document.getElementsByClassName("section-wrapper")[0];
     
-    createContextMenu(sectionWrapper, modal)
+    sectionWrapper.addEventListener("contextmenu", function (event) {
+        event.preventDefault();
+        createContextMenu(sectionWrapper, modal, event)
+    });
 
     playlistButton.addEventListener("click", function () {
         handleCreateClick(playlists, songs);
@@ -100,14 +115,14 @@ function hideEditMenu(wrapper, editModal, closeIcon){
 }
 
 // create / hide
-function createContextMenu(wrapper, contextmenu){
-    wrapper.addEventListener("contextmenu", function (event) {
-        event.preventDefault();
+function createContextMenu(wrapper, contextmenu, event){
+    //wrapper.addEventListener("contextmenu", function (event) {
+        //event.preventDefault();
         contextmenu.style.display = "flex";
         contextmenu.style.top = event.clientY + "px";
         contextmenu.style.left = event.clientX + "px";
         clickCounter = 0; 
-    });
+    //});
 }
 
 function hideContextMenu(contextMenu, wrapper){

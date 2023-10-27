@@ -291,7 +291,12 @@
         let currentView = getLastView()
         generateBgColor();
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
-        
+        handlePlaylistContextMenu(playlistsWrapper)
+        if (playlists.length === 0) {
+            handleCreateClick(playlists, songs)
+            showHomeView(view, currentView)
+        } 
+
         const wrapper = document.querySelector(".main");
         wrapper.addEventListener("scroll", handleScroll); 
     } 

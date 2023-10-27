@@ -3,26 +3,39 @@ function generateUniqueId(){
 }
 
 function handleCreateClick(playlists, songs) {
-    playlist = {
-        id: generateUniqueId(),
-        name: "My Playlist #" + playListIndex,
-        description: "Playlist",
-        user: "Alex",
-        image_url: "/src/assets/images/covers/basic-cover.png",
-        songs: []
-    }
+    if (playlists.length === 0) {
+        playlist = {
+            id: "L2I37",
+            name: "Liked Songs",
+            description: "Playlist",
+            user: "Alex",
+            image_url: "/src/assets/images/covers/likedCover.png",
+            songs: []
+        }
 
+    } else if (playlists.length > 0) {
+        playlist = {
+            id: generateUniqueId(),
+            name: "My Playlist #" + playListIndex,
+            description: "Playlist",
+            user: "Alex",
+            image_url: "/src/assets/images/covers/basic-cover.png",
+            songs: []
+        }
+
+        playListIndex++;
+        localStorage.setItem("playlists-index", playListIndex)
+        playlist.songs = songs
+
+    }
 
     playlists.push(playlist);
     createPlaylists(playlist)
-    playListIndex++;
-    playlist.songs = songs
-    localStorage.setItem("playlists-index", playListIndex)
 
 }
 
-function deletePlaylist(playlistToRemove) {
-    playlists = playlists.filter(playlist => playlist.id !== playlistToRemove.id);
+function deletePlaylist(playlistId) {
+    playlists = playlists.filter(playlist => playlist.id !== playlistId);
 
     localStorage.setItem("playlists", JSON.stringify(playlists));
     const index = localStorage.getItem("playlists-index");
@@ -64,9 +77,9 @@ function createPlaylists(playlist) {
 
 }
 
-function handleEdit(id) {
-    const playlistToChange = playlists.find(playlist => playlist.id === id);
-    console.log(playlistToChange)
+function handlePlaylistView(id, playlistElement) {
+    const currentPlaylist = playlists.find(playlist => playlist.id === id);
+    
 }
 
 const playlistsWrapper = document.querySelector(".playlists-wrapper");
@@ -76,6 +89,10 @@ playlistsWrapper.addEventListener("click", function(event) {
     const playlistElement = event.target.closest(".playlist");
     if (playlistElement) {
         const playlist = playlists.find(playlist => playlist.id === playlistElement.dataset.id);
+
         showPlaylistView(view, playlist)
+        handlePlaylistView(playlist.id, playlistElement)
+        
+
     }
 });
