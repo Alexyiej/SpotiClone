@@ -116,13 +116,10 @@ function hideEditMenu(wrapper, editModal, closeIcon){
 
 // create / hide
 function createContextMenu(wrapper, contextmenu, event){
-    //wrapper.addEventListener("contextmenu", function (event) {
-        //event.preventDefault();
-        contextmenu.style.display = "flex";
-        contextmenu.style.top = event.clientY + "px";
-        contextmenu.style.left = event.clientX + "px";
-        clickCounter = 0; 
-    //});
+    contextmenu.style.display = "flex";
+    contextmenu.style.top = event.clientY + "px";
+    contextmenu.style.left = event.clientX + "px";
+    clickCounter = 0; 
 }
 
 function hideContextMenu(contextMenu, wrapper){
@@ -131,4 +128,30 @@ function hideContextMenu(contextMenu, wrapper){
             contextMenu.style.display = "none";
         }
     });
+}
+
+
+function handleSongContextMenu(event, song, playlistId){
+    const contextMenu = document.getElementById("song-modal");
+    const wrapper = document.getElementById("main-content");
+    
+    createContextMenu(wrapper, contextMenu, event)
+
+    const addToPlaylistBtn = document.getElementById("add-to-playlist-btn");
+    const removeBtn = document.getElementById("remove-from-playlist-btn");
+    
+    addToPlaylistBtn.addEventListener("click", function(event) {
+        console.log(song.dataset.id)
+        addSongToPlaylist(playlistId, song)
+        hideContextMenu(contextMenu, wrapper)
+    });
+
+    removeBtn.addEventListener("click", function(event) {
+        console.log(song.dataset.id)
+        removeSongFromPlaylist(playlistId, song)
+        hideContextMenu(contextMenu, wrapper)
+    });
+
+    hideContextMenu(contextMenu, wrapper)
+
 }

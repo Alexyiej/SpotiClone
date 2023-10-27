@@ -9,6 +9,11 @@
     --context-menu: #282828;
     --header: #7214c2;
     --gradient-color: rgba(186, 17, 192, 0.767);
+    --liked: #1ed760;
+}
+
+.liked-song{
+	color: var(--liked);
 }
 
 .btn-primary{

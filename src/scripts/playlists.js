@@ -10,7 +10,7 @@ function handleCreateClick(playlists, songs) {
             description: "Playlist",
             user: "Alex",
             image_url: "/src/assets/images/covers/likedCover.png",
-            songs: []
+            songs: getLiked()
         }
 
     } else if (playlists.length > 0) {
@@ -77,22 +77,17 @@ function createPlaylists(playlist) {
 
 }
 
-function handlePlaylistView(id, playlistElement) {
-    const currentPlaylist = playlists.find(playlist => playlist.id === id);
+
+function handlePlaylistView(){
+    const playlistsWrapper = document.querySelector(".playlists-wrapper");
+    const view = document.getElementById("main-content");
+    playlistsWrapper.addEventListener("click", function(event) {
+        const playlistElement = event.target.closest(".playlist");
+        if (playlistElement) {
+            const playlist = playlists.find(playlist => playlist.id === playlistElement.dataset.id);
     
+            showPlaylistView(view, playlist)
+    
+        }
+    });
 }
-
-const playlistsWrapper = document.querySelector(".playlists-wrapper");
-const view = document.getElementById("main-content");
-
-playlistsWrapper.addEventListener("click", function(event) {
-    const playlistElement = event.target.closest(".playlist");
-    if (playlistElement) {
-        const playlist = playlists.find(playlist => playlist.id === playlistElement.dataset.id);
-
-        showPlaylistView(view, playlist)
-        handlePlaylistView(playlist.id, playlistElement)
-        
-
-    }
-});

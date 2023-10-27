@@ -199,6 +199,10 @@
 
     </div>
 
+    <div id="song-modal" style="display: none;">
+        <button class="btn-primary" id="add-to-playlist-btn">Add to playlist</button>
+        <button class="btn-primary" id="remove-from-playlist-btn">Remove from ${playlist.name}</button>
+    </div>
     <div id="page-tint" style="display: none"></div>
 </body>
 
@@ -219,6 +223,7 @@
     let songs = []
     let genres = []
     let playlists = []
+    let likedSongs = []
     let playListIndex = 0; 
     let clickCounter = 0; 
 
@@ -241,18 +246,6 @@
         await fetchData(songs, songsUrl)
         await fetchData(genres, genresUrl)
 
-    }
-
-    function changePage(view, currentPage, playlist){
-        view.innerHTML = "";
-        
-        if (currentPage === "view") {
-            view.style.display = "flex";
-            handlePlaylistView(playlist)                                                                                        
-                                                                                                
-        } else if (currentPage === "home") {                                                                                        
-            view.style.display = "none";                                                                        
-        }                                              
     }
 
     function selectImage(){
@@ -286,12 +279,13 @@
             showHomeView(view, currentView);                                                                                     
         });               
 
-        fetchAll()                                                                                      
+        fetchAll()                
         loadPlaylists()
         let currentView = getLastView()
         generateBgColor();
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
         handlePlaylistContextMenu(playlistsWrapper)
+
         if (playlists.length === 0) {
             handleCreateClick(playlists, songs)
             showHomeView(view, currentView)
@@ -299,6 +293,8 @@
 
         const wrapper = document.querySelector(".main");
         wrapper.addEventListener("scroll", handleScroll); 
+        getLiked()
+        handlePlaylistView()
+        
     } 
-   
 </script>

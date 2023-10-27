@@ -50,3 +50,9 @@ function loadPlaylists() {
         console.log("No playlists found in local storage");
     }
 }
+
+function getLiked(){
+    const localStorageLikedSongs = JSON.parse(localStorage.getItem("liked-songs"));
+    if (localStorageLikedSongs) {likedSongs = localStorageLikedSongs } else {likedSongs = []}
+    return likedSongs
+}

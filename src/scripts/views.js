@@ -18,8 +18,8 @@ function showHomeView(mainContent) {
 }
 
 function showPlaylistView(mainContent, playlist) {
-    const playlistLenght = playlist.songs.length;
-    const playlistDuration = ((playlist.songs.reduce((acc, song) => acc + song.duration, 0)) / 60 ).toFixed(2);
+    if (playlist.songs){ var playlistLenght = playlist.songs.length; }
+    if (playlist.songs){ var playlistDuration = ((playlist.songs.reduce((acc, song) => acc + song.duration, 0)) / 60 ).toFixed(2); }
 
     mainContent.innerHTML = `
     <article id="playlist-view">
@@ -89,11 +89,18 @@ function showPlaylistView(mainContent, playlist) {
     const modal = document.getElementById("playlist-edit-box");
     const tint = document.getElementById("page-tint");
     const wrapper = document.getElementById("main-page-bg");
-
+    
     whiteBg(wrapper, "show")
     handleEvent(btn, modal, tint)
-    addSongs(playlist.songs)
+    if (playlist.id === "L2I37"){
+        createHtmlSongs(getLiked())
+    } else{
+        createHtmlSongs(mapLists(likedSongs, songs))
+    }
+    
     handleScroll()
+    handleFavSongs(playlist.id)
+    
 }
 
 
