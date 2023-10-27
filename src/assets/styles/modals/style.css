@@ -1,0 +1,222 @@
+#modal{
+	width: 180px;
+	height: max-content;
+	background-color: var(--context-menu);
+	position: absolute;
+	z-index: 10;
+	flex-direction: column;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	-moz-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+}
+
+#modal button{
+	font-size: .85rem;
+	font-weight: 560;
+	opacity: .95;
+	transition: .1s;
+	padding: 15px;
+}
+
+#model button:hover{
+	background-color: var(--bg-hover);
+	transition: .2s;
+	cursor: pointer;
+}
+
+#playlist-modal{
+	width: 180px;
+	height: max-content;
+	background-color: var(--context-menu);
+	position: absolute;
+	z-index: 10;
+	flex-direction: column;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	-moz-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+}
+
+#playlist-modal button{
+	font-size: .85rem;
+	font-weight: 560;
+	opacity: .95;
+	transition: .1s;
+	padding: 15px;
+}
+
+#playlist-edit-box {
+    width: 531px;
+    height: 384px;
+    background-color: var(--context-menu);
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+	justify-content: center;
+}
+#playlist-edit-box > form{
+	width: 90%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#playlist-edit-box > form >:first-child{
+	width: 100%;
+	height: 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 10px;
+}
+
+#playlist-edit-box > form :first-child > span{
+	font-size: 1.4rem;
+	opacity: .9;
+	font-weight: 550;
+}
+
+#playlist-edit-box > form :first-child > i{
+	font-size: 1rem;
+	opacity: .65;
+	font-weight: 550;
+
+	&&:hover{
+		cursor: pointer;
+		opacity: 1;
+		transition: .2s;
+	}
+}
+
+#playlist-edit-box > form >:nth-child(2){
+	flex: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding-top: 10px;
+	height: 100px;
+}
+
+#playlist-edit-box > form >:last-child{
+	height: 100px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#playlist-edit-box > form >:last-child button{
+	width: 100px;
+	height: 45px;
+	border-radius: 24px;
+	background-color: white;
+	color: black;
+	border: none;
+	font-size: 1rem;
+	font-weight: 560;
+	opacity: .8;
+	letter-spacing: .6px;
+
+	&&:hover{
+		cursor: pointer;
+		opacity: 1;
+		transform: scale(1.05);
+		transition: .2s;
+	}
+}
+
+.edit-box-icon{
+	width: min-content;
+}
+.edit-box-icon div{
+	width: 200px;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+
+}
+.edit-box-icon img{
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+	z-index: 11;
+	-webkit-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.54);
+	-moz-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.54);
+	box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.54);
+}
+
+.labels {
+    width: 53%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+
+.labels input {
+    width: 100%;
+    height: 25px;
+    background-color: rgba(62, 62, 62, 255);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: .90rem;
+    opacity: .95;
+    padding: 10px;
+    font-weight: 500;
+	z-index: 50;
+	box-sizing: content-box;
+}
+
+.labels input:focus {
+	outline: none;
+}
+
+
+#labelText{
+	font-size: .85rem;
+	opacity: .75;
+	font-weight: 550;
+	letter-spacing: .6px;
+	align-self: flex-start;
+	position: absolute;
+	top: -7px;
+	z-index: 100;
+}
+
+#page-tint{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 9;
+	top: 0;
+	background-color: rgba(0, 0, 0, .5);
+}
+
+#main-page-gradient{
+	width: 100%;
+	min-height: 900px;
+	position: absolute;
+	top: 0;
+	background: linear-gradient(180deg, var(--gradient-color) 25%, rgba(75,13,73,0) 60%);
+}
+
+#main-page-bg{
+	width: 100%;
+	min-height: 350px;
+	position: absolute;
+	top: 0;
+	background-color: var(--gradient-color);
+	background-color: rgba(255, 255, 255, .08) ;
+	-webkit-box-shadow: 0px 10px 15px -4px rgba(0, 0, 0, 0.08);
+	-moz-box-shadow: 0px 10px 15px -4px rgba(0, 0, 0, 0.08);
+	box-shadow: 0px 10px 15px -4px rgba(0, 0, 0, 0.08);
+}
