@@ -211,7 +211,7 @@
 
 #main-page-bg{
 	width: 100%;
-	min-height: 350px;
+	min-height: 345px;
 	position: absolute;
 	top: 0;
 	background-color: var(--gradient-color);

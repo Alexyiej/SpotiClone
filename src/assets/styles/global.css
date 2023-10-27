@@ -67,3 +67,22 @@
 *:hover::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.4);
 }
+
+@media screen and (max-width: 1030px) {
+    #edit-btn{
+        font-size: 4rem;
+    }
+    
+}
+@media screen and (max-width: 955px) {
+    #edit-btn{
+        font-size: 3rem;
+    }
+    
+}
+@media screen and (max-width: 855px) {
+    #edit-btn{
+        font-size: 2rem;
+    }
+    
+}

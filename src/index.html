@@ -261,13 +261,17 @@
         const desc = document.getElementById("sticky-desc");
         const wrapper = document.querySelector(".main");
         
-        console.log(window.scrollY) // 0 nawet jak zescrolluje  i przez to scrollPercentage to NaN i mi nie dziala dodawanie klasy
-        //console.log(document.documentElement.scrollHeight)  1000
-        //console.log(window.innerHeight) 1000 
+        let scroll = wrapper.scrollTop;
+        // header
+        if (scroll > 275){  header.style.background = "var(--header)" }
+        else{ header.style.background = "none" }
 
-        wrapper.addEventListener("scroll", handleScroll);
-
+        // desc
+        if (scroll > 365){ desc.classList.add("sticky") }
+        else{ desc.classList.remove("sticky") }
     }
+    
+
 
     function onLoad() {                                                                                     
         const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
@@ -280,13 +284,13 @@
         });               
 
         fetchAll()                                                                                      
-        //loadPlaylists()
+        loadPlaylists()
         let currentView = getLastView()
         generateBgColor();
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
-
-        handleScroll()
-       
+        
+        const wrapper = document.querySelector(".main");
+        wrapper.addEventListener("scroll", handleScroll); 
     } 
    
 </script>

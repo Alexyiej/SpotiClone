@@ -12,18 +12,19 @@ function showHomeView(mainContent) {
 
     localStorage.setItem("current-view", JSON.stringify({ name: "home" }));
 
-    let currentView = "home"
-    headerColor(currentView)
+    const wrapper = document.getElementById("main-page-bg");
+    whiteBg(wrapper, "hide")
+    
 }
 
 function showPlaylistView(mainContent, playlist) {
     const playlistLenght = playlist.songs.length;
     const playlistDuration = ((playlist.songs.reduce((acc, song) => acc + song.duration, 0)) / 60 ).toFixed(2);
-
+    console.log(playlist.songs)
     mainContent.innerHTML = `
     <article id="playlist-view">
     <container class="wrapper">
-        <section>
+        <section id="section-id">
             <div class="playlist-info">
                 <div class="playlist-icon" id="edit-btnNd">
                     <img src="${playlist.image_url}" >
@@ -55,8 +56,7 @@ function showPlaylistView(mainContent, playlist) {
             </div>
 
         </div>
-        <container id="songs-container">
-            <div id="sticky-desc">
+        <div id="sticky-desc">
                 <div class="songs-title">
                     <div>
                         <span>#</span>
@@ -69,26 +69,39 @@ function showPlaylistView(mainContent, playlist) {
                     </div>
                 </div>
             </div>
+        <container id="songs-container">
+            
             <div id="songs-wrapper">
                 
             </div>
         </container>
+        <container class="playlist-footer">
+        
+        </container>
+
     </container>
 </article>
     `;
 
     localStorage.setItem("current-view", JSON.stringify({ name: "playlist", view: playlist }));
-    let currentView = "playlist"
-    //headerColor(currentView)
 
     const btn = document.getElementById("edit-btn");
     const modal = document.getElementById("playlist-edit-box");
-    const wrapper = document.getElementById("page-tint");
-    handleEvent(btn, modal, wrapper)
+    const tint = document.getElementById("page-tint");
+    const wrapper = document.getElementById("main-page-bg");
 
-    for (song of playlist.songs) {
-        addSong(song)
-    }
-
+    whiteBg(wrapper, "show")
+    handleEvent(btn, modal, tint)
+    addSongs(playlist.songs)
+    handleScroll()
 }
 
+
+
+function whiteBg(wrapper, state){
+    if (state === "hide") {
+        wrapper.style.display = "none";
+    } else if (state === "show"){
+        wrapper.style.display = "flex";
+    }
+}

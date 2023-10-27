@@ -1,7 +1,6 @@
-function addSong(song){
+function createSong(song){
     const playlistView = document.getElementById('songs-wrapper')
     const songElement = document.createElement('article')
-    console.log(song)
     songElement.className = "song"
     songElement.innerHTML = `
         <div>
@@ -28,4 +27,10 @@ function addSong(song){
         </div>
     `
     playlistView.appendChild(songElement)
+}
+
+function addSongs(songsList){
+    const playlistView = document.getElementById('songs-wrapper')
+    playlistView.innerHTML = ''
+    songsList.forEach(song => createSong(song))
 }

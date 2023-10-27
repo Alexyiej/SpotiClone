@@ -15,7 +15,7 @@ function getLastView(){
 
         else if (parsedData.name === "playlist"){
             const playlist = parsedData.view;
-            showPlaylistView(mainContent, playlist, playlist.id)
+            showPlaylistView(mainContent, playlist)
 
             let currentView = "playlist"
             return currentView

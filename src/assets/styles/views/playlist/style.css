@@ -30,11 +30,11 @@
 	align-items: flex-end;
 	gap: 25px;
 	padding-bottom: 10px;
+	height: 235px;
 }
 
 #playlist-view > .wrapper > section > .playlist-info > .playlist-icon{
 	border-radius: 12px;
-	height: 235px;
 	width: 235px;
 }
 
@@ -185,14 +185,22 @@
 	opacity: 1;
 }
 
-#sticky-desc{
-	position: sticky;
-	top: 70px;
-	width: 100%;
-	z-index: 10;
+#sticky-desc {
+    position: sticky;
+    top: 70px;
+    z-index: 10;
+    height: 10%;
+    display: flex;
 }
 
+.sticky {
+    background-color: #1a1a1a;
+}
 
+.playlist-footer{
+	height: 150px;
+	width: 100%;
+}
 
 /* playlists aside */
 

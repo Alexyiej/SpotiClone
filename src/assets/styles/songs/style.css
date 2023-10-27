@@ -7,13 +7,6 @@
 	gap: 20px;
 
 }
-
-#songs-container > :first-child{
-	width: 100%;
-	height: 10%;
-	display: flex;
-}
-
 .songs-title{
 	width: 100%;
 	display: flex;	
@@ -42,9 +35,11 @@
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
-	padding-right: 30px;
+	padding-right: 35px;
 }
-
+.songs-title > :last-child > :nth-child(2){
+	width: 100px;
+}
 #songs-container > :last-child{
 	width: 100%;
 	height: 100%;
@@ -52,7 +47,9 @@
 	flex-direction: column;
 	gap: 2.5px;
 }
-
+#songs-container > :last-child > :first-child{
+	margin-top: 10px;
+}
 .song{
 	width: 100%;
 	height: 55px;
@@ -84,7 +81,9 @@
 	align-items: center;
 	padding-right: 35px;
 }
-
+.song > :last-child div{
+	width: 33%;
+}
 .song > :last-child > :last-child{
 	width: 80px;
 	display: flex;
