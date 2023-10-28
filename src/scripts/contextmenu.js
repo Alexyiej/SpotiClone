@@ -134,21 +134,18 @@ function hideContextMenu(contextMenu, wrapper){
 function handleSongContextMenu(event, song, playlistId){
     const contextMenu = document.getElementById("song-modal");
     const wrapper = document.getElementById("main-content");
-    
     createContextMenu(wrapper, contextMenu, event)
 
     const addToPlaylistBtn = document.getElementById("add-to-playlist-btn");
     const removeBtn = document.getElementById("remove-from-playlist-btn");
     
     addToPlaylistBtn.addEventListener("click", function(event) {
-        console.log(song.dataset.id)
-        addSongToPlaylist(playlistId, song)
+        addToPlaylist(song, "69btk8m5w")
         hideContextMenu(contextMenu, wrapper)
     });
 
     removeBtn.addEventListener("click", function(event) {
-        console.log(song.dataset.id)
-        removeSongFromPlaylist(playlistId, song)
+        removeSong(playlistId, song)
         hideContextMenu(contextMenu, wrapper)
     });
 

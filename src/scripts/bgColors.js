@@ -14,7 +14,6 @@ function randomColor() {
         g: Math.floor(Math.random() * 256),
         b: Math.floor(Math.random() * 256)
     };
-
     return color;
 }
 
@@ -24,3 +23,4 @@ function headerColor(currentView){
     if (currentView === 'playlist') { header.style.background = 'rgba(255, 255, 255, .08)' } 
     else if (currentView === 'home'){ header.style.background = 'none' }
 }
+

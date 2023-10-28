@@ -54,14 +54,14 @@ function deletePlaylist(playlistId) {
 function createPlaylists(playlist) {
     const playlistsWrapper = document.querySelector(".playlists-wrapper");
     const playlistElement = document.createElement("article");
+    const albumCover = createImage(playlist.songs) 
 
     playlistElement.dataset.id = playlist.id;
     playlistElement.className = "playlist";
-
     playlistElement.innerHTML = `
         <div class="wrapper">
             <div class="playlist-icon">
-                <img src="${playlist.image_url}" alt="/src/assets/images/covers/basic-cover.png">
+                
             </div>
             <div class="playlist-title">
                 <span>${playlist.name}</span>
@@ -74,7 +74,8 @@ function createPlaylists(playlist) {
     `;
 
     playlistsWrapper.appendChild(playlistElement);
-
+    if (playlist.id !== "L2I37"){playlistElement.querySelector(".playlist-icon").appendChild(albumCover);}
+    else if (playlist.id === "L2I37"){playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="${playlist.image_url}">`;}
 }
 
 

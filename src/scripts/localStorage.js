@@ -41,7 +41,6 @@ function loadPlaylists() {
 
     if (loclalStoragePlaylists) {
         playlists = loclalStoragePlaylists;
-
         for (playlist of playlists) {
             createPlaylists(playlist, localStoragePlaylistsIndex);
         }

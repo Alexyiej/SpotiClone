@@ -201,7 +201,7 @@
 
     <div id="song-modal" style="display: none;">
         <button class="btn-primary" id="add-to-playlist-btn">Add to playlist</button>
-        <button class="btn-primary" id="remove-from-playlist-btn">Remove from ${playlist.name}</button>
+        <button class="btn-primary" id="remove-from-playlist-btn">Remove</button>
     </div>
     <div id="page-tint" style="display: none"></div>
 </body>
@@ -215,10 +215,11 @@
 <script src="/src/scripts//contextmenu.js"></script>
 <script src="/src/scripts//bgColors.js"></script>
 <script src="/src/scripts//songs.js"></script>
+<script src="/src/scripts//homepage.js"></script>
 
 <script>
     const songsUrl = "/src/assets/jsons/songs.json"
-    const genresUrl = "https://gist.githubusercontent.com/techniadrian/6ccdb1c837d431bb84c2dfedbec2e435/raw/60783ebfa89c6fd658aaf556b9f7162553ac0729/genres.json"
+    const genresUrl = "/src/assets/jsons/genres.json"
 
     let songs = []
     let genres = []
@@ -263,6 +264,8 @@
         else{ header.style.background = "none" }
 
         // desc
+        if (desc === null) return
+
         if (scroll > 365){ desc.classList.add("sticky") }
         else{ desc.classList.remove("sticky") }
     }

@@ -222,12 +222,22 @@
 }
 
 #song-modal{
-	width: 150px;
-	height: max-content;
-	background-color: var(--context-menu);
-	position: absolute;
-	z-index: 10;
-	flex-direction: column;
-	border-radius: 5px;
+	width: 180px;
+    height: max-content;
+    background-color: var(--context-menu);
+    position: absolute;
+    z-index: 10;
+    flex-direction: column;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+    -moz-box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
+    box-shadow: 0px 2px 25px -1px rgba(16, 16, 18, 1);
 }
 
+#song-modal button{
+	font-size: .85rem;
+    font-weight: 560;
+    opacity: .95;
+    transition: .1s;
+    padding: 15px;
+}

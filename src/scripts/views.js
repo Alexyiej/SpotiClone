@@ -1,20 +1,59 @@
-function showHomeView(mainContent) {
+function showHomeView(mainContent){
     mainContent.innerHTML = `
-        <section id="home">
+
+    <section id="home">
+        <container>
+            <section>
             <div class="title">
-                <span>home</span>
+                <span>Good afternoon</span>
             </div>
-            <container class="playlists-container">
-                <!-- Home -->
+            <container class="playlists" id="home-head-cnt">
+                
             </container>
         </section>
+
+        <section class="home-section">
+            <div class="title">
+                <span>Episodes for you</span>
+            </div>
+            <container id="albums">
+                
+            </container>
+        </section>
+
+        <section class="home-section">
+            <div class="title">
+                <span>Browse all</span>
+            </div>
+            <container id="all-genres-cnt">
+
+            </container>
+        </section>
+
+    </container>
+</section>
     `;
 
     localStorage.setItem("current-view", JSON.stringify({ name: "home" }));
 
     const wrapper = document.getElementById("main-page-bg");
     whiteBg(wrapper, "hide")
-    
+    let homePlaylists = playlists.slice(0, 6)
+    const genresCnt = document.getElementById("all-genres-cnt");
+    const albumsCtn = document.getElementById("albums");
+
+    for (playlist of homePlaylists){
+        createPlaylistHtml(playlist)
+    }
+
+    for (genre of genres){
+        createGenreHtml(genre, genresCnt)
+    }
+
+    let albums = createAlbums()
+    for (album of albums){
+        createAlbumHtml(album, albumsCtn)
+    }
 }
 
 function showPlaylistView(mainContent, playlist) {
@@ -93,9 +132,11 @@ function showPlaylistView(mainContent, playlist) {
     whiteBg(wrapper, "show")
     handleEvent(btn, modal, tint)
     if (playlist.id === "L2I37"){
-        createHtmlSongs(getLiked())
+        playlist.songs = getLiked()
+        createHtmlSongs(mapLists(playlist.songs))
     } else{
-        createHtmlSongs(mapLists(likedSongs, songs))
+        //createHtmlSongs(mapLists(likedSongs, songs))
+        createHtmlSongs(mapLists(playlist.songs))
     }
     
     handleScroll()
@@ -111,4 +152,44 @@ function whiteBg(wrapper, state){
     } else if (state === "show"){
         wrapper.style.display = "flex";
     }
+}
+
+
+function createImage(songs){
+    const imageElement = document.createElement("div");
+    imageElement.className = "kolaz";
+    function getRandomIndex(maxIndex) {
+        return Math.floor(Math.random() * (maxIndex + 1));
+    }
+
+    // Losowo wybieramy 4 obrazy z listy
+    const selectedImages = [];
+    const totalImages = songs.length;
+    while (selectedImages.length < 4 && selectedImages.length < totalImages) {
+        const randomIndex = getRandomIndex(totalImages - 1);
+        const selectedImage = songs[randomIndex].coverUrl;
+        // Sprawdzamy, czy obrazek nie został już wybrany
+        if (!selectedImages.includes(selectedImage)) {
+            selectedImages.push(selectedImage);
+        }
+    }
+
+    const [first, second, third, fourth] = selectedImages
+    imageElement.innerHTML = `
+        <div>
+            <img src="${first}">
+        </div>
+        <div>
+            <img src="${second}">
+        </div>
+        <div>
+            <img src="${third}">
+        </div>
+        <div>
+            <img src="${fourth}">
+        </div>
+    
+        `
+
+    return imageElement
 }

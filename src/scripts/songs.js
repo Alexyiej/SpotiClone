@@ -2,8 +2,6 @@ function createSong(song) {
     const playlistView = document.getElementById('songs-wrapper');
     const songElement = document.createElement('article');
     const [unliked, liked] = changeIcon(song)
-    console.log(unliked, liked)
-
     songElement.className = "song";
     songElement.innerHTML = `
         <div>
@@ -41,16 +39,17 @@ function handleFavSongs(id){
     songs.forEach(song => {
         song.addEventListener('contextmenu', function(event){
             event.preventDefault()
-            console.log(id)
-            removeSong(id, song)
+            handleSongContextMenu(event, song, id)
         })
     });
 
     songs.forEach(song => {
-        likeBtn = song.querySelector('.fa-heart')
-        song.addEventListener('click', function(event){
-            event.preventDefault()
-            handleLike(song, id, likedSongs)
+        likeBtns = song.querySelectorAll('.fa-heart')
+        likeBtns.forEach(btn => {
+            btn.addEventListener('click', function(event){
+                event.preventDefault()
+                handleLike(song, id, likedSongs)
+            })
         })
     });
 }
@@ -67,18 +66,17 @@ function removeSong(playlistId, songElement){
 
     playlistToRemoveFrom.songs = playlistToRemoveFrom.songs.filter(song => song.id !== songToRemove.id)
     localStorage.setItem('playlists', JSON.stringify(playlists))
-
+    console.log(playlistToRemoveFrom)
     reloadView(playlistId)
 }
 
 function reloadView(playlistId){
-    loadPlaylists()
+    //loadPlaylists()
 
     const mainContent = document.getElementById("main-content");
     const playlistView = document.getElementById('playlist-view')
 
     const playlist = playlists.find(playlist => playlist.id === playlistId)
-    
     playlistView.innerHTML = ''
     showPlaylistView(mainContent, playlist)
 }
@@ -105,10 +103,11 @@ function handleLike(song, playlistId, likedSongs) {
         else { likedSongs.push(songToLike); }
 
         localStorage.setItem('liked-songs', JSON.stringify(likedSongs));
+        reloadView(playlistId)
+
     } else {
         console.log("Song not found.");
     }
-    reloadView(playlistId)
 
 }
 
@@ -124,21 +123,43 @@ function changeIcon(song){
     return [unliked, liked]
 }
 
-function mapLists(likedSongs, songs){
-    const mappedSongs = []
+function mapLists(songs) {
+    const mappedSongs = [];
+    likedSongs = JSON.parse(localStorage.getItem('liked-songs'));
 
-    if (likedSongs){
-        for (song of songs){
-            const likedSong = likedSongs.find(likedSong => likedSong.id === song.id)
-    
-            if (likedSong){
-                mappedSongs.push(likedSong)
-            } else{
-                mappedSongs.push(song)
+    if (likedSongs) {
+        for (song of songs) {
+            const likedSong = likedSongs.find(likedSong => likedSong.id === song.id);
+
+            if (likedSong) {
+                mappedSongs.push(likedSong);
+            } else {
+                // Ustaw liked na false, jeśli piosenka nie jest polubiona
+                mappedSongs.push({ ...song, liked: false });
             }
         }
-        return mappedSongs
+    console.log(mappedSongs)
+
+        return mappedSongs;
+    } else {
+    console.log(mappedSongs)
+
+        // Jeśli nie ma polubionych piosenek, ustaw liked na false dla każdej piosenki
+        return songs.map(song => ({ ...song, liked: false }));
     }
-    else{ return songs }
-   
+}
+
+
+function addToPlaylist(songElement, playlistId){
+    const playlist = playlists.find(playlist => playlist.id === playlistId)
+    const songToAdd = songs.find(song => song.id === songElement.dataset.id)
+
+    if (playlist.songs.find(song => song.id === songToAdd.id)){
+        console.log('Song already in playlist')
+        return
+    }
+
+    playlist.songs.push(songToAdd)
+    localStorage.setItem('playlists', JSON.stringify(playlists))
+
 }
