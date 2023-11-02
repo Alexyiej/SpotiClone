@@ -227,6 +227,7 @@
     let likedSongs = []
     let playListIndex = 0; 
     let clickCounter = 0; 
+    let startView = "home"
 
     async function fetchData(list, url){
         try{
@@ -272,22 +273,25 @@
     
 
 
-    function onLoad() {                                                                                     
+    async function onLoad() {                                                                                     
         const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
         const playlistModal = document.getElementById("playlist-modal");                                                                                        
         const view = document.getElementById("main-content");                                                                                       
         const homeBtn = document.getElementById("home-btn");                                                                                        
-                                                                   
-        homeBtn.addEventListener('click', function() {                                                                                      
-            showHomeView(view, currentView);                                                                                     
-        });               
 
-        fetchAll()                
+        await fetchAll()                
         loadPlaylists()
-        let currentView = getLastView()
+
         generateBgColor();
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
         handlePlaylistContextMenu(playlistsWrapper)
+
+        let currentView = getLastView()
+        if (currentView === null) currentView = startView
+
+        homeBtn.addEventListener('click', function() {                                                                                      
+            showHomeView(view, currentView);                                                                                     
+        });     
 
         if (playlists.length === 0) {
             handleCreateClick(playlists, songs)
@@ -298,6 +302,8 @@
         wrapper.addEventListener("scroll", handleScroll); 
         getLiked()
         handlePlaylistView()
+
+        
         
     } 
 </script>

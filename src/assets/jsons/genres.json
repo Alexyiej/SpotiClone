@@ -1,6 +1,5 @@
 [
     "Pop",
-    "Rap",
     "R&B",
     "Trap",
     "Drill",
@@ -14,9 +13,5 @@
     "Downtempo",
     "Folk",
     "Ambient",
-    "Space Ambient",
-    "Soul",
-    "Hip-Hop",
-    "Jazz",
-    "Funk"
+    "Space Ambient"
 ]

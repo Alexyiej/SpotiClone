@@ -15,11 +15,19 @@ function getLastView(){
 
         else if (parsedData.name === "playlist"){
             const playlist = parsedData.view;
-            showPlaylistView(mainContent, playlist)
+            showPlaylistView(mainContent, playlist, "playlist")
 
             let currentView = "playlist"
             return currentView
 
+        }
+
+        else if (parsedData.name === "genreView"){
+            const genre = parsedData.view;
+            showPlaylistView(mainContent, genre, "genre")
+
+            let currentView = "genreView"
+            return currentView
         }
 
     }

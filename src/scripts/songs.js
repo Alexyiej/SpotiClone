@@ -71,14 +71,12 @@ function removeSong(playlistId, songElement){
 }
 
 function reloadView(playlistId){
-    //loadPlaylists()
-
     const mainContent = document.getElementById("main-content");
     const playlistView = document.getElementById('playlist-view')
 
     const playlist = playlists.find(playlist => playlist.id === playlistId)
     playlistView.innerHTML = ''
-    showPlaylistView(mainContent, playlist)
+    showPlaylistView(mainContent, playlist, "playlist")
 }
 
 function handleLike(song, playlistId, likedSongs) {
@@ -134,7 +132,6 @@ function mapLists(songs) {
             if (likedSong) {
                 mappedSongs.push(likedSong);
             } else {
-                // Ustaw liked na false, jeśli piosenka nie jest polubiona
                 mappedSongs.push({ ...song, liked: false });
             }
         }
@@ -144,7 +141,6 @@ function mapLists(songs) {
     } else {
     console.log(mappedSongs)
 
-        // Jeśli nie ma polubionych piosenek, ustaw liked na false dla każdej piosenki
         return songs.map(song => ({ ...song, liked: false }));
     }
 }

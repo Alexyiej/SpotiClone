@@ -4,8 +4,8 @@ function createPlaylistHtml(playlist){
     const mainContent = document.getElementById("main-content");
 
     playlistElement.innerHTML = `
-    <div>
-        <img src="${playlist.image_url}"> 
+    <div class="hmp-p-img-cnt">
+
     </div>
     <div>
         <span>${playlist.name}</span>
@@ -14,12 +14,22 @@ function createPlaylistHtml(playlist){
         </div>
     </div>
     `
+    const collage = createImage(songs)
+    const imageContainer = playlistElement.querySelector(".hmp-p-img-cnt")
+   
+    if (playlist.id !== "L2I37"){
+        imageContainer.appendChild(collage)
+    }
+    else if (playlist.id === "L2I37"){
+        imageContainer.innerHTML = `<img src="${playlist.image_url}">`
+    }
+    
     wrapper.appendChild(playlistElement)
     playlistElement.dataset.id = playlist.id;
 
     playlistElement.addEventListener("click", () => {
         console.log(playlistElement.dataset.id)
-        showPlaylistView(mainContent, playlist)
+        showPlaylistView(mainContent, playlist, "playlist")
     })
 
     playlistElement.addEventListener("mouseenter", () => {
@@ -47,6 +57,8 @@ function createHomePlaylists(index, list){
 
 function createGenreHtml(genre, genresCnt){
     const genreElement = document.createElement("article");
+    const mainContent = document.getElementById("main-content");
+
     genreElement.className = "genre";
     
     genreElement.innerHTML = `
@@ -60,6 +72,7 @@ function createGenreHtml(genre, genresCnt){
 
     genreElement.addEventListener("click", () => {
         console.log(genre)
+        showPlaylistView(mainContent, genre, "genre")
     })
 }
 
@@ -78,8 +91,6 @@ function createAlbums() {
         };
     });
 
-    console.log(albumsWithSongs);
-
     return albumsWithSongs;
 }
 
@@ -87,22 +98,24 @@ function createAlbums() {
 function createAlbumHtml(album, wrapper){
     const albumElement = document.createElement("article");
     const albumCover = createImage(album.songs) 
-   
-    albumElement.className = "playlist";
+    const mainContent = document.getElementById("main-content");
+
+    albumElement.className = "album";
     albumElement.innerHTML = `
-        <div class="wrapper">
-            <div class="playlist-icon">
-                
-            </div>
-            <div class="playlist-title">
-                <span>${album.name}</span>
-            </div>
-            <div class="playlist-description">
-                <span>${album.autor}</span>
-            </div>
+        <div class="album-icon">
+            
         </div>
+        <div>
+        <div class="album-title">
+            <span>${album.name}</span>
+        </div>
+        <div class="album-description">
+            <span>${album.autor}</span>
+        </div>
+        </div>
+
     `;
-    const playlistIconCtn = albumElement.querySelector(".playlist-icon");
+    const playlistIconCtn = albumElement.querySelector(".album-icon");
     playlistIconCtn.appendChild(albumCover);
 
     wrapper.appendChild(albumElement)
@@ -110,7 +123,8 @@ function createAlbumHtml(album, wrapper){
     albumElement.dataset.id = album.id;
 
     albumElement.addEventListener("click", () => {
-        console.log(album.id)
+        console.log(albumElement.dataset.id)
+        showPlaylistView(mainContent, album, "playlist")
     })
 
 

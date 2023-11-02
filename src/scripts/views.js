@@ -1,4 +1,5 @@
 function showHomeView(mainContent){
+    console.log("showHomeView")
     mainContent.innerHTML = `
 
     <section id="home">
@@ -28,9 +29,11 @@ function showHomeView(mainContent){
             <container id="all-genres-cnt">
 
             </container>
-        </section>
 
     </container>
+    
+    </section>
+    <section class="page-footer"></section>
 </section>
     `;
 
@@ -38,113 +41,152 @@ function showHomeView(mainContent){
 
     const wrapper = document.getElementById("main-page-bg");
     whiteBg(wrapper, "hide")
+
     let homePlaylists = playlists.slice(0, 6)
+    let homeGenres = genres
+    let albums = createAlbums()
+    let homeAlbums = albums
+
     const genresCnt = document.getElementById("all-genres-cnt");
     const albumsCtn = document.getElementById("albums");
 
     for (playlist of homePlaylists){
         createPlaylistHtml(playlist)
     }
-
-    for (genre of genres){
+    
+    for (genre of homeGenres){
         createGenreHtml(genre, genresCnt)
     }
 
-    let albums = createAlbums()
-    for (album of albums){
+    for (album of homeAlbums){
         createAlbumHtml(album, albumsCtn)
     }
 }
 
-function showPlaylistView(mainContent, playlist) {
+function showPlaylistView(mainContent, playlist, type) {
     if (playlist.songs){ var playlistLenght = playlist.songs.length; }
     if (playlist.songs){ var playlistDuration = ((playlist.songs.reduce((acc, song) => acc + song.duration, 0)) / 60 ).toFixed(2); }
-
+    
     mainContent.innerHTML = `
     <article id="playlist-view">
-    <container class="wrapper">
-        <section id="section-id">
-            <div class="playlist-info">
-                <div class="playlist-icon" id="edit-btnNd">
-                    <img src="${playlist.image_url}" >
+        <container class="wrapper">
+            <section id="section-id">
+                <div class="playlist-info">
+                    <div class="playlist-icon" id="edit-btnNd">
+                    
+                    </div>
+                    <div class="info">
+                        <span>
+                            <p>Private Playlist</p>
+                            <h1 id="edit-btn">${playlist.name}</h1>
+                        </span>
+                        <span id="p-lenght-dur">
+                        
+                        </span>
+                    </div>
+                    
                 </div>
-                <div class="info">
-                    <span>
-                        <p>Private Playlist</p>
-                        <h1 id="edit-btn">${playlist.name}</h1>
-                    </span>
-                    <span>alex ${playlistLenght} songs, <p>${playlistDuration}</p></span>
-                </div>
-                
-            </div>
-        </section>
-        <div class="show-more">
-            <div>
+            </section>
+            <div class="show-more">
                 <div>
-                    <i class="fa-solid fa-play"></i>
-                </div>
-                <span>...</span>
-            </div>
-
-            <div>
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <button>
-                    <span>Custom Order <i class="fa-solid fa-caret-down"></i></span>
-                    <div class="filters-dropdown"></div>
-                </button>
-            </div>
-
-        </div>
-        <div id="sticky-desc">
-                <div class="songs-title">
                     <div>
-                        <span>#</span>
-                        <span>Title</span>
+                        <i class="fa-solid fa-play"></i>
                     </div>
-                    <div>
-                        <span>Album</span>
-                        <span>Date added</span>
-                        <span><i class="fa-regular fa-clock"></i></span>
+                    <span>...</span>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <button>
+                        <span>Custom Order <i class="fa-solid fa-caret-down"></i></span>
+                        <div class="filters-dropdown"></div>
+                    </button>
+                </div>
+
+            </div>
+            <div id="sticky-desc">
+                    <div class="songs-title">
+                        <div>
+                            <span>#</span>
+                            <span>Title</span>
+                        </div>
+                        <div>
+                            <span>Album</span>
+                            <span>Date added</span>
+                            <span><i class="fa-regular fa-clock"></i></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <container id="songs-container">
-            
-            <div id="songs-wrapper">
+            <container id="songs-container">
                 
-            </div>
-        </container>
-        <container class="playlist-footer">
-        
-        </container>
+                <div id="songs-wrapper">
+                    
+                </div>
+            </container>
+            <container class="playlist-footer">
+            
+            </container>
 
-    </container>
-</article>
+        </container>
+    </article>
     `;
 
-    localStorage.setItem("current-view", JSON.stringify({ name: "playlist", view: playlist }));
-
+    const playlistDesc = document.getElementById("p-lenght-dur");
     const btn = document.getElementById("edit-btn");
     const modal = document.getElementById("playlist-edit-box");
     const tint = document.getElementById("page-tint");
     const wrapper = document.getElementById("main-page-bg");
-    
-    whiteBg(wrapper, "show")
-    handleEvent(btn, modal, tint)
-    if (playlist.id === "L2I37"){
-        playlist.songs = getLiked()
-        createHtmlSongs(mapLists(playlist.songs))
-    } else{
-        //createHtmlSongs(mapLists(likedSongs, songs))
-        createHtmlSongs(mapLists(playlist.songs))
+    const playlistIcon = document.getElementById("edit-btnNd")
+
+    if (type === "genre"){
+        const genreName = playlist
+        const songsList = songs.filter(song => song.genre === genreName)
+
+        btn.innerHTML = `${genreName}`
+        playlistDesc.innerHTML = `alex ${songsList.length} songs`
+
+        if (songsList.length >= 4){
+            const collage = createImage(songsList)
+            playlistIcon.appendChild(collage)
+
+        } else if (songsList.length < 4){
+            playlistIcon.innerHTML = `<img src="${songsList[0].coverUrl}">`
+        }
+
+        createHtmlSongs(mapLists(songsList))
+        localStorage.setItem("current-view", JSON.stringify({ name: "genreView", view: playlist }));
     }
+    
+    if (type === "playlist"){
+        const collage = createImage(playlist.songs)
+
+        playlistDesc.innerHTML = `alex ${playlistLenght} songs, <p>${playlistDuration}</p>`
+
+        if (playlist.id === "L2I37"){
+            playlistIcon.innerHTML = `<img src="${playlist.image_url}">`
+            playlist.songs = getLiked()
+            createHtmlSongs(mapLists(playlist.songs))
+            
+        } 
+        
+        else if (playlist.id !== "L2I37"){
+            playlistIcon.appendChild(collage)
+            createHtmlSongs(mapLists(playlist.songs))
+
+        }
+
+
+        handleEvent(btn, modal, tint)
+        localStorage.setItem("current-view", JSON.stringify({ name: "playlist", view: playlist }));
+
+    }
+
+    whiteBg(wrapper, "show")
     
     handleScroll()
     handleFavSongs(playlist.id)
     
 }
-
-
 
 function whiteBg(wrapper, state){
     if (state === "hide") {
@@ -156,40 +198,34 @@ function whiteBg(wrapper, state){
 
 
 function createImage(songs){
-    const imageElement = document.createElement("div");
-    imageElement.className = "kolaz";
+    const collage = document.createElement("div");
+    collage.className = "collage";
     function getRandomIndex(maxIndex) {
         return Math.floor(Math.random() * (maxIndex + 1));
     }
 
-    // Losowo wybieramy 4 obrazy z listy
     const selectedImages = [];
-    const totalImages = songs.length;
-    while (selectedImages.length < 4 && selectedImages.length < totalImages) {
-        const randomIndex = getRandomIndex(totalImages - 1);
-        const selectedImage = songs[randomIndex].coverUrl;
-        // Sprawdzamy, czy obrazek nie został już wybrany
-        if (!selectedImages.includes(selectedImage)) {
-            selectedImages.push(selectedImage);
+    if (songs) {
+        const totalImages = songs.length;
+        while (selectedImages.length < 4 && selectedImages.length < totalImages) {
+
+            const randomIndex = getRandomIndex(totalImages - 1);
+            const selectedImage = songs[randomIndex].coverUrl;
+
+            if (!selectedImages.includes(selectedImage)) {
+                selectedImages.push(selectedImage);
+            }
         }
     }
 
     const [first, second, third, fourth] = selectedImages
-    imageElement.innerHTML = `
-        <div>
-            <img src="${first}">
-        </div>
-        <div>
-            <img src="${second}">
-        </div>
-        <div>
-            <img src="${third}">
-        </div>
-        <div>
-            <img src="${fourth}">
-        </div>
-    
+
+    collage.innerHTML = `
+        <img src="${first}">
+        <img src="${second}">
+        <img src="${third}">
+        <img src="${fourth}">
         `
 
-    return imageElement
+    return collage
 }

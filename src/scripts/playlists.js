@@ -87,7 +87,7 @@ function handlePlaylistView(){
         if (playlistElement) {
             const playlist = playlists.find(playlist => playlist.id === playlistElement.dataset.id);
     
-            showPlaylistView(view, playlist)
+            showPlaylistView(view, playlist, "playlist")
     
         }
     });
