@@ -312,3 +312,52 @@
 	height: 100%;
 	object-fit: cover; 
 }
+
+#filters-dropdown{
+	display: none;
+	position: absolute;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	background-color: var(--context-menu);
+	z-index: 123;
+	border-radius: 8px;
+	top: 20px;
+	padding: 5px;
+	right: 0;
+	gap: 25px;
+}
+#filters-dropdown .title{
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding: 10px;
+}
+#filters-dropdown .title span{
+	font-size: .75rem;
+	opacity: .6;
+	font-weight: 700;
+}
+
+#filters-dropdown .btns{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+	width: 100%;
+
+}
+#filters-dropdown .btns div{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 35px;
+	width: 100%;
+
+	&&:hover{
+		cursor: pointer;
+		transition: .2s;
+		background-color: var(--bg-hover);
+	}
+}

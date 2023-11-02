@@ -153,6 +153,8 @@
     height: 350px;
     gap: 10px;
     overflow-x: auto;
+    padding-top: 10px;
+    padding-bottom: 30px;
 }
 
 #albums article{
@@ -162,6 +164,7 @@
     flex-direction: column;
     justify-content: space-around;
     transition: .2s;
+    border-radius: 8px;
 
     &&:hover{
         cursor: pointer;
@@ -189,7 +192,21 @@
     justify-content: space-around;
 }
 
+#albums article > :last-child .album-title{
+    font-size: 1.1rem;
+    opacity: .85;
+    font-weight: 520;
+    letter-spacing: .25px;
+    padding-left: 10px;
+}
+#albums article > :last-child .album-description{
+    font-size: .9rem;
+    opacity: .6;
+    font-weight: 520;
+    letter-spacing: .25px;
+    padding-left: 10px;
 
+}
 .page-footer{
     height: 50px;
 }

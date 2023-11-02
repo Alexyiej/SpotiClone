@@ -1,5 +1,4 @@
 function showHomeView(mainContent){
-    console.log("showHomeView")
     mainContent.innerHTML = `
 
     <section id="home">
@@ -97,9 +96,18 @@ function showPlaylistView(mainContent, playlist, type) {
 
                 <div>
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <button>
+                    <button id="filters">
                         <span>Custom Order <i class="fa-solid fa-caret-down"></i></span>
-                        <div class="filters-dropdown"></div>
+                        <div id="filters-dropdown">
+                            <div class="title">
+                                <span>Sort by</span>
+                            </div>
+                            <div class="btns">
+                                <div>
+                                <span>Recently added</span>
+                                </div>
+                            </div>    
+                        </div>
                     </button>
                 </div>
 
@@ -166,7 +174,7 @@ function showPlaylistView(mainContent, playlist, type) {
             playlistIcon.innerHTML = `<img src="${playlist.image_url}">`
             playlist.songs = getLiked()
             createHtmlSongs(mapLists(playlist.songs))
-            
+
         } 
         
         else if (playlist.id !== "L2I37"){
@@ -174,7 +182,6 @@ function showPlaylistView(mainContent, playlist, type) {
             createHtmlSongs(mapLists(playlist.songs))
 
         }
-
 
         handleEvent(btn, modal, tint)
         localStorage.setItem("current-view", JSON.stringify({ name: "playlist", view: playlist }));
@@ -185,7 +192,7 @@ function showPlaylistView(mainContent, playlist, type) {
     
     handleScroll()
     handleFavSongs(playlist.id)
-    
+    handleFiltersDropDown()
 }
 
 function whiteBg(wrapper, state){
@@ -228,4 +235,25 @@ function createImage(songs){
         `
 
     return collage
+}
+
+
+function handleFiltersDropDown() {
+    const btn = document.getElementById("filters");
+    const dropdown = document.getElementById("filters-dropdown");
+    let isOpen = false;
+
+    btn.addEventListener("click", () => {
+        if (isOpen) {
+            dropdown.style.display = "none";
+            isOpen = false;
+        } else {
+            dropdown.style.display = "flex";
+            isOpen = true;
+        }
+    });
+
+    dropdown.addEventListener("click", (event) => {
+        event.stopPropagation(); 
+    });
 }
