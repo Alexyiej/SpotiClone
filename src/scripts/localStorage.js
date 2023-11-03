@@ -15,11 +15,19 @@ function getLastView(){
 
         else if (parsedData.name === "playlist"){
             const playlist = parsedData.view;
-            showPlaylistView(mainContent, playlist, playlist.id)
+            showPlaylistView(mainContent, playlist, "playlist")
 
             let currentView = "playlist"
             return currentView
 
+        }
+
+        else if (parsedData.name === "genreView"){
+            const genre = parsedData.view;
+            showPlaylistView(mainContent, genre, "genre")
+
+            let currentView = "genreView"
+            return currentView
         }
 
     }
@@ -41,7 +49,6 @@ function loadPlaylists() {
 
     if (loclalStoragePlaylists) {
         playlists = loclalStoragePlaylists;
-
         for (playlist of playlists) {
             createPlaylists(playlist, localStoragePlaylistsIndex);
         }
@@ -49,4 +56,10 @@ function loadPlaylists() {
     } else {
         console.log("No playlists found in local storage");
     }
+}
+
+function getLiked(){
+    const localStorageLikedSongs = JSON.parse(localStorage.getItem("liked-songs"));
+    if (localStorageLikedSongs) {likedSongs = localStorageLikedSongs } else {likedSongs = []}
+    return likedSongs
 }

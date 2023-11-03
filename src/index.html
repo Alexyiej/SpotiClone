@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/src/assets/styles/home/style.css" rel="stylesheet">
+    <link href="/src/assets/styles/main/style.css" rel="stylesheet">
+    <link href="/src/assets/styles/modals/style.css" rel="stylesheet">
+    <link href="/src/assets/styles/songs/style.css" rel="stylesheet">
+    <link href="/src/assets/styles/views/home/style.css" rel="stylesheet">
+    <link href="/src/assets/styles/views/playlist/style.css" rel="stylesheet">
     <link href="/src/assets/styles/global.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,6 +78,11 @@
                                     </div>
                                 </div>
                             </div>
+                        </nav>
+
+                        
+
+                        <div class="playlists-container">
                             <div class="menu">
                                 <div>
                                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -83,8 +92,6 @@
                                     <i class="fa-solid fa-border-all"></i>
                                 </div>
                             </div>
-                        </nav>
-                        <div class="playlists-container">
                             <div class="playlists-wrapper">
     
                             </div>
@@ -192,6 +199,10 @@
 
     </div>
 
+    <div id="song-modal" style="display: none;">
+        <button class="btn-primary" id="add-to-playlist-btn">Add to playlist</button>
+        <button class="btn-primary" id="remove-from-playlist-btn">Remove</button>
+    </div>
     <div id="page-tint" style="display: none"></div>
 </body>
 
@@ -204,16 +215,19 @@
 <script src="/src/scripts//contextmenu.js"></script>
 <script src="/src/scripts//bgColors.js"></script>
 <script src="/src/scripts//songs.js"></script>
+<script src="/src/scripts//homepage.js"></script>
 
 <script>
     const songsUrl = "/src/assets/jsons/songs.json"
-    const genresUrl = "https://gist.githubusercontent.com/techniadrian/6ccdb1c837d431bb84c2dfedbec2e435/raw/60783ebfa89c6fd658aaf556b9f7162553ac0729/genres.json"
+    const genresUrl = "/src/assets/jsons/genres.json"
 
     let songs = []
     let genres = []
     let playlists = []
+    let likedSongs = []
     let playListIndex = 0; 
     let clickCounter = 0; 
+    let startView = "home"
 
     async function fetchData(list, url){
         try{
@@ -236,18 +250,6 @@
 
     }
 
-    function changePage(view, currentPage, playlist){
-        view.innerHTML = "";
-        
-        if (currentPage === "view") {
-            view.style.display = "flex";
-            handlePlaylistView(playlist)                                                                                        
-                                                                                                
-        } else if (currentPage === "home") {                                                                                        
-            view.style.display = "none";                                                                        
-        }                                              
-    }
-
     function selectImage(){
 
     }
@@ -257,32 +259,51 @@
         const desc = document.getElementById("sticky-desc");
         const wrapper = document.querySelector(".main");
         
-        console.log(window.scrollY) // 0 nawet jak zescrolluje  i przez to scrollPercentage to NaN i mi nie dziala dodawanie klasy
-        //console.log(document.documentElement.scrollHeight)  1000
-        //console.log(window.innerHeight) 1000 
+        let scroll = wrapper.scrollTop;
+        // header
+        if (scroll > 275){  header.style.background = "var(--header)" }
+        else{ header.style.background = "none" }
 
-        wrapper.addEventListener("scroll", handleScroll);
+        // desc
+        if (desc === null) return
 
+        if (scroll > 365){ desc.classList.add("sticky") }
+        else{ desc.classList.remove("sticky") }
     }
+    
 
-    function onLoad() {                                                                                     
+
+    async function onLoad() {                                                                                     
         const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
         const playlistModal = document.getElementById("playlist-modal");                                                                                        
         const view = document.getElementById("main-content");                                                                                       
         const homeBtn = document.getElementById("home-btn");                                                                                        
-                                                                   
-        homeBtn.addEventListener('click', function() {                                                                                      
-            showHomeView(view, currentView);                                                                                     
-        });               
 
-        fetchAll()                                                                                      
-        //loadPlaylists()
-        let currentView = getLastView()
+        await fetchAll()                
+        loadPlaylists()
+
         generateBgColor();
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
+        handlePlaylistContextMenu(playlistsWrapper)
 
-        handleScroll()
-       
+        let currentView = getLastView()
+        if (currentView === null) currentView = startView
+
+        homeBtn.addEventListener('click', function() {                                                                                      
+            showHomeView(view, currentView);                                                                                     
+        });     
+
+        if (playlists.length === 0) {
+            handleCreateClick(playlists, songs)
+            showHomeView(view, currentView)
+        } 
+
+        const wrapper = document.querySelector(".main");
+        wrapper.addEventListener("scroll", handleScroll); 
+        getLiked()
+        handlePlaylistView()
+
+        
+        
     } 
-   
 </script>

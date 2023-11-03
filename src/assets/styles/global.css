@@ -8,8 +8,12 @@
     --bg-active: rgb(5, 0, 2, 1);
     --context-menu: #282828;
     --header: #7214c2;
-    
     --gradient-color: rgba(186, 17, 192, 0.767);
+    --liked: #1ed760;
+}
+
+.liked-song{
+	color: var(--liked);
 }
 
 .btn-primary{
@@ -67,4 +71,23 @@
 
 *:hover::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 1030px) {
+    #edit-btn{
+        font-size: 4rem;
+    }
+    
+}
+@media screen and (max-width: 955px) {
+    #edit-btn{
+        font-size: 3rem;
+    }
+    
+}
+@media screen and (max-width: 855px) {
+    #edit-btn{
+        font-size: 2rem;
+    }
+    
 }

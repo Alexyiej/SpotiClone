@@ -3,26 +3,39 @@ function generateUniqueId(){
 }
 
 function handleCreateClick(playlists, songs) {
-    playlist = {
-        id: generateUniqueId(),
-        name: "My Playlist #" + playListIndex,
-        description: "Playlist",
-        user: "Alex",
-        image_url: "/src/assets/images/covers/basic-cover.png",
-        songs: []
-    }
+    if (playlists.length === 0) {
+        playlist = {
+            id: "L2I37",
+            name: "Liked Songs",
+            description: "Playlist",
+            user: "Alex",
+            image_url: "/src/assets/images/covers/likedCover.png",
+            songs: getLiked()
+        }
 
+    } else if (playlists.length > 0) {
+        playlist = {
+            id: generateUniqueId(),
+            name: "My Playlist #" + playListIndex,
+            description: "Playlist",
+            user: "Alex",
+            image_url: "/src/assets/images/covers/basic-cover.png",
+            songs: []
+        }
+
+        playListIndex++;
+        localStorage.setItem("playlists-index", playListIndex)
+        playlist.songs = songs
+
+    }
 
     playlists.push(playlist);
     createPlaylists(playlist)
-    playListIndex++;
-    playlist.songs = songs
-    localStorage.setItem("playlists-index", playListIndex)
 
 }
 
-function deletePlaylist(playlistToRemove) {
-    playlists = playlists.filter(playlist => playlist.id !== playlistToRemove.id);
+function deletePlaylist(playlistId) {
+    playlists = playlists.filter(playlist => playlist.id !== playlistId);
 
     localStorage.setItem("playlists", JSON.stringify(playlists));
     const index = localStorage.getItem("playlists-index");
@@ -41,14 +54,14 @@ function deletePlaylist(playlistToRemove) {
 function createPlaylists(playlist) {
     const playlistsWrapper = document.querySelector(".playlists-wrapper");
     const playlistElement = document.createElement("article");
+    const albumCover = createImage(playlist.songs) 
 
     playlistElement.dataset.id = playlist.id;
     playlistElement.className = "playlist";
-
     playlistElement.innerHTML = `
         <div class="wrapper">
             <div class="playlist-icon">
-                <img src="${playlist.image_url}" alt="/src/assets/images/covers/basic-cover.png">
+                
             </div>
             <div class="playlist-title">
                 <span>${playlist.name}</span>
@@ -61,21 +74,21 @@ function createPlaylists(playlist) {
     `;
 
     playlistsWrapper.appendChild(playlistElement);
-
+    if (playlist.id !== "L2I37"){playlistElement.querySelector(".playlist-icon").appendChild(albumCover);}
+    else if (playlist.id === "L2I37"){playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="${playlist.image_url}">`;}
 }
 
-function handleEdit(id) {
-    const playlistToChange = playlists.find(playlist => playlist.id === id);
-    console.log(playlistToChange)
+
+function handlePlaylistView(){
+    const playlistsWrapper = document.querySelector(".playlists-wrapper");
+    const view = document.getElementById("main-content");
+    playlistsWrapper.addEventListener("click", function(event) {
+        const playlistElement = event.target.closest(".playlist");
+        if (playlistElement) {
+            const playlist = playlists.find(playlist => playlist.id === playlistElement.dataset.id);
+    
+            showPlaylistView(view, playlist, "playlist")
+    
+        }
+    });
 }
-
-const playlistsWrapper = document.querySelector(".playlists-wrapper");
-const view = document.getElementById("main-content");
-
-playlistsWrapper.addEventListener("click", function(event) {
-    const playlistElement = event.target.closest(".playlist");
-    if (playlistElement) {
-        const playlist = playlists.find(playlist => playlist.id === playlistElement.dataset.id);
-        showPlaylistView(view, playlist)
-    }
-});

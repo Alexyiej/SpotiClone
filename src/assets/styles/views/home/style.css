@@ -1,0 +1,212 @@
+#home{
+    position: absolute;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    z-index: 9;
+}
+
+#home > :first-child{
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+}
+#home > :first-child > :first-child{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+#home > :first-child > .home-section{
+    display: flex;
+    flex-direction: column;
+}
+#home > :first-child > section > .title{
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+#home > :first-child > section > .title span{
+    font-size: 1.8rem;
+    opacity: .9;
+    font-weight: 580;
+    letter-spacing: .25px;
+}
+#home > :first-child > .home-section > .title span{
+    font-size: 1.425rem;
+    opacity: .9;
+    font-weight: 580;
+    letter-spacing: .25px;
+}
+
+#home > :first-child > :first-child > .playlists{
+    padding-top: 25px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 85px);
+    gap: 10px;
+}
+
+#home > :first-child > :first-child > .playlists article{
+    width: 100%;
+    height: 85px;
+    background-color: rgb(255, 255, 255, .2);
+    display: flex;
+    border-radius: 5px;
+    flex-direction: row;
+    transition: all .15s ease-in-out;
+
+
+    &&:hover{
+        background-color: rgb(255, 255, 255, .3);
+        cursor: pointer;
+    }
+}
+
+#home > :first-child > :first-child > .playlists article > :first-child{
+    height: 85px;
+    display: flex;
+    width: 85px;
+}
+
+#home > :first-child > :first-child > .playlists article > :first-child .collage{
+    grid-template-columns: 42.5px 42.5px;
+    grid-template-rows: 42.5px 42.5px;
+}
+
+#home > :first-child > :first-child > .playlists article > :last-child{
+    width: 75%;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#home > :first-child > :first-child > .playlists article > :last-child span{
+    font-size: 1.1rem;
+    opacity: .9;
+    font-weight: 520;
+    letter-spacing: .25px;
+    padding-left: 20px;
+}
+
+#home > :first-child > :first-child > .playlists article > :last-child div{
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    background-color: rgb(32,212,100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: black;
+    transition: .2s;
+
+    &&:hover{
+        background-color: rgb(32,212,100, .8);
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+}
+
+#all-genres-cnt {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 10px;
+    padding-top: 25px;
+}
+
+#all-genres-cnt .genre{
+    min-width: 180px;
+    min-height: 180px;
+    background-color: rgb(255, 255, 255, .2);
+    border-radius: 5px;
+    display: flex;
+    border-radius: 12px;
+
+    &&:hover{
+        background-color: var(--bg-hover);
+        cursor: pointer;
+        transform: scale(1.025);
+    
+    }
+}
+
+#all-genres-cnt .genre span{
+    font-size: 1.4rem;
+    opacity: .9;
+    font-weight: 600;
+    letter-spacing: .25px;
+    padding: 20px
+}
+
+#albums{
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 350px;
+    gap: 10px;
+    overflow-x: auto;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+#albums article{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transition: .2s;
+    border-radius: 8px;
+
+    &&:hover{
+        cursor: pointer;
+        background-color: var(--bg-hover);
+    }
+}
+#albums article > :first-child{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+#albums article > :first-child .collage{
+    grid-template-columns: 90px 90px;
+    grid-template-rows: 90px 90px;
+}
+
+#albums article > :last-child{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#albums article > :last-child .album-title{
+    font-size: 1.1rem;
+    opacity: .85;
+    font-weight: 520;
+    letter-spacing: .25px;
+    padding-left: 10px;
+}
+#albums article > :last-child .album-description{
+    font-size: .9rem;
+    opacity: .6;
+    font-weight: 520;
+    letter-spacing: .25px;
+    padding-left: 10px;
+
+}
+.page-footer{
+    height: 50px;
+}
