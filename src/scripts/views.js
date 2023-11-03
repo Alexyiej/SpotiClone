@@ -98,16 +98,40 @@ function showPlaylistView(mainContent, playlist, type) {
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <button id="filters">
                         <span>Custom Order <i class="fa-solid fa-caret-down"></i></span>
+                        
                         <div id="filters-dropdown">
                             <div class="title">
                                 <span>Sort by</span>
                             </div>
+
                             <div class="btns">
+                            
                                 <div>
-                                <span>Recently added</span>
+                                    <span>Time</span>
                                 </div>
+
+                                <div id="tempo">
+                                    <span>Tempo</span>
+                                    <div id="tempo-dropdown">
+                                        <div class="btns">
+                                            <div>
+                                                <span>Slow</span>
+                                            </div>
+                                            <div>
+                                                <span>Medium</span>
+                                            </div>
+                                            <div>
+                                                <span>Fast</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>    
+
                         </div>
+
                     </button>
                 </div>
 

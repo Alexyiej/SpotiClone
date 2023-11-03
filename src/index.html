@@ -250,10 +250,6 @@
 
     }
 
-    function selectImage(){
-
-    }
-
     function handleScroll() {
         const header = document.getElementById("header-playlist");
         const desc = document.getElementById("sticky-desc");
@@ -264,15 +260,12 @@
         if (scroll > 275){  header.style.background = "var(--header)" }
         else{ header.style.background = "none" }
 
-        // desc
         if (desc === null) return
 
         if (scroll > 365){ desc.classList.add("sticky") }
         else{ desc.classList.remove("sticky") }
     }
     
-
-
     async function onLoad() {                                                                                     
         const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
         const playlistModal = document.getElementById("playlist-modal");                                                                                        
@@ -303,7 +296,5 @@
         getLiked()
         handlePlaylistView()
 
-        
-        
     } 
 </script>

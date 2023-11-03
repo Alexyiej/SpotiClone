@@ -2,6 +2,7 @@ function createSong(song) {
     const playlistView = document.getElementById('songs-wrapper');
     const songElement = document.createElement('article');
     const [unliked, liked] = changeIcon(song)
+
     songElement.className = "song";
     songElement.innerHTML = `
         <div>
@@ -135,11 +136,9 @@ function mapLists(songs) {
                 mappedSongs.push({ ...song, liked: false });
             }
         }
-    console.log(mappedSongs)
 
         return mappedSongs;
     } else {
-    console.log(mappedSongs)
 
         return songs.map(song => ({ ...song, liked: false }));
     }
