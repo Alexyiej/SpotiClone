@@ -2,7 +2,9 @@ function createSong(song) {
     const playlistView = document.getElementById('songs-wrapper');
     const songElement = document.createElement('article');
     const [unliked, liked] = changeIcon(song)
-
+     
+    let songDuration = convertDurationTime(song.duration);
+    
     songElement.className = "song";
     songElement.innerHTML = `
         <div>
@@ -25,7 +27,7 @@ function createSong(song) {
             <div>
                 <i class="fa-regular fa-heart like-song" style="display: ${unliked}"></i>
                 <i class="fa-solid fa-heart liked-song" style="display: ${liked}"></i>
-                <span class="desc-big">4.29</span>
+                <span class="desc-big">${songDuration}</span>
             </div>
         </div>
     `;
@@ -56,6 +58,8 @@ function handleFavSongs(id){
 }
 
 function createHtmlSongs(argSongs) {
+    const songsWrapper = document.getElementById('songs-wrapper');
+    songsWrapper.innerHTML = '';
     for (song of argSongs) {
         createSong(song);
     }

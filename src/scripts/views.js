@@ -65,7 +65,9 @@ function showHomeView(mainContent){
 function showPlaylistView(mainContent, playlist, type) {
     if (playlist.songs){ var playlistLenght = playlist.songs.length; }
     if (playlist.songs){ var playlistDuration = ((playlist.songs.reduce((acc, song) => acc + song.duration, 0)) / 60 ).toFixed(2); }
-    
+    const filtersBtnName = 'Custom Order'
+     
+
     mainContent.innerHTML = `
     <article id="playlist-view">
         <container class="wrapper">
@@ -97,7 +99,7 @@ function showPlaylistView(mainContent, playlist, type) {
                 <div>
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <button id="filters">
-                        <span>Custom Order <i class="fa-solid fa-caret-down"></i></span>
+                        <span id="filters-btn-name">${filtersBtnName}<i class="fa-solid fa-caret-down"></i></span>
                         
                         <div id="filters-dropdown">
                             <div class="title">
@@ -105,22 +107,25 @@ function showPlaylistView(mainContent, playlist, type) {
                             </div>
 
                             <div class="btns">
-                            
-                                <div>
+                                <div id="reset-all">
+                                    <span>Custom Order</span>
+                                </div>
+
+                                <div id="time-sort-btn">
                                     <span>Time</span>
                                 </div>
 
                                 <div id="tempo">
                                     <span>Tempo</span>
-                                    <div id="tempo-dropdown">
+                                    <div id="tempo-dropdown" style="display: none;">
                                         <div class="btns">
-                                            <div>
+                                            <div id="tempo-slow">
                                                 <span>Slow</span>
                                             </div>
-                                            <div>
+                                            <div id="tempo-medium">
                                                 <span>Medium</span>
                                             </div>
-                                            <div>
+                                            <div id="tempo-fast">
                                                 <span>Fast</span>
                                             </div>
 
@@ -216,7 +221,9 @@ function showPlaylistView(mainContent, playlist, type) {
     
     handleScroll()
     handleFavSongs(playlist.id)
-    handleFiltersDropDown()
+
+    handleFilters(playlist)
+
 }
 
 function whiteBg(wrapper, state){
@@ -261,10 +268,28 @@ function createImage(songs){
     return collage
 }
 
+function handleFilters(playlist){
+    // dropdowns
+    handleFiltersDropDown("filters", "filters-dropdown")
+    handleFiltersDropDown("tempo", "tempo-dropdown")
+    
+    // tempo sort
+    handleTempoClick("tempo-slow", playlist)
+    handleTempoClick("tempo-medium", playlist)
+    handleTempoClick("tempo-fast", playlist)
 
-function handleFiltersDropDown() {
-    const btn = document.getElementById("filters");
-    const dropdown = document.getElementById("filters-dropdown");
+    // duration sort
+    handleDurationClick("time-sort-btn", playlist)
+
+    // reset
+    resetFilters("reset-all", playlist)
+}
+
+
+
+function handleFiltersDropDown(btnElement, dropdownElement) {
+    const btn = document.getElementById(btnElement);
+    const dropdown = document.getElementById(dropdownElement);
     let isOpen = false;
 
     btn.addEventListener("click", () => {
@@ -280,4 +305,92 @@ function handleFiltersDropDown() {
     dropdown.addEventListener("click", (event) => {
         event.stopPropagation(); 
     });
+}
+
+function resetFilters(element, playlist){
+    const filtersBtn = document.getElementById("filters-btn-name");
+    const btn = document.getElementById(element);
+
+    btn.addEventListener("click", () => {
+        playlist.songs.sort((a, b) => a.id - b.id)
+        createHtmlSongs(mapLists(playlist.songs));
+        handleFavSongs(playlist.id);
+
+        filtersBtn.innerHTML = `Custom Order<i class='fa-solid fa-caret-down'></i>`;
+    });
+
+}
+
+
+function handleTempoClick(tempo, playlist){
+    const clickedElement = document.getElementById(tempo);
+    clickedElement.addEventListener("click", () => {
+        sortByTempo(tempo, playlist.songs, playlist.id)
+    });
+}
+
+
+function handleDurationClick(element, playlist){
+    const clickedElement = document.getElementById(element);
+    let ascOrder = true;
+    clickedElement.addEventListener("click", () => {
+        sortByDuration(playlist.songs, playlist.id, ascOrder)
+        ascOrder = !ascOrder
+    });
+}
+
+function convertDurationTime(duration){
+    let minutes = Math.floor(duration / 60);
+    let seconds = duration - minutes * 60;
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
+    }
+    return `${minutes}:${seconds}`;
+
+}
+
+function sortByTempo(tempo, playlistSongs, id) {
+    const mediumBpms = 110;
+    const fastBpm = 130;
+    const tempoLowerCase = tempo.toLowerCase(); 
+    const filtersBtn = document.getElementById("filters-btn-name");
+
+    const tempoMap = {
+        "tempo-slow": { filter: song => song.bpm < mediumBpms, label: "Tempo Slow" },
+        "tempo-medium": { filter: song => song.bpm >= mediumBpms && song.bpm <= fastBpm, label: "Tempo Medium" },
+        "tempo-fast": { filter: song => song.bpm > fastBpm, label: "Tempo Fast" }
+    };
+
+    function updatePlaylist(filterFunc, label) {
+        const filteredSongs = playlistSongs.filter(filterFunc);
+        createHtmlSongs(mapLists(filteredSongs));
+        handleFavSongs(id);
+        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
+    }
+
+    if (tempoMap[tempoLowerCase]) {
+        updatePlaylist(tempoMap[tempoLowerCase].filter, tempoMap[tempoLowerCase].label);
+    } else {
+        console.log("Nieprawidłowe tempo");
+    }
+}
+
+
+function sortByDuration(playlistSongs, id, ascOrder){
+    const filtersBtn = document.getElementById("filters-btn-name");
+
+    if (ascOrder){
+        let label = "Time Asc"
+        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
+
+        playlistSongs.sort((a, b) => a.duration - b.duration)
+    } else if (!ascOrder){
+        let label = "Time Desc"
+        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
+
+        playlistSongs.sort((a, b) => b.duration - a.duration)
+    }
+
+    createHtmlSongs(mapLists(playlistSongs));
+    handleFavSongs(id);
 }

@@ -330,20 +330,20 @@
 	-moz-box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, .5);
 	box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, .5);
 }
-#filters-dropdown .title{
+#filters-dropdown > .title{
 	width: 100%;
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
 	padding: 5px;
 }
-#filters-dropdown .title span{
+#filters-dropdown > .title span{
 	font-size: .75rem;
 	opacity: .6;
 	font-weight: 700;
 }
 
-#filters-dropdown .btns{
+#filters-dropdown > .btns{
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -351,7 +351,7 @@
 	width: 100%;
 
 }
-#filters-dropdown .btns div{
+#filters-dropdown > .btns > div{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -371,4 +371,48 @@
 	font-weight: 530;
 	letter-spacing: .6px;
 	padding: 5px;
+}
+
+#tempo-dropdown{
+	flex-direction: column;
+	width: 100px;
+	justify-content: flex-start;
+	align-items: flex-start;
+	position: absolute;
+	left: -110px;
+	top: 70px;
+	border-radius: 8px;
+	background-color: var(--context-menu);
+	padding: 5px;
+	right: 0;
+	gap: 10px;
+	-webkit-box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, .5);
+	-moz-box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, .5);
+	box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, .5);
+}
+
+#tempo-dropdown .btns > div{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 35px;
+	width: 100px;
+	border-radius: 2px;
+	&&:hover{
+		cursor: pointer;
+		transition: .2s;
+		background-color: var(--bg-hover);
+	}
+}
+
+#tempo-dropdown .btns div span{
+	font-size: .85rem;
+	opacity: .85;
+	font-weight: 530;
+	letter-spacing: .6px;
+	padding: 5px;
+}
+
+.btns > #reset-all{
+	border-bottom: .9px solid rgba(255, 255, 255, .1);
 }
