@@ -380,7 +380,7 @@
 	align-items: flex-start;
 	position: absolute;
 	left: -110px;
-	top: 70px;
+	top: 160px;
 	border-radius: 8px;
 	background-color: var(--context-menu);
 	padding: 5px;

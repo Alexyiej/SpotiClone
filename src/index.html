@@ -250,6 +250,15 @@
 
     }
 
+    function addSongsDateAdded(){
+        const songsWithDateAdded = songs.map(song =>{
+            let dateAdded = getRandomDate()
+            return { ...song, dateAdded };
+        })
+        
+        return songsWithDateAdded
+
+    }
     function handleScroll() {
         const header = document.getElementById("header-playlist");
         const desc = document.getElementById("sticky-desc");
@@ -270,12 +279,15 @@
         const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
         const playlistModal = document.getElementById("playlist-modal");                                                                                        
         const view = document.getElementById("main-content");                                                                                       
-        const homeBtn = document.getElementById("home-btn");                                                                                        
+        const homeBtn = document.getElementById("home-btn");          
 
-        await fetchAll()                
+        await fetchAll()            
+        songs = addSongsDateAdded()
+        
         loadPlaylists()
 
         generateBgColor();
+
         handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
         handlePlaylistContextMenu(playlistsWrapper)
 
@@ -295,6 +307,5 @@
         wrapper.addEventListener("scroll", handleScroll); 
         getLiked()
         handlePlaylistView()
-
     } 
 </script>

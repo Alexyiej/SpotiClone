@@ -66,7 +66,7 @@ function showPlaylistView(mainContent, playlist, type) {
     if (playlist.songs){ var playlistLenght = playlist.songs.length; }
     if (playlist.songs){ var playlistDuration = ((playlist.songs.reduce((acc, song) => acc + song.duration, 0)) / 60 ).toFixed(2); }
     const filtersBtnName = 'Custom Order'
-     
+
 
     mainContent.innerHTML = `
     <article id="playlist-view">
@@ -112,7 +112,10 @@ function showPlaylistView(mainContent, playlist, type) {
                                 </div>
 
                                 <div id="time-sort-btn">
-                                    <span>Time</span>
+                                    <span>Duration</span>
+                                </div>
+                                <div id="date-sort-btn">
+                                    <span>Date Added</span>
                                 </div>
 
                                 <div id="tempo">
@@ -148,9 +151,9 @@ function showPlaylistView(mainContent, playlist, type) {
                             <span>Title</span>
                         </div>
                         <div>
-                            <span>Album</span>
-                            <span>Date added</span>
-                            <span><i class="fa-regular fa-clock"></i></span>
+                            <span id="album-sort">Album</span>
+                            <span id="date-sort">Date added</span>
+                            <span id="duration-sort"><i class="fa-regular fa-clock"></i></span>
                         </div>
                     </div>
                 </div>
@@ -279,7 +282,15 @@ function handleFilters(playlist){
     handleTempoClick("tempo-fast", playlist)
 
     // duration sort
-    handleDurationClick("time-sort-btn", playlist)
+    handleOrderSort("time-sort-btn", playlist, sortByDuration)
+    handleOrderSort("duration-sort", playlist, sortByDuration)
+
+    // date added sort
+    handleOrderSort("date-sort-btn", playlist, sortByDateAdded)
+    handleOrderSort("date-sort", playlist, sortByDateAdded)
+
+    // alphabet sort
+    handleOrderSort("album-sort", playlist, sortByAlbum)
 
     // reset
     resetFilters("reset-all", playlist)
@@ -321,7 +332,6 @@ function resetFilters(element, playlist){
 
 }
 
-
 function handleTempoClick(tempo, playlist){
     const clickedElement = document.getElementById(tempo);
     clickedElement.addEventListener("click", () => {
@@ -329,24 +339,13 @@ function handleTempoClick(tempo, playlist){
     });
 }
 
-
-function handleDurationClick(element, playlist){
+function handleOrderSort(element, playlist, sortFunc){
     const clickedElement = document.getElementById(element);
     let ascOrder = true;
     clickedElement.addEventListener("click", () => {
-        sortByDuration(playlist.songs, playlist.id, ascOrder)
+        sortFunc(playlist.songs, playlist.id, ascOrder)
         ascOrder = !ascOrder
     });
-}
-
-function convertDurationTime(duration){
-    let minutes = Math.floor(duration / 60);
-    let seconds = duration - minutes * 60;
-    if (seconds < 10) {
-        seconds = `0${seconds}`;
-    }
-    return `${minutes}:${seconds}`;
-
 }
 
 function sortByTempo(tempo, playlistSongs, id) {
@@ -380,15 +379,55 @@ function sortByDuration(playlistSongs, id, ascOrder){
     const filtersBtn = document.getElementById("filters-btn-name");
 
     if (ascOrder){
-        let label = "Time Asc"
+        let label = "Duration Asc"
         filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
 
         playlistSongs.sort((a, b) => a.duration - b.duration)
     } else if (!ascOrder){
-        let label = "Time Desc"
+        let label = "Duration Desc"
         filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
 
         playlistSongs.sort((a, b) => b.duration - a.duration)
+    }
+
+    createHtmlSongs(mapLists(playlistSongs));
+    handleFavSongs(id);
+}
+
+
+function sortByDateAdded(playlistSongs, id, ascOrder) {
+    const filtersBtn = document.getElementById("filters-btn-name");
+
+    if (ascOrder){
+        let label = "Date Asc"
+        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
+
+        playlistSongs.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+
+    } else if (!ascOrder){
+        let label = "Date Desc"
+        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
+    
+        playlistSongs.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded))
+    
+    }
+
+    createHtmlSongs(mapLists(playlistSongs));
+    handleFavSongs(id);
+}
+
+function sortByAlbum(playlistSongs, id, ascOrder){
+    const filtersBtn = document.getElementById("filters-btn-name");
+
+    if (ascOrder){
+        let label = "Album A-Z"
+        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
+        playlistSongs.sort((a, b) => a.album.localeCompare(b.album));
+    }
+    else if (!ascOrder){
+        let label = "Album Z-A"
+        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
+        playlistSongs.sort((a, b) => b.album.localeCompare(a.album));
     }
 
     createHtmlSongs(mapLists(playlistSongs));

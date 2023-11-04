@@ -22,7 +22,7 @@ function createSong(song) {
                 <span class="desc-big">${song.album}</span>
             </div>
             <div>
-                <span class="desc-big">28 Oct 2022</span>
+                <span class="desc-big">${song.dateAdded}</span>
             </div>
             <div>
                 <i class="fa-regular fa-heart like-song" style="display: ${unliked}"></i>
@@ -71,7 +71,6 @@ function removeSong(playlistId, songElement){
 
     playlistToRemoveFrom.songs = playlistToRemoveFrom.songs.filter(song => song.id !== songToRemove.id)
     localStorage.setItem('playlists', JSON.stringify(playlists))
-    console.log(playlistToRemoveFrom)
     reloadView(playlistId)
 }
 
@@ -161,4 +160,33 @@ function addToPlaylist(songElement, playlistId){
     playlist.songs.push(songToAdd)
     localStorage.setItem('playlists', JSON.stringify(playlists))
 
+}
+
+function convertDurationTime(duration){
+    let minutes = Math.floor(duration / 60);
+    let seconds = duration - minutes * 60;
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
+    }
+    return `${minutes}:${seconds}`;
+
+}
+
+function getRandomDate(){ 
+    const months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", 
+        "Oct", "Nov", "Dec"
+    ]
+
+    const start = new Date(2023, 0, 1);
+    const end = new Date();
+    const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+
+    const day = randomDate.getDate();
+    const monthIndex = randomDate.getMonth();
+    const year = randomDate.getFullYear();
+
+    const monthName = months[monthIndex];
+
+    return `${day} ${monthName} ${year}`;
 }
