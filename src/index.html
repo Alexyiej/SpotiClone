@@ -282,37 +282,36 @@
         else{ desc.classList.remove("sticky") }
     }
     
-    async function onLoad() {                                                                                     
-        const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
-        const playlistModal = document.getElementById("playlist-modal");                                                                                        
-        const view = document.getElementById("main-content");                                                                                       
-        const homeBtn = document.getElementById("home-btn");          
+    const playlistsWrapper = document.querySelector(".playlists-wrapper");                                                                                      
+    const playlistModal = document.getElementById("playlist-modal");                                                                                        
+    const view = document.getElementById("main-content");                                                                                       
+    const homeBtn = document.getElementById("home-btn");          
 
-        await fetchAll()            
-        songs = addSongsDateAdded()
-        
-        loadPlaylists()
+    await fetchAll()            
+    songs = addSongsDateAdded()
+    
+    loadPlaylists()
 
-        generateBgColor();
+    generateBgColor();
 
-        handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
-        handlePlaylistContextMenu(playlistsWrapper)
+    handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
+    handlePlaylistContextMenu(playlistsWrapper)
 
-        let currentView = getLastView()
-        if (currentView === null) currentView = startView
+    let currentView = getLastView()
+    if (currentView === null) currentView = startView
 
-        homeBtn.addEventListener('click', function() {                                                                                      
-            showHomeView(view, currentView);                                                                                     
-        });     
+    homeBtn.addEventListener('click', function() {                                                                                      
+        showHomeView(view, currentView);                                                                                     
+    });     
 
-        if (playlists.length === 0) {
-            handleCreateClick(playlists, songs)
-            showHomeView(view, currentView)
-        } 
-
-        const wrapper = document.querySelector(".main");
-        wrapper.addEventListener("scroll", handleScroll); 
-        getLiked()
-        handlePlaylistView()
+    if (playlists.length === 0) {
+        handleCreateClick(playlists, songs)
+        showHomeView(view, currentView)
     } 
+
+    const wrapper = document.querySelector(".main");
+    wrapper.addEventListener("scroll", handleScroll); 
+    getLiked()
+    handlePlaylistView()
+    console.log("hjl;dfgghjldshjl;fghjl;")
 </script>
