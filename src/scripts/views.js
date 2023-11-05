@@ -97,7 +97,9 @@ function showPlaylistView(mainContent, playlist, type) {
                 </div>
 
                 <div>
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i id="mg-glass" class="fa-solid fa-magnifying-glass"></i>
+                    <input id="filters-search-input"  type="text" placeholder="Search in playlist">
+
                     <button id="filters">
                         <span id="filters-btn-name">${filtersBtnName}<i class="fa-solid fa-caret-down"></i></span>
                         
@@ -117,7 +119,12 @@ function showPlaylistView(mainContent, playlist, type) {
                                 <div id="date-sort-btn">
                                     <span>Date Added</span>
                                 </div>
-
+                                <div id="album-sort-btn">
+                                    <span>Album</span>
+                                </div>
+                                <div id="songs-sort-btn">
+                                    <span>Title</span>
+                                </div>
                                 <div id="tempo">
                                     <span>Tempo</span>
                                     <div id="tempo-dropdown" style="display: none;">
@@ -145,18 +152,18 @@ function showPlaylistView(mainContent, playlist, type) {
 
             </div>
             <div id="sticky-desc">
-                    <div class="songs-title">
-                        <div>
-                            <span>#</span>
-                            <span>Title</span>
-                        </div>
-                        <div>
-                            <span id="album-sort">Album</span>
-                            <span id="date-sort">Date added</span>
-                            <span id="duration-sort"><i class="fa-regular fa-clock"></i></span>
-                        </div>
+                <div class="songs-title">
+                    <div>
+                        <span id="id-sort">#</span>
+                        <span id="title-sort">Title</span>
+                    </div>
+                    <div>
+                        <span id="album-sort">Album</span>
+                        <span id="date-sort">Date added</span>
+                        <span id="duration-sort"><i class="fa-regular fa-clock"></i></span>
                     </div>
                 </div>
+            </div>
             <container id="songs-container">
                 
                 <div id="songs-wrapper">
@@ -224,8 +231,8 @@ function showPlaylistView(mainContent, playlist, type) {
     
     handleScroll()
     handleFavSongs(playlist.id)
-
     handleFilters(playlist)
+    handleSearch("filters-search-input", ".song")
 
 }
 
@@ -271,165 +278,3 @@ function createImage(songs){
     return collage
 }
 
-function handleFilters(playlist){
-    // dropdowns
-    handleFiltersDropDown("filters", "filters-dropdown")
-    handleFiltersDropDown("tempo", "tempo-dropdown")
-    
-    // tempo sort
-    handleTempoClick("tempo-slow", playlist)
-    handleTempoClick("tempo-medium", playlist)
-    handleTempoClick("tempo-fast", playlist)
-
-    // duration sort
-    handleOrderSort("time-sort-btn", playlist, sortByDuration)
-    handleOrderSort("duration-sort", playlist, sortByDuration)
-
-    // date added sort
-    handleOrderSort("date-sort-btn", playlist, sortByDateAdded)
-    handleOrderSort("date-sort", playlist, sortByDateAdded)
-
-    // alphabet sort
-    handleOrderSort("album-sort", playlist, sortByAlbum)
-
-    // reset
-    resetFilters("reset-all", playlist)
-}
-
-
-
-function handleFiltersDropDown(btnElement, dropdownElement) {
-    const btn = document.getElementById(btnElement);
-    const dropdown = document.getElementById(dropdownElement);
-    let isOpen = false;
-
-    btn.addEventListener("click", () => {
-        if (isOpen) {
-            dropdown.style.display = "none";
-            isOpen = false;
-        } else {
-            dropdown.style.display = "flex";
-            isOpen = true;
-        }
-    });
-
-    dropdown.addEventListener("click", (event) => {
-        event.stopPropagation(); 
-    });
-}
-
-function resetFilters(element, playlist){
-    const filtersBtn = document.getElementById("filters-btn-name");
-    const btn = document.getElementById(element);
-
-    btn.addEventListener("click", () => {
-        playlist.songs.sort((a, b) => a.id - b.id)
-        createHtmlSongs(mapLists(playlist.songs));
-        handleFavSongs(playlist.id);
-
-        filtersBtn.innerHTML = `Custom Order<i class='fa-solid fa-caret-down'></i>`;
-    });
-
-}
-
-function handleTempoClick(tempo, playlist){
-    const clickedElement = document.getElementById(tempo);
-    clickedElement.addEventListener("click", () => {
-        sortByTempo(tempo, playlist.songs, playlist.id)
-    });
-}
-
-function handleOrderSort(element, playlist, sortFunc){
-    const clickedElement = document.getElementById(element);
-    let ascOrder = true;
-    clickedElement.addEventListener("click", () => {
-        sortFunc(playlist.songs, playlist.id, ascOrder)
-        ascOrder = !ascOrder
-    });
-}
-
-function sortByTempo(tempo, playlistSongs, id) {
-    const mediumBpms = 110;
-    const fastBpm = 130;
-    const tempoLowerCase = tempo.toLowerCase(); 
-    const filtersBtn = document.getElementById("filters-btn-name");
-
-    const tempoMap = {
-        "tempo-slow": { filter: song => song.bpm < mediumBpms, label: "Tempo Slow" },
-        "tempo-medium": { filter: song => song.bpm >= mediumBpms && song.bpm <= fastBpm, label: "Tempo Medium" },
-        "tempo-fast": { filter: song => song.bpm > fastBpm, label: "Tempo Fast" }
-    };
-
-    function updatePlaylist(filterFunc, label) {
-        const filteredSongs = playlistSongs.filter(filterFunc);
-        createHtmlSongs(mapLists(filteredSongs));
-        handleFavSongs(id);
-        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
-    }
-
-    if (tempoMap[tempoLowerCase]) {
-        updatePlaylist(tempoMap[tempoLowerCase].filter, tempoMap[tempoLowerCase].label);
-    } else {
-        console.log("Nieprawidłowe tempo");
-    }
-}
-
-
-function sortByDuration(playlistSongs, id, ascOrder){
-    const filtersBtn = document.getElementById("filters-btn-name");
-
-    if (ascOrder){
-        let label = "Duration Asc"
-        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
-
-        playlistSongs.sort((a, b) => a.duration - b.duration)
-    } else if (!ascOrder){
-        let label = "Duration Desc"
-        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
-
-        playlistSongs.sort((a, b) => b.duration - a.duration)
-    }
-
-    createHtmlSongs(mapLists(playlistSongs));
-    handleFavSongs(id);
-}
-
-
-function sortByDateAdded(playlistSongs, id, ascOrder) {
-    const filtersBtn = document.getElementById("filters-btn-name");
-
-    if (ascOrder){
-        let label = "Date Asc"
-        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
-
-        playlistSongs.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
-
-    } else if (!ascOrder){
-        let label = "Date Desc"
-        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
-    
-        playlistSongs.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded))
-    
-    }
-
-    createHtmlSongs(mapLists(playlistSongs));
-    handleFavSongs(id);
-}
-
-function sortByAlbum(playlistSongs, id, ascOrder){
-    const filtersBtn = document.getElementById("filters-btn-name");
-
-    if (ascOrder){
-        let label = "Album A-Z"
-        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
-        playlistSongs.sort((a, b) => a.album.localeCompare(b.album));
-    }
-    else if (!ascOrder){
-        let label = "Album Z-A"
-        filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
-        playlistSongs.sort((a, b) => b.album.localeCompare(a.album));
-    }
-
-    createHtmlSongs(mapLists(playlistSongs));
-    handleFavSongs(id);
-}

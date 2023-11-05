@@ -197,6 +197,12 @@
     height: 10%;
     display: flex;
 }
+#sticky-desc > div > div > span:hover{
+	cursor: pointer;
+	transition: .2s;
+	opacity: 1;
+}
+
 
 .sticky {
     background-color: #1a1a1a;
@@ -321,7 +327,7 @@
 	width: 100%;
 	background-color: var(--context-menu);
 	z-index: 123;
-	border-radius: 8px;
+	border-radius: 8px 8px 8px 8px;
 	top: 20px;
 	padding: 5px;
 	right: 0;
@@ -380,8 +386,8 @@
 	align-items: flex-start;
 	position: absolute;
 	left: -110px;
-	top: 160px;
-	border-radius: 8px;
+	top: 235px;
+	border-radius: 8px 0 8px 8px;
 	background-color: var(--context-menu);
 	padding: 5px;
 	right: 0;
@@ -415,4 +421,72 @@
 
 .btns > #reset-all{
 	border-bottom: .9px solid rgba(255, 255, 255, .1);
+}
+
+
+
+@keyframes slideIn {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 170px; 
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        width: 170px;
+        opacity: 1;
+        margin-left: 0; 
+    }
+    to {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+#filters-search-input {
+    width: 0;
+    opacity: 0;
+    display: none;
+	font-size: .85rem;
+	opacity: 1;
+	font-weight: 530;
+	letter-spacing: .6px;
+	background-color: rgba(255,255,255, .2);
+	border-radius: 2px;
+	border: none;
+	height: 20px;
+	padding: 5px;
+	color: #ffff;
+	animation: slideOut 0.3s ease forwards;
+
+	&&:focus{
+		outline: none;
+	}
+	&::placeholder {
+        color: #ffffff;
+		font-size: .75rem;
+		opacity: .7;
+		font-weight: 620;
+		letter-spacing: .6px;
+    }
+}
+
+#filters-search-input.active {
+    animation: slideIn 0.3s ease forwards;
+}
+
+#mg-glass{
+	position: absolute;
+	right: 180px;
+	&&:hover{
+		cursor: pointer;
+		opacity: 1;
+		transition: .2s;
+		transform: scale(1.025);
+	}
 }
