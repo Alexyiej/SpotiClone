@@ -228,7 +228,7 @@
     const songsUrl = "/assets/jsons/songs.json"
     const genresUrl = "/assets/jsons/genres.json"
 
-    let fetchedSongs = []
+    let songs = []
     let genres = []
     let playlists = []
     let likedSongs = []
@@ -252,14 +252,14 @@
     }
 
     async function fetchAll(){
-        await fetchData(fetchedSongs, songsUrl)
+        await fetchData(songs, songsUrl)
         await fetchData(genres, genresUrl)
 
     }
 
 
     function addSongsDateAdded(){
-        const songsWithDateAdded = fetchedSongs.map(song =>{
+        const songsWithDateAdded = songs.map(song =>{
             let dateAdded = getRandomDate()
             return { ...song, dateAdded };
         })
@@ -291,7 +291,7 @@
 
     async function onload(){ 
         await fetchAll() 
-        let songs = addSongsDateAdded()
+        songs = addSongsDateAdded()
         loadPlaylists()
     
         generateBgColor();
