@@ -51,51 +51,45 @@ function handleContainerContextMenu(playlistModal, playlistElement, songs) {
     hideContextMenu(modal, sectionWrapper)
 }
 
-function handleEditMenu(playlist) {
-    const editModal = document.getElementById("playlist-edit-box");
-    const editBtn = document.getElementById("edit-btn");
-    const scndBtn = document.getElementById("edit-btnNd");
-    const wrapper = document.getElementById("page-tint");
+function handleEditMenu(element, modal, wrapper, playlistObject) {
     const saveBtn = document.getElementById("save-btn");
-    
-    console.log(playlist.id)
-
-    editBtn.addEventListener("click", function(event) {
-        event.preventDefault();
-        editModal.style.display = "flex";
-        wrapper.style.display = "flex";
-
-        event.stopPropagation(); 
-    });
-    
-    scndBtn.addEventListener("click", function(event) {
-        event.preventDefault();
-        editModal.style.display = "flex";
-        wrapper.style.display = "flex";
-
-        event.stopPropagation(); 
-    });
-
-
-    saveBtn.addEventListener("click", function(event) {
-        handleEdit(playlist, editModal, wrapper); 
-    });
-
-
-}
-
-function handleEvent(element, modal, wrapper){
     const closeIcon = document.getElementById("close-icon");
-    element.addEventListener("click", function(event) {
+
+    function openMenu(event) {
         event.preventDefault();
+        event.stopPropagation();
 
         modal.style.display = "flex";
         wrapper.style.display = "flex";
 
-        event.stopPropagation(); 
-    });
-    hideEditMenu(wrapper, modal, closeIcon)
-    
+        saveBtn.addEventListener("click", saveChanges);
+        hideEditMenu(wrapper, modal, closeIcon);
+    }
+
+    function saveChanges(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const input = document.getElementById("playlistInput");
+        const newName = input.value
+        input.value = "";
+
+        const playlistToEdit = playlists.find(playlist => playlist.id === playlistObject.id);
+
+        if (newName === ""){return}
+        if (playlistToEdit.id !== "L2I37"){playlistToEdit.name = newName;}
+        localStorage.setItem("playlists", JSON.stringify(playlists));
+
+        showPlaylistView(document.getElementById("main-content"), playlistToEdit, "playlist");
+        loadPlaylists()
+        
+        saveBtn.removeEventListener("click", saveChanges);
+
+        modal.style.display = "none";
+        wrapper.style.display = "none";
+    }
+
+    element.addEventListener("click", openMenu);
 }
 
 function hideEditMenu(wrapper, editModal, closeIcon){
@@ -114,7 +108,7 @@ function hideEditMenu(wrapper, editModal, closeIcon){
 
 }
 
-// create / hide
+
 function createContextMenu(wrapper, contextmenu, event){
     contextmenu.style.display = "flex";
     contextmenu.style.top = event.clientY + "px";
@@ -132,23 +126,60 @@ function hideContextMenu(contextMenu, wrapper){
 
 
 function handleSongContextMenu(event, song, playlistId){
-    const contextMenu = document.getElementById("song-modal");
-    const wrapper = document.getElementById("main-content");
-    createContextMenu(wrapper, contextMenu, event)
+    const songModal = document.getElementById("song-modal");
+    const wrapper = document.getElementById("songs-wrapper");
 
-    const addToPlaylistBtn = document.getElementById("add-to-playlist-btn");
-    const removeBtn = document.getElementById("remove-from-playlist-btn");
+    createContextMenu(wrapper, songModal, event)
+    hideContextMenu(songModal, wrapper)
+
+    function handleAddModal(playlistId){
+        const addToPlaylistBtn = document.getElementById("add-to-playlist-btn");
+        const playlistCnt = document.getElementById("playlist-container-modal");
     
-    addToPlaylistBtn.addEventListener("click", function(event) {
-        addToPlaylist(song, "69btk8m5w")
-        hideContextMenu(contextMenu, wrapper)
-    });
+        addToPlaylistBtn.addEventListener("mouseover", function(event){
+            event.preventDefault();
+            playlistCnt.style.display = "flex";
+        });
+    
+        addToPlaylistBtn.addEventListener("mouseout", function(event){
+            event.preventDefault();
+            playlistCnt.style.display = "none";
+            
+    
+        });
+        playlistCnt.innerHTML = "";
 
-    removeBtn.addEventListener("click", function(event) {
-        removeSong(playlistId, song)
-        hideContextMenu(contextMenu, wrapper)
-    });
+        for (playlist of playlists){
+            if (playlist.id !== playlistId && playlist.id !== "L2I37"){
+                let modalItem = document.createElement("div");
+                modalItem.innerHTML = `<span>${playlist.name}</span>`;
+                modalItem.dataset.id = playlist.id;
+                playlistCnt.appendChild(modalItem);
+            }
+    
+        }
+        modalItems = playlistCnt.querySelectorAll("div");
+        modalItems.forEach(item => {
+            item.addEventListener("click", function(event){
+                event.preventDefault();
+                console.log(item.dataset.id)
+                console.log(song)
+                addToPlaylist(song, item.dataset.id)
+            })
+        })
+    
+    }
 
-    hideContextMenu(contextMenu, wrapper)
-
+    function handleDelete(playlistId){ 
+        const deleteButton = document.getElementById("remove-from-playlist-btn")
+        
+        deleteButton.addEventListener("click", function(event){
+            removeSong(playlistId, song)
+            songModal.style.display = "none";
+            deleteButton.removeEventListener("click", removeSong)
+        });
+        
+    }
+    handleDelete(playlistId)
+    handleAddModal(playlistId)
 }

@@ -1,14 +1,13 @@
-function createSong(song) {
+function createSong(song, index) {
     const playlistView = document.getElementById('songs-wrapper');
     const songElement = document.createElement('article');
     const [unliked, liked] = changeIcon(song)
      
     let songDuration = convertDurationTime(song.duration);
-    
     songElement.className = "song";
     songElement.innerHTML = `
         <div>
-            <span class="desc-big song-index">${song.id}</span>
+            <span class="desc-big song-index">${index}</span>
             <div class="song-icon-ctn">
                 <img src="${song.coverUrl}" alt="">
             </div>
@@ -19,10 +18,10 @@ function createSong(song) {
         </div>
         <div>
             <div>
-                <span class="desc-big">${song.album}</span>
+                <span class="desc-big desc-album-name" >${song.album}</span>
             </div>
             <div>
-                <span class="desc-big">${song.dateAdded}</span>
+                <span class="desc-big desc-dateAdded" >${song.dateAdded}</span>
             </div>
             <div>
                 <i class="fa-regular fa-heart like-song" style="display: ${unliked}"></i>
@@ -37,7 +36,6 @@ function createSong(song) {
 
 function handleFavSongs(id){
     const songs = document.querySelectorAll('.song')
-    const playlistView = document.getElementById('songs-wrapper')
 
     songs.forEach(song => {
         song.addEventListener('contextmenu', function(event){
@@ -60,8 +58,10 @@ function handleFavSongs(id){
 function createHtmlSongs(argSongs) {
     const songsWrapper = document.getElementById('songs-wrapper');
     songsWrapper.innerHTML = '';
+    let index = 1 
     for (song of argSongs) {
-        createSong(song);
+        createSong(song, index);
+        index++
     }
 }
 

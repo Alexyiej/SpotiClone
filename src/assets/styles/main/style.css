@@ -24,8 +24,7 @@ main{
 }
 
 main > div > aside{
-	width: 22.5%;
-	min-width: 400px;
+	width: 400px;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -215,7 +214,7 @@ main > div > .main{
 	position: relative;
 	overflow-y: auto;
 	overflow-x: hidden;
-	min-height: calc(100vh - 100px)
+	min-height: calc(100vh - 20px)
 	
 }
 

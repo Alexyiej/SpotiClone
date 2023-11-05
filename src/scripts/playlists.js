@@ -25,10 +25,9 @@ function handleCreateClick(playlists, songs) {
 
         playListIndex++;
         localStorage.setItem("playlists-index", playListIndex)
-        playlist.songs = songs
+        playlist.songs = songs.slice(10, 20);
 
     }
-
     playlists.push(playlist);
     createPlaylists(playlist)
 
@@ -74,14 +73,21 @@ function createPlaylists(playlist) {
     `;
 
     playlistsWrapper.appendChild(playlistElement);
-    if (playlist.id !== "L2I37"){playlistElement.querySelector(".playlist-icon").appendChild(albumCover);}
+    if (playlist.id !== "L2I37" && playlist.songs.length > 4){playlistElement.querySelector(".playlist-icon").appendChild(albumCover);}
     else if (playlist.id === "L2I37"){playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="${playlist.image_url}">`;}
+    else if (playlist.length < 4 && playlist.length > 0){playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="${playlist.songs[0].coverUrl}">`;}
+
+    else { playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="/src/assets/images/covers/basic-cover.png">`; }
 }
 
+function editPlaylist(playlist){
+    console.log(playlist)
+}
 
 function handlePlaylistView(){
     const playlistsWrapper = document.querySelector(".playlists-wrapper");
     const view = document.getElementById("main-content");
+
     playlistsWrapper.addEventListener("click", function(event) {
         const playlistElement = event.target.closest(".playlist");
         if (playlistElement) {

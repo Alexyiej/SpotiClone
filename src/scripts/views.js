@@ -33,8 +33,8 @@ function showHomeView(mainContent){
     
     </section>
     <section class="page-footer"></section>
-</section>
-    `;
+    </section>
+        `;
 
     localStorage.setItem("current-view", JSON.stringify({ name: "home" }));
 
@@ -66,7 +66,6 @@ function showPlaylistView(mainContent, playlist, type) {
     if (playlist.songs){ var playlistLenght = playlist.songs.length; }
     if (playlist.songs){ var playlistDuration = ((playlist.songs.reduce((acc, song) => acc + song.duration, 0)) / 60 ).toFixed(2); }
     const filtersBtnName = 'Custom Order'
-
 
     mainContent.innerHTML = `
     <article id="playlist-view">
@@ -206,7 +205,6 @@ function showPlaylistView(mainContent, playlist, type) {
     
     if (type === "playlist"){
         const collage = createImage(playlist.songs)
-
         playlistDesc.innerHTML = `alex ${playlistLenght} songs, <p>${playlistDuration}</p>`
 
         if (playlist.id === "L2I37"){
@@ -217,12 +215,23 @@ function showPlaylistView(mainContent, playlist, type) {
         } 
         
         else if (playlist.id !== "L2I37"){
-            playlistIcon.appendChild(collage)
             createHtmlSongs(mapLists(playlist.songs))
 
+            if (playlist.songs.length > 4 ){
+                playlistIcon.appendChild(collage)
+
+            }
+            else if (playlist.songs.length < 4 && playlist.songs.length > 0){
+                playlistIcon.innerHTML = `<img src="${playlist.songs[0].coverUrl}">`
+            }
+            else {
+                playlistIcon.innerHTML = `<img src="/src/assets/images/covers/basic-cover.png">`; 
+            }
         }
 
-        handleEvent(btn, modal, tint)
+        
+      
+        handleEditMenu(btn, modal, tint, playlist)
         localStorage.setItem("current-view", JSON.stringify({ name: "playlist", view: playlist }));
 
     }
@@ -232,7 +241,6 @@ function showPlaylistView(mainContent, playlist, type) {
     handleScroll()
     handleFavSongs(playlist.id)
     handleFilters(playlist)
-    handleSearch("filters-search-input", ".song")
 
 }
 

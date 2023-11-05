@@ -82,6 +82,7 @@
     height: 100%;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 #home > :first-child > :first-child > .playlists article > :last-child span{
@@ -103,7 +104,8 @@
     font-size: 1.2rem;
     color: black;
     transition: .2s;
-
+    position: absolute;
+    left: 50%;
     &&:hover{
         background-color: rgb(32,212,100, .8);
         cursor: pointer;
@@ -208,5 +210,5 @@
 
 }
 .page-footer{
-    height: 50px;
+    height: 40px;
 }

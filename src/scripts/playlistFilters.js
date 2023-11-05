@@ -41,7 +41,8 @@ function handleFiltersDropDown(btnElement, dropdownElement) {
     const dropdown = document.getElementById(dropdownElement);
     let isOpen = false;
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (event) => {
+        event.stopPropagation(); 
         if (isOpen) {
             dropdown.style.display = "none";
             isOpen = false;
@@ -61,22 +62,32 @@ function handleFiltersDropDown(btnElement, dropdownElement) {
     dropdown.addEventListener("click", (event) => {
         event.stopPropagation(); 
     });
+
+    document.addEventListener("click", () => {
+        dropdown.style.display = "none";
+        isOpen = false;
+        document.getElementById("filters-dropdown").style.borderRadius = "8px 8px 8px 8px";
+        closeDropDown("tempo-dropdown")
+    });
 }
+
 function closeDropDown(dropDown){
     element = document.getElementById(dropDown);
     element.style.display = "none";
-
 }
+
 function resetFilters(element, playlist){
     const filtersBtn = document.getElementById("filters-btn-name");
     const btn = document.getElementById(element);
 
     btn.addEventListener("click", () => {
         playlist.songs.sort((a, b) => a.id - b.id)
+        filtersBtn.innerHTML = `Custom Order<i class='fa-solid fa-caret-down'></i>`;
+
         createHtmlSongs(mapLists(playlist.songs));
         handleFavSongs(playlist.id);
-
-        filtersBtn.innerHTML = `Custom Order<i class='fa-solid fa-caret-down'></i>`;
+        handleSearch("filters-search-input", ".song")
+        
     });
 
 }
@@ -130,6 +141,7 @@ function sortByDuration(playlistSongs, id, ascOrder, filtersBtn){
         let label = "Duration Asc"
         filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
         playlistSongs.sort((a, b) => a.duration - b.duration)
+        
     } else if (!ascOrder){
         let label = "Duration Desc"
         filtersBtn.innerHTML = `${label}<i class='fa-solid fa-caret-down'></i>`;
