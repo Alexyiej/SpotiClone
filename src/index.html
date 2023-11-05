@@ -256,11 +256,7 @@
         await fetchData(genres, genresUrl)
 
     }
-    async function getSongs(){
-        await fetchAll()            
-        songs = addSongsDateAdded()
-        return songs
-    }
+
 
     function addSongsDateAdded(){
         const songsWithDateAdded = songs.map(song =>{
@@ -293,9 +289,10 @@
     const homeBtn = document.getElementById("home-btn");          
 
 
-
-    songs = getSongs()
+    fetchAll()            
+    songs = addSongsDateAdded()
     loadPlaylists()
+    console.log(songs)
 
     generateBgColor();
 
