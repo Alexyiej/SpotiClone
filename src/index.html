@@ -289,30 +289,34 @@
     const homeBtn = document.getElementById("home-btn");          
 
 
-    fetchAll()            
-    let songs = addSongsDateAdded()
-    loadPlaylists()
-
-    generateBgColor();
-
-    handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
-    handlePlaylistContextMenu(playlistsWrapper)
-
-    let currentView = getLastView()
-    if (currentView === null) currentView = startView
-
-    homeBtn.addEventListener('click', function() {                                                                                      
-        showHomeView(view, currentView);                                                                                     
-    });     
-
-    if (playlists.length === 0) {
-        handleCreateClick(playlists, songs)
-        showHomeView(view, currentView)
-    } 
-
-    const wrapper = document.querySelector(".main");
-    wrapper.addEventListener("scroll", handleScroll); 
-    getLiked()
-    handlePlaylistView()
-    console.log("hjl;dfgghjldshjl;fghjl;")
+    async function onload(){ 
+        await fetchAll() 
+        let songs = addSongsDateAdded()
+        loadPlaylists()
+    
+        generateBgColor();
+    
+        handleContainerContextMenu(playlistModal, playlistsWrapper, songs)
+        handlePlaylistContextMenu(playlistsWrapper)
+    
+        let currentView = getLastView()
+        if (currentView === null) currentView = startView
+    
+        homeBtn.addEventListener('click', function() {                                                                                      
+            showHomeView(view, currentView);                                                                                     
+        });     
+    
+        if (playlists.length === 0) {
+            handleCreateClick(playlists, songs)
+            showHomeView(view, currentView)
+        } 
+    
+        const wrapper = document.querySelector(".main");
+        wrapper.addEventListener("scroll", handleScroll); 
+        getLiked()
+        handlePlaylistView()
+        console.log("hjl;dfgghjldshjl;fghjl;")
+    }
+    onload()
+    
 </script>
