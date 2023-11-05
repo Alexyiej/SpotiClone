@@ -9,7 +9,7 @@ function handleCreateClick(playlists, songs) {
             name: "Liked Songs",
             description: "Playlist",
             user: "Alex",
-            image_url: "/src/assets/images/covers/likedCover.png",
+            image_url: "/assets/images/covers/likedCover.png",
             songs: getLiked()
         }
 
@@ -19,7 +19,7 @@ function handleCreateClick(playlists, songs) {
             name: "My Playlist #" + playListIndex,
             description: "Playlist",
             user: "Alex",
-            image_url: "/src/assets/images/covers/basic-cover.png",
+            image_url: "/assets/images/covers/basic-cover.png",
             songs: []
         }
 
@@ -77,7 +77,7 @@ function createPlaylists(playlist) {
     else if (playlist.id === "L2I37"){playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="${playlist.image_url}">`;}
     else if (playlist.length < 4 && playlist.length > 0){playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="${playlist.songs[0].coverUrl}">`;}
 
-    else { playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="/src/assets/images/covers/basic-cover.png">`; }
+    else { playlistElement.querySelector(".playlist-icon").innerHTML = `<img src="/assets/images/covers/basic-cover.png">`; }
 }
 
 function editPlaylist(playlist){

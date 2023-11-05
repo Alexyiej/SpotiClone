@@ -47,7 +47,7 @@ function createHomePlaylists(index, list){
         name: "My Playlist #" + index,
         description: "Playlist",
         user: "Alex",
-        image_url: "/src/assets/images/covers/likedCover.png",
+        image_url: "/assets/images/covers/likedCover.png",
         songs: []
     }
     index++;

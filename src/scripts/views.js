@@ -225,7 +225,7 @@ function showPlaylistView(mainContent, playlist, type) {
                 playlistIcon.innerHTML = `<img src="${playlist.songs[0].coverUrl}">`
             }
             else {
-                playlistIcon.innerHTML = `<img src="/src/assets/images/covers/basic-cover.png">`; 
+                playlistIcon.innerHTML = `<img src="/assets/images/covers/basic-cover.png">`; 
             }
         }
 
